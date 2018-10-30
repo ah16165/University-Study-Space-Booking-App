@@ -14,4 +14,12 @@ We are using Open Project to monitor progess and assign tasks.
 
 We are using GitHub as our code repository.
 
-**Details of project to follow our client meeting**
+Backend system will be hosted by Oracle severs. 
+
+Single Sign on integration will be encorporated.
+
+Project is to create a study space booking app to allow booking of rooms in the Queen's building by students.
+
+
+
+

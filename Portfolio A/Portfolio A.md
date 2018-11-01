@@ -41,10 +41,35 @@ Chris is in charge of implementation and purchase of new applications, and his a
 ##### University IT and Maintenance Teams
 They will be in charge of maintaining and updating the application post release. They will also deal with students needing help.
 
-### High Level Use cases
-User:
-* Student -> view available rooms -> book room -> go to room
-* Student -> view current bookings -> go to room OR -> cancel room
-* Admin -> view statistics
-* Admin -> view available rooms -> book room for student
-* Admin -> view current bookings -> cancel booking
+### High Level Use Case Diagrams
+![Student use case diagram](images/studentUseCaseDiagram.png "Student use case diagram")
+![Admin use case diagram](images/adminUseCaseDiagram.png "Admin use case diagram")
+
+### Functional Requirements
+* To be able book one of many study space rooms in the Engineering department, the core of the project.
+* To log in with Single Sign On, fitting in with other University applications and increasing speed and ease of use for users
+* To see the availability of rooms before booking, enabling users to plan ahead
+* To have the ability to cancel bookings, both for users and admins
+* For students to view their current bookings, and admins to view all bookings for management
+* To be able to export bookings to eCalendars to improve ease of use for users
+* For fairness and wellbeing, students will only be able to book up to 2 hours per day (10 a week)
+* All required information should be stored on a database
+* Have a seperate version for administrators, enabling them to manage the system
+* There should be a page to show statistics about the use of the application, viewable by administrators only
+* Administrators should be able to blacklist students
+* Students not from the Engineering department should not be allowed to book rooms
+* Have a terms and conditions page, highlighting the current policies of the rooms
+* Have wellbeing information
+
+### Non-Functional Requirements
+* The time from loading the initial log in page completing a room booking should be very quick (1 minute max)
+* The web page, database and servers should all be secure - meaning that they are not susceptible to malicious injection or information exposure.
+* Ease of use should be a priority. No manual or instructions should be required by students in order to operate the application. Administrators have extra features so may need minimal coaching but the application should be intuitive enough for most to understand without.
+* Accessible and fair to all users, rooms shouldn't be booked up by the same people constantly
+* Efficient storage usage so that server costs are kept down
+* The application and code should be easy to improve, extend and add features to. Code should be clean and well documented.
+* The user interface should be aesthetically pleasing, to provide a positive experience so that users will want to use the app
+* If the application is a success, other departments in the University may want the application to be extended to include them. The application should be able to scale up to accommodate this.
+* The application should have a web user interface, and a server back-end
+* Access to the application should be 24/7, with some allowance for updated and maintenance to the system itself
+* Users should be able to access the application remotely, whether on the University network (Eduroam) or not.

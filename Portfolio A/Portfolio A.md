@@ -60,6 +60,9 @@ They will be in charge of maintaining and updating the application post release.
 * Students not from the Engineering department should not be allowed to book rooms
 * Have a terms and conditions page, highlighting the current policies of the rooms
 * Have wellbeing information
+* There should be a grid or table to display availability of rooms on specific days
+* Administrators should be able to book rooms for students
+* Once a room has been booked at a time, it cannot be booked by other students unless it is cancelled
 
 ### Non-Functional Requirements
 * The time from loading the initial log in page completing a room booking should be very quick (1 minute max)
@@ -73,3 +76,41 @@ They will be in charge of maintaining and updating the application post release.
 * The application should have a web user interface, and a server back-end
 * Access to the application should be 24/7, with some allowance for updated and maintenance to the system itself
 * Users should be able to access the application remotely, whether on the University network (Eduroam) or not.
+
+### Flow Breakdown of Student Booking then Using a Room
+#### Basic Flow
+1. Student opens browser on phone/tablet/computer
+1. Student enters the URL for the Study Space Booking Application
+1. The student then clicks log in
+1. The student then logs in via single sign on
+1. At the home screen, the user chooses to click the "View rooms/Make a booking" button
+1. After picking the day they want to book, the user is presented with a grid/table displaying the availability of all the rooms that day
+1. The student may click a room to find out some more information
+1. After deciding on a room and an available slot, the user clicks it
+1. A confirmation page lets the user know that they have booked the room
+1. The student then goes to the room
+
+#### Alternative Flow
+1. The student does not have access to the a personal device
+1. The student approaches a librarian/admin and asks them to book a room for them
+1. The admin logs in to their admin account, and repeats the process as above but books for the student
+
+#### Exceptional Flow
+* A student wishes to book a slot that another student has already booked
+ * By the requirements, this is not allowed and so the student must find another, not already booked slot
+* A student accidentally booked the wrong room
+ * The student can cancel the room by viewing their bookings, and clicking cancel
+
+### Flow Breakdown of Admin Viewing Statistics
+#### Basic Flow
+1. Admin opens browser on phone/tablet/computer
+1. Admin enters the URL for the Study Space Booking Application
+1. The admin then clicks log in
+1. The admin then logs in via single sign on
+1. At the admin home screen, the admin clicks the "View statistics" button
+1. The admin is then presented with a set of options to view the statistics
+1. After selecting the options they want, the relevant statistics are presented
+
+#### Exceptional Flow
+* The admin accidentally presses "View bookings" instead of "View statistics"
+ * They can just press the home button to go back to the home page and then press "View statistics" as intended

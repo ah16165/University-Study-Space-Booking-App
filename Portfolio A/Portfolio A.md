@@ -114,3 +114,13 @@ They will be in charge of maintaining and updating the application post release.
 #### Exceptional Flow
 * The admin accidentally presses "View bookings" instead of "View statistics"
  * They can just press the home button to go back to the home page and then press "View statistics" as intended
+
+## Development Testing
+
+User.createBooking()
+
+Method description with parameters
+
+Show parameters input and then the output (assert)
+
+## OO Design and UML

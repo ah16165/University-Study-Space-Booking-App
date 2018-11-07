@@ -119,8 +119,25 @@ They will be in charge of maintaining and updating the application post release.
 
 User.createBooking()
 
+Booking.construct() - has put in the correct attributes
+Booking.makeBooking() test correct query has been called, and check that database has a correct entry
+
+1 test that matches, 1 match that should fail (each)
+
+
 Method description with parameters
 
 Show parameters input and then the output (assert)
+
+
+| Test Description                                                                                                                                   | Input                                             | Output |
+|----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|--------|
+| Assert that User.createBooking() calls Booking.construct()                                                                                         |                                                   |        |
+| Assert that a booking cannot be created if the room does not exist                                                                                 | Database is empty, roomID = 1                     |        |
+| Assert that a booking cannot be created if there is already a booking for the same room at the same time                                           | Run createBooking twice, with the same parameters |        |
+| Assert that Booking.construct() is called and the output is a Booking object with attributes matching the input                                    | Normal                                            |        |
+| Assert that Booking.makeBooking() is called and produces the correct SQL statement                                                                 | Normal                                            |        |
+| Assert that after User.createBooking is completed, the booking table contains 1 extra entry                                                        |                                                   |        |
+| Assert that after User.createBooking is completed, the booking table contains an entry that matches the parameters passed in to User.createBooking |                                                   |        |
 
 ## OO Design and UML

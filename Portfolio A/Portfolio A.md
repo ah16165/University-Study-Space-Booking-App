@@ -126,7 +126,7 @@ The very focus of the application should be on a user creating a new booking, as
 
 ***User.createBooking()*** creates a new Booking object with properties corresponding to the parameters above, using ***Booking.construct()*** which takes in the same parameters. An additional property is ***bookingID*** : which is a unique integer that identifies that booking.
 
-Then ***Booking.makeBooking()*** is then called, which creates and uses an SQL statement that inserts a new booking into the booking table with all of the Booking object's parameters.
+***Booking.makeBooking()*** is then called, which creates and uses an SQL statement that inserts a new booking into the booking table with all of the Booking object's parameters.
 
 Below is a table representing the tests we will implement to check that ***User.createBooking()*** is functioning correctly.
 

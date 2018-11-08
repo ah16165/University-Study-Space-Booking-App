@@ -1,0 +1,21 @@
+The collaboration diagram aims to show how objects interact with each other through methods, and to define some sort of system flow through a critical part of the system. Here we are modelling the flow of a user object being created, and being used to create booking objects that then deal with the actual process of managing bookings in the SQL database via several methods.
+
+There are three potential paths that could be taken once the user object has been created; make a new booking, edit an exiting booking or delete a booking. 
+
+Make a new booking:
+
+1. user.create_booking() is called to create a new booking object. This is filled with the user defined parametres, sourced from an input form on the front end. These input parametres become the attributes of the booking object.
+2. booking.make_booking() is called, with its input parametres being the attributes of the object. This method queries the database to add a new booking entry into it. 
+3. booking.send_email() is called which sends a confirmation email to the user's email address.
+4. The booking object nullifies itself.
+
+Edit a Booking:
+
+1. user.edit_booking() is called to create a new booking object. The input parametres are given by a user selection. These input parametres become the attributes of the booking object.
+2. booking.edit_booking() is called, with its input parametres being the attributes of the object. This method queries the database to update an entry. 
+3. booking.send_email() is called which sends a confirmation email to the user's email address.
+4. The booking object nullifies itself.
+
+Delete a booking:
+
+1. user.delete_booking() is called, with input given by the user. This queries the database and deletes the corresponding entry.

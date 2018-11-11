@@ -1,6 +1,8 @@
 # Portfolio A
+
+
 ## Overview
-The team’s assignment is to create a study space booking application for use by engineering students at the University of Bristol to book study spaces in the Queen’s building.
+The team’s assignment is to create a study space booking application for use by engineering students at the University of Bristol to book study spaces in the Queen’s building. This document provides our assessment of the project, and highlights some key parts at a high level. We will be constantly iterating and reflecting our work, so the design, flows and testing is be changed and improved upon after the completion of this document.
 
 ### Client
 The client is the University of Bristol. More specifically, we will be working for the Faculty of Engineering, with our primary point of contact being Rahim Ahmed who is the Faculty of Engineering office manager. We will also be liaising with the IT team, both at a faculty level and a university level.
@@ -42,8 +44,8 @@ Chris is in charge of implementation and purchase of new applications, and his a
 They will be in charge of maintaining and updating the application post release. They will also deal with students needing help.
 
 ### High Level Use Case Diagrams
-![Student use case diagram](images/studentUseCaseDiagram.png "Student use case diagram")
-![Admin use case diagram](images/adminUseCaseDiagram.png "Admin use case diagram")
+![Use case diagram](images/useCaseDiagrams.png "Use case diagram")
+
 
 ### Functional Requirements
 * To be able book one of many study space rooms in the Engineering department, the core of the project.
@@ -78,7 +80,7 @@ They will be in charge of maintaining and updating the application post release.
 * Users should be able to access the application remotely, whether on the University network (Eduroam) or not.
 
 ### Flow Breakdown of Student Booking then Using a Room
-#### Basic Flow
+#### Basic Flow¹
 1. Student opens browser on phone/tablet/computer
 1. Student enters the URL for the Study Space Booking Application
 1. The student then clicks log in
@@ -90,19 +92,19 @@ They will be in charge of maintaining and updating the application post release.
 1. A confirmation page lets the user know that they have booked the room
 1. The student then goes to the room
 
-#### Alternative Flow
+#### Alternative Flow²
 1. The student does not have access to the a personal device
 1. The student approaches a librarian/admin and asks them to book a room for them
 1. The admin logs in to their admin account, and repeats the process as above but books for the student
 
-#### Exceptional Flow
+#### Exceptional Flow³
 * A student wishes to book a slot that another student has already booked
  * By the requirements, this is not allowed and so the student must find another, not already booked slot
 * A student accidentally booked the wrong room
  * The student can cancel the room by viewing their bookings, and clicking cancel
 
 ### Flow Breakdown of Admin Viewing Statistics
-#### Basic Flow
+#### Basic Flow¹
 1. Admin opens browser on phone/tablet/computer
 1. Admin enters the URL for the Study Space Booking Application
 1. The admin then clicks log in
@@ -111,20 +113,30 @@ They will be in charge of maintaining and updating the application post release.
 1. The admin is then presented with a set of options to view the statistics
 1. After selecting the options they want, the relevant statistics are presented
 
-#### Exceptional Flow
+#### Exceptional Flow³
 * The admin accidentally presses "View bookings" instead of "View statistics"
  * They can just press the home button to go back to the home page and then press "View statistics" as intended
 
+#### Key
+
+* ¹ - Basic flow is the typical use of a user to perform the task
+* ² - Alternative flow, a route that is different to the basic flow, but still reaches the same result
+* ³ - Exceptional flows are where the user takes a route through the application that is not intended.
+
 ## Development Testing
 
-The very focus of the application should be on a user creating a new booking, as this is what will be used most. This is handled by the ***User.createBooking()*** method, which takes in the following parameters:
+### Clarify that this is a first draft, not actual implementation
+
+Below is a first draft of the tests we will implement on our preliminary idea of the function that will handle a user creating a booking. The actual function itself may be altered as we progress with the application, hence the tests will need to be altered to match.
+
+The very focus of the application should be on a user creating a new booking, as this is what will be used most. This would be handled by the ***User.createBooking()*** method, which would take in the following parameters:
 * ***roomID*** : a unique integer that corresponds to the room to be booked
 * ***dateTime*** : the date and start time of the booking to be made
 * ***noUsers*** : an integer to represent the number of students using the room at a time
 * ***length*** : An integer to represent the number of hours for the booking
 * ***userID*** : a unique integer that corresponds to the logged in user that is making the booking
 
-***User.createBooking()*** creates a new Booking object with properties corresponding to the parameters above, using ***Booking.construct()*** which takes in the same parameters. An additional property is ***bookingID*** : which is a unique integer that identifies that booking.
+***User.createBooking()*** would create a new Booking object with properties corresponding to the parameters above, using ***Booking.construct()*** which takes in the same parameters. An additional property is ***bookingID*** : which is a unique integer that identifies that booking.
 
 ***Booking.makeBooking()*** is then called, which creates and uses an SQL statement that inserts a new booking into the booking table with all of the Booking object's parameters.
 

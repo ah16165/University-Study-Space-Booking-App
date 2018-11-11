@@ -1,0 +1,2 @@
+The system diagram shown gives a basic representation of how the system will be built whilst leaving out more complex parts of the sytem such as Single-Sign-On and API's.
+In essence the user will connect to a web server via their browser which communicates to a app server which is connected to our Oracle database.

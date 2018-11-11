@@ -127,9 +127,9 @@ They will be in charge of maintaining and updating the application post release.
 
 The Java application server backend which deals with processing input, communicating between the web server and database server, will be tested using JUnit. There will be assertions on each function, checking the correct output is given for a specified input.
 
-For the Javascript front end, we will be using a Javascript testing framework such as Mocha. We will also be providing continuous iterations of the front end to the client, such that improvement and alterations can easily be made.
+For the Javascript front end, we will be using a Javascript testing framework such as Mocha. We will also be providing continuous iterations of the front end to the client, so that improvement and alterations can easily be made.
 
-Part of our JUnit tests will check that the SQL queries are correct. We will also use DbUnit, a JUnit extension to ensure that the database is correct.
+Part of our JUnit tests will check that the SQL queries are correct. We will also use DbUnit for the Database, a JUnit extension to ensure that the database is correct.
 
 #### Possible Testing frameworks:
 * JUnit
@@ -141,8 +141,6 @@ Part of our JUnit tests will check that the SQL queries are correct. We will als
 The API will be difficult to test because it will be developed by us, rather than coming from an external source. To overcome this we will create our own, thorough tests.
 
 Often the front end can be hard to test, but using a framework such as mocha will enable us to ensure that there are no issues such as browser incompatibility.
-
-
 
 
 ## OO Design and UML

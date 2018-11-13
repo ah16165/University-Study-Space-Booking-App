@@ -27,19 +27,19 @@ The team hope to achieve an elegant and attractive solution to the client brief 
 
 /Stakeholders/
 
-Rahim Ahmed - Faculty Office Manager for the Engineering Department
+Rahim Ahmed - Faculty Office Manager for the Engineering Department -
 The space booking app was requested by Rahim, and he laid out his own specification. Although Rahim is not and end-user, he must approve of the application and is responsible for it in the University. His priorities are in student and admin ease of use.
 
-UoB Engineering Undergrads
+UoB Engineering Undergrads -
 These students form one side of the main end users. They themselves will be using the app to book the room.
 
-UoB Engineering Office Admins / Librarians
+UoB Engineering Office Admins / Librarians -
 These are the other side of the end users. They will use the app to monitor and manage the bookings, aiding the students and the process.
 
-Chris Totthill - IT Manager for the Engineering Department
+Chris Totthill - IT Manager for the Engineering Department -
 Chris is in charge of implementation and purchase of new applications, and his approval is also needed.
 
-University IT and Maintenance Teams
+University IT and Maintenance Teams -
 They will be in charge of maintaining and updating the application post release. They will also deal with students needing help.
 
 /High Level Use Case Diagrams/
@@ -82,44 +82,44 @@ See image.
 
 /Flow Breakdown of Student Booking then Using a Room/
 
-Basic Flow¹
-Student opens browser on phone/tablet/computer
-Student enters the URL for the Study Space Booking Application
-The student then clicks log in
-The student then logs in via single sign on
-At the home screen, the user chooses to click the "View rooms/Make a booking" button
-After picking the day they want to book, the user is presented with a grid/table displaying the availability of all the rooms that day
-The student may click a room to find out some more information
-After deciding on a room and an available slot, the user clicks it
-A confirmation page lets the user know that they have booked the room
-The student then goes to the room
+Basic Flow¹ -
+*Student opens browser on phone/tablet/computer
+*Student enters the URL for the Study Space Booking Application
+*The student then clicks log in
+*The student then logs in via single sign on
+*At the home screen, the user chooses to click the "View rooms/Make a booking" button
+*After picking the day they want to book, the user is presented with a grid/table displaying the availability of all the rooms that day
+*The student may click a room to find out some more information
+*After deciding on a room and an available slot, the user clicks it
+*A confirmation page lets the user know that they have booked the room
+*The student then goes to the room
 
 
-Alternative Flow²
-The student does not have access to the a personal device
-The student approaches a librarian/admin and asks them to book a room for them
-The admin logs in to their admin account, and repeats the process as above but books for the student
+Alternative Flow² -
+*The student does not have access to the a personal device
+*The student approaches a librarian/admin and asks them to book a room for them
+*The admin logs in to their admin account, and repeats the process as above but books for the student
 
-Exceptional Flow³
-A student wishes to book a slot that another student has already booked
-By the requirements, this is not allowed and so the student must find another, not already booked slot
-A student accidentally booked the wrong room
-The student can cancel the room by viewing their bookings, and clicking cancel
+Exceptional Flow³ -
+*A student wishes to book a slot that another student has already booked
+*By the requirements, this is not allowed and so the student must find another, not already booked slot
+*A student accidentally booked the wrong room
+*The student can cancel the room by viewing their bookings, and clicking cancel
 
 /Flow Breakdown of Admin Viewing Statistics/
 
-Basic Flow¹
-Admin opens browser on phone/tablet/computer
-Admin enters the URL for the Study Space Booking Application
-The admin then clicks log in
-The admin then logs in via single sign on
-At the admin home screen, the admin clicks the "View statistics" button
-The admin is then presented with a set of options to view the statistics
-After selecting the options they want, the relevant statistics are presented
+Basic Flow¹ -
+*Admin opens browser on phone/tablet/computer
+*Admin enters the URL for the Study Space Booking Application
+*The admin then clicks log in
+*The admin then logs in via single sign on
+*At the admin home screen, the admin clicks the "View statistics" button
+*The admin is then presented with a set of options to view the statistics
+*After selecting the options they want, the relevant statistics are presented
 
-Exceptional Flow³
-The admin accidentally presses "View bookings" instead of "View statistics"
-They can just press the home button to go back to the home page and then press "View statistics" as intended
+Exceptional Flow³ -
+*The admin accidentally presses "View bookings" instead of "View statistics"
+*They can just press the home button to go back to the home page and then press "View statistics" as intended
 
 /Key/
 
@@ -134,6 +134,7 @@ See attached use-case diagrams (x3).
 /System Architecture/
 
 See attached image. The system diagram shown gives a basic representation of how the system will be built whilst leaving out more complex parts of the system such as Single-Sign-On and API's. In essence the user will connect to a web server via their browser which communicates to an app server which is connected to our Oracle database. The basic system has the following external dependencies:
+
 - API to link frontend and backend (likely to be developed in house)
 - Single-Sign-On System
 - Eventual integration to Bristol University server systems.
@@ -149,6 +150,7 @@ The collaboration diagram aims to show how objects interact with each other thro
 There are three potential paths that could be taken once the user object has been created; make a new booking, edit an existing booking or delete a booking:
 
 Make a new booking:
+
 1. user.create_booking() is called to create a new booking object. This is filled with the user defined parameters, sourced from an input form on the front end. These input parameters become the attributes of the booking object.
 2. booking.make_booking() is called, with its input parameters being the attributes of the object. This method queries the database to add a new booking entry into it.
 3. booking.send_email() is called which sends a confirmation email to the user's email address.
@@ -156,12 +158,14 @@ Make a new booking:
 
 
 Edit a Booking:
+
 1. user.edit_booking() is called to create a new booking object. The input parameters are given by a user selection. These input parameters become the attributes of the booking object.
 2. booking.edit_booking() is called, with its input parameters being the attributes of the object. This method queries the database to update an entry.
 3. booking.send_email() is called which sends a confirmation email to the user's email address.
 4. The booking object nullifies itself.
 
 Delete a booking:
+
 1. user.delete_booking() is called, with input given by the user. This queries the database and deletes the corresponding entry.
 
 /Activity Diagram/
@@ -169,12 +173,15 @@ Delete a booking:
 The activity diagram first starts with the user logging into the system through the imported UoB ‘Single Sign On’ integration. From here, the user is taken to the main menu where they can then choose whether they would like to make a new booking or view their existing bookings. 
 
 Make a booking:
+
 Once this option is selected, the system accesses the database and fetches all the bookings from the database (from all userIDs) and displays it in a timetable type format. The user can then select the specific timetable slot for which he would like to place a booking in. If it is free, the user will then be taken to a page to confirm his booking. Once the user has confirmed the booking, the system will instantiate a new booking object and set all the attributes appropriately. This booking object is then used to insert a new record into the Booking table within the database. An email is then sent once the booking has been saved, and the user is redirected to the main menu.
 
 Viewing a booking:
+
 Once this option is selected, the system accesses the database and fetches all the bookings of the user’s unique userID from the database. The constructor from the booking class is called (for each booking the user has) and a new booking is instantiated with the details from that specific record in the database. Each object is then displayed within a table (with their associated rooms shown), of which the user can select a booking they would like to delete. If the user selects to delete a booking, the booking.deleteBooking method is called and the system once again accesses the database and deletes the related record from the Booking table. An email is then sent to confirm the deletion, and the user is redirected to the main page.
 
 View room functionality:
+
 This view room function is used twice in the system (as shown in the flowchart). It is called when: 1) The user wants to make a new booking, and the timetable for each room is shown. 2) The user wants to view their bookings, and a list of the bookings and associated rooms are shown. This view room function works by fetching the specific room information from the Rooms table within the database. This fetched data is then formatted onto a webpage and shown to the user. 
 
 /Class Diagram/
@@ -213,7 +220,7 @@ The API will be difficult to test because it will be developed by us, rather tha
 
 /An example test/
 
-Below is a first draft of the tests we will implement on our preliminary idea of the function that will handle a user creating a booking. The actual function itself may be altered as we progress with the application, hence the tests will need to be altered to match.
+Below is a first draft of the tests we will implement on our preliminary idea of the function that will handle a user creating a booking. Please see the attached image for context. The actual function itself may be altered as we progress with the application, hence the tests will need to be altered to match.
 
 The very focus of the application should be on a user creating a new booking, as this is what will be used most. This would be handled by the ***User.createBooking()*** method, which would take in the following parameters:
 ***roomID*** : a unique integer that corresponds to the room to be booked

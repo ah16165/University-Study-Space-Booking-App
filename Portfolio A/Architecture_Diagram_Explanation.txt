@@ -1,8 +1,0 @@
-The system diagram shown gives a basic representation of how the system will be built whilst leaving out more complex parts of the sytem such as Single-Sign-On and API's. In essence the user will connect to a web server via their browser which communicates to an app server which is connected to our Oracle database.
-
-The basic system has the following external dependencies:
-- API to link frontend and backend (likely to be developed in house)
-- Single-Sign-On System
-- Eventual integration to Bristol University server systems.
-
-The web server component transfers information betwen the client side and the rest of the system. The app server deals with all the functionality of the system, whilst the database will hold all of the system's records and information.

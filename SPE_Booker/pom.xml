@@ -53,11 +53,11 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-strater-data-jpa</artifactId>
-            <version>v2.1.0.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-strater-data-jpa</artifactId>-->
+            <!--<version>v2.1.0.RELEASE</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

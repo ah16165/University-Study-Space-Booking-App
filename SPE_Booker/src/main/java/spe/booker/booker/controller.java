@@ -11,7 +11,7 @@ public class controller {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return "Test";
     }
 
 

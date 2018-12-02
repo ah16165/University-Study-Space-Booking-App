@@ -15,5 +15,6 @@ public class SpeBookingApplication {
         SpringApplication.run(SpeBookingApplication.class, args);
     }
 
+    user testUser = new user(1, "at17556@my.bristol.ac.uk", "at17556", "CompSci");
 }
 

@@ -4,30 +4,53 @@
   <title>Study Space Booking App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<div class="w3-row">
-  <div class="w3-container w3-metro-red">
-    <p class="w3-xlarge">UoB Engineering Study Space Booking App</p>
-  </div>
+
+<div class="container-fluid bg-danger text-white">
+  <h3 class="p-1">
+    UoB Engineering Study Space Booking App
+  </h3>
 </div>
 
-<form class="w3-third w3-container">
-</form>
 
-<form class="w3-third w3-container w3-section">
-  <label>Username</label>
-  <input class="w3-input" type="text">
-  <label>Pasword</label>
-  <input class="w3-input" type="password">
-  <a href="userhome.html" class="w3-button w3-block w3-round w3-metro-red w3-section">Login</a>
-</form>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-6 col-12 mx-auto">
+      <form action="/action_page.php">
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Remember me
+          </label>
+        </div>
+        <a href="userhome.html" class="btn btn-danger">Submit</a>
+        <!--
+        The below button is used for php, which is unimplemented as of now
+        <button type="submit" class="btn btn-danger">Submit</button>
+        -->
+      </form>
+    </div>
+  </div>
+</div>
 
 
 

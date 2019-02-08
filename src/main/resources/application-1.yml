@@ -1,0 +1,18 @@
+
+spring:
+
+  profiles: 1
+
+  thymeleaf:
+    cache: false
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/bookerdb
+    username: booker
+    password: ${db_password}
+  jpa:
+    hibernate:
+      connection:
+        charset: utf8
+        useUnicode: true

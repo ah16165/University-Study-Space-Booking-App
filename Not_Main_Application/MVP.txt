@@ -1,0 +1,14 @@
+Submission:
+http://129.213.61.171:8080/
+
+What has been submitted?
+A IP address to our Spring application hosted on an orcale server. We are currently working on getting a domain name for it as well, but the IP works fine for now.
+
+What is on the Oracle Server?
+A working spring application, which serves a minimal HTML front end. The spring application is connected to an oracle MySQL DB correctly, however we did not have time to implement data manipulation or dispay from the DB.
+
+What is currently being worked on?
+Full database integration so that we can add and delete bookings from the front end.
+
+What do we need from you if possible?
+IT services denied our request for them to allow us to use Single-Sign on for the project. This is pretty integral to our client's requirements, so we were wondering if you could have a word with IT services?

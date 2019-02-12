@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <title>Study Space Booking App</title>
   <meta charset="utf-8">
@@ -64,6 +66,11 @@
       <td>MVB</td>
       <td>1.11</td>
       <td>10</td>
+    </tr>
+    <tr th:each="room: ${rooms}">
+      <td><span th:text="${room.id}"/></td>
+      <td><span th:text="${room.name}"/></td>
+      <td><span th:text="${room.address}"/></td>
     </tr>
   </table>
 

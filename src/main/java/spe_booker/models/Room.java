@@ -59,18 +59,11 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public boolean addSlot(Slot slot) {
-        slot.setRoom(this);
-        return this.slots.add(slot);
-    }
-
-    public boolean removeSlot(Object o) {
-        return slots.remove(o);
-    }
-
     public List<Slot> getSlots() {
         return slots;
+    }
 
-
+    public void setSlots(List<Slot> slots) {
+        this.slots = slots;
     }
 }

@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: head (title='Add Room')">
+</head>
+
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <h1>New Grotto</h1>
+        <form action="#" th:action="@{/room}" th:object="${room}" method="post" class="form-inline">
+            <div class="form-group">
+                <label for="roomNo">roomNo</label>
+                <input type="text" th:field="*{roomNo}" class="form-control" id="roomNo" placeholder="Enter name"/>
+            </div>
+            <div class="form-group">
+                <label for="building">Building</label>
+                <input type="text" th:field="*{building}" class="form-control" id="building"
+                       placeholder="Enter building"/>
+            </div>
+            <div class="form-group">
+                <label for="capacity">Capacity</label>
+                <input type="text" th:field="*{capacity}" class="form-control" id="capacity"
+                       placeholder="Enter capacity"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer">...</div>
+</body>

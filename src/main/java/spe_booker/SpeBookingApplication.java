@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 })
 
 
-@EnableJpaRepositories("spe_booker")
+@EnableJpaRepositories
 @SpringBootApplication
 public class SpeBookingApplication {
 

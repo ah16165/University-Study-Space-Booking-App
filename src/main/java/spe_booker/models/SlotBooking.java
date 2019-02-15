@@ -28,7 +28,7 @@ public class SlotBooking {
 
     @NotNull
     @ManyToOne
-    private Slot event;
+    private Slot slot;
 
     public Long getId() {
         return id;
@@ -46,11 +46,11 @@ public class SlotBooking {
         this.user = user;
     }
 
-    public Slot getEvent() {
-        return event;
+    public Slot getSlot() {
+        return slot;
     }
 
-    public void setEvent(Slot event) {
-        this.event = event;
+    public void setSlot(Slot slot) {
+        this.slot = slot;
     }
 }

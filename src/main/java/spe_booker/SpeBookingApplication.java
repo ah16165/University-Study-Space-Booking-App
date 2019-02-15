@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySources;
 
 @PropertySources({
         @PropertySource("classpath:application.properties"),
-        @PropertySource(value = "file:$/home/booker/.secret.properties", ignoreResourceNotFound = true)
+        @PropertySource(value = "file:$/home/ubuntu/.secret.properties", ignoreResourceNotFound = true)
 })
 
 @SpringBootApplication

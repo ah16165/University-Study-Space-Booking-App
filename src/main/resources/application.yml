@@ -1,0 +1,17 @@
+initial_admin_account:
+  username: admin
+  password: ${initial_admin_password}
+
+
+logging:
+  path: logs
+  level:
+    root: INFO
+    ac.uk.bristol.cs.santa.grotto: DEBUG
+    org.springframework.web: DEBUG
+
+spring:
+  profiles.active: dev
+
+  thymeleaf:
+    cache: false

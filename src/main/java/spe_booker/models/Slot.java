@@ -27,7 +27,7 @@ public class Slot {
     private java.util.Date dateTime;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private Room room;
 
     @OneToMany(mappedBy = "slot", cascade = CascadeType.ALL)

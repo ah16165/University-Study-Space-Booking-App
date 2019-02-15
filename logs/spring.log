@@ -397,3 +397,318 @@ Action:
 
 Correct the classpath of your application so that it contains a single, compatible version of javax.persistence.Table
 
+2019-02-15 11:32:30.851  INFO 6175 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6175 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:32:30.866  INFO 6175 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:32:31.002  INFO 6175 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:32:31.002  INFO 6175 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:32:31.286  INFO 6175 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:32:33.197  INFO 6175 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:32:33.219  INFO 6175 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:32:33.220  INFO 6175 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:32:33.229  INFO 6175 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:32:33.450  INFO 6175 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:32:33.454  INFO 6175 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:32:33.455 DEBUG 6175 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:32:33.455  INFO 6175 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2452 ms
+2019-02-15 11:32:33.895  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:32:33.895  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:32:33.896  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:32:33.896  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:32:33.896  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:32:33.897  INFO 6175 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:32:33.897  INFO 6175 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:32:33.897  INFO 6175 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:32:33.931  WARN 6175 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'roomController': Unsatisfied dependency expressed through field 'roomRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.RoomRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2019-02-15 11:32:33.935  INFO 6175 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:32:33.956  INFO 6175 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:32:34.235 ERROR 6175 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field roomRepository in spe_booker.Controllers.RoomController required a bean of type 'spe_booker.Repositorys.RoomRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.RoomRepository' in your configuration.
+
+2019-02-15 11:33:28.988  INFO 6185 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6185 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:33:28.991  INFO 6185 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:33:29.062  INFO 6185 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:33:29.063  INFO 6185 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:33:29.307  INFO 6185 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:33:31.306  INFO 6185 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:33:31.322  INFO 6185 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:33:31.322  INFO 6185 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:33:31.329  INFO 6185 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:33:31.521  INFO 6185 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:33:31.524  INFO 6185 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:33:31.525 DEBUG 6185 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:33:31.525  INFO 6185 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2462 ms
+2019-02-15 11:33:31.934  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:33:31.935  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:33:31.935  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:33:31.935  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:33:31.935  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:33:31.936  INFO 6185 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:33:31.936  INFO 6185 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:33:31.936  INFO 6185 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:33:31.976  WARN 6185 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'slotBookingController': Unsatisfied dependency expressed through field 'userRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2019-02-15 11:33:31.979  INFO 6185 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:33:32.004  INFO 6185 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:33:32.271 ERROR 6185 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userRepository in spe_booker.Controllers.SlotBookingController required a bean of type 'spe_booker.Repositorys.UserRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.UserRepository' in your configuration.
+
+2019-02-15 11:33:59.965  INFO 6194 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6194 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:33:59.973  INFO 6194 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:34:00.210  INFO 6194 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:34:00.210  INFO 6194 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:34:00.459  INFO 6194 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:34:02.169  INFO 6194 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:34:02.183  INFO 6194 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:34:02.184  INFO 6194 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:34:02.190  INFO 6194 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:34:02.368  INFO 6194 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:34:02.371  INFO 6194 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:34:02.371 DEBUG 6194 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:34:02.371  INFO 6194 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2160 ms
+2019-02-15 11:34:02.777  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:34:02.778  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:34:02.778  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:34:02.778  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:34:02.778  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:34:02.779  INFO 6194 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:34:02.779  INFO 6194 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:34:02.779  INFO 6194 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:34:02.807  WARN 6194 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'slotController': Unsatisfied dependency expressed through field 'roomRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.RoomRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2019-02-15 11:34:02.809  INFO 6194 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:34:02.828  INFO 6194 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:34:03.000 ERROR 6194 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field roomRepository in spe_booker.Controllers.SlotController required a bean of type 'spe_booker.Repositorys.RoomRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.RoomRepository' in your configuration.
+
+2019-02-15 11:34:21.137  INFO 6203 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6203 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:34:21.140  INFO 6203 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:34:21.281  INFO 6203 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:34:21.285  INFO 6203 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:34:21.570  INFO 6203 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:34:23.433  INFO 6203 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:34:23.451  INFO 6203 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:34:23.451  INFO 6203 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:34:23.458  INFO 6203 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:34:23.666  INFO 6203 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:34:23.674  INFO 6203 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:34:23.675 DEBUG 6203 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:34:23.675  INFO 6203 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2389 ms
+2019-02-15 11:34:24.110  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:34:24.110  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:34:24.111  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:34:24.111  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:34:24.111  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:34:24.112  INFO 6203 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:34:24.112  INFO 6203 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:34:24.112  INFO 6203 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:34:24.152  WARN 6203 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataLoader': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes/spe_booker/models/UserService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2019-02-15 11:34:24.155  INFO 6203 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:34:24.182  INFO 6203 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:34:24.431 ERROR 6203 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in spe_booker.models.UserService required a bean of type 'spe_booker.Repositorys.UserRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.UserRepository' in your configuration.
+
+2019-02-15 11:35:27.677  INFO 6210 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6210 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:35:27.681  INFO 6210 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:35:27.815  INFO 6210 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:35:27.815  INFO 6210 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:35:28.070  INFO 6210 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:35:29.795  INFO 6210 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:35:29.819  INFO 6210 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:35:29.819  INFO 6210 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:35:29.826  INFO 6210 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:35:30.003  INFO 6210 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:35:30.010  INFO 6210 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:35:30.010 DEBUG 6210 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:35:30.010  INFO 6210 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2194 ms
+2019-02-15 11:35:30.430  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:35:30.431  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:35:30.431  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:35:30.431  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:35:30.431  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:35:30.432  INFO 6210 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:35:30.432  INFO 6210 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:35:30.432  INFO 6210 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:35:30.472  WARN 6210 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataLoader': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes/spe_booker/models/UserService.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2019-02-15 11:35:30.474  INFO 6210 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:35:30.493  INFO 6210 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:35:30.707 ERROR 6210 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in spe_booker.models.UserService required a bean of type 'spe_booker.Repositorys.UserRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.UserRepository' in your configuration.
+
+2019-02-15 11:36:18.866  INFO 6228 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6228 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:36:18.870  INFO 6228 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:36:18.986  INFO 6228 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:36:18.987  INFO 6228 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:36:19.266  INFO 6228 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:36:21.075  INFO 6228 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:36:21.105  INFO 6228 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:36:21.106  INFO 6228 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:36:21.115  INFO 6228 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:36:21.379  INFO 6228 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:36:21.382  INFO 6228 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:36:21.382 DEBUG 6228 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:36:21.382  INFO 6228 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2395 ms
+2019-02-15 11:36:21.789  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:36:21.790  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:36:21.790  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:36:21.790  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:36:21.790  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:36:21.791  INFO 6228 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:36:21.791  INFO 6228 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:36:21.791  INFO 6228 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:36:21.826  WARN 6228 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'roomController': Unsatisfied dependency expressed through field 'roomRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'spe_booker.Repositorys.RoomRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2019-02-15 11:36:21.828  INFO 6228 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:36:21.846  INFO 6228 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:36:22.029 ERROR 6228 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field roomRepository in spe_booker.Controllers.RoomController required a bean of type 'spe_booker.Repositorys.RoomRepository' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'spe_booker.Repositorys.RoomRepository' in your configuration.
+
+2019-02-15 11:39:15.398  INFO 6246 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6246 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:39:15.405  INFO 6246 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:39:15.573  INFO 6246 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:39:15.573  INFO 6246 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:39:15.825  INFO 6246 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:39:16.694  INFO 6246 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-15 11:39:16.810  INFO 6246 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 4 repository interfaces.
+2019-02-15 11:39:18.096  INFO 6246 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:39:18.116  INFO 6246 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:39:18.117  INFO 6246 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:39:18.126  INFO 6246 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:39:18.353  INFO 6246 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:39:18.358  INFO 6246 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:39:18.359 DEBUG 6246 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:39:18.360  INFO 6246 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2787 ms
+2019-02-15 11:39:18.852  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:39:18.852  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:39:18.852  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:39:18.853  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:39:18.853  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:39:18.853  INFO 6246 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:39:18.854  INFO 6246 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:39:18.854  INFO 6246 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:39:18.905  WARN 6246 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'roomController': Unsatisfied dependency expressed through field 'roomRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'roomRepository': Post-processing of merged bean definition failed; nested exception is java.lang.NoSuchMethodError: javax.persistence.PersistenceContext.synchronization()Ljavax/persistence/SynchronizationType;
+2019-02-15 11:39:18.908  INFO 6246 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:39:18.930  INFO 6246 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:39:18.936 ERROR 6246 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call the method javax.persistence.PersistenceContext.synchronization()Ljavax/persistence/SynchronizationType; but it does not exist. Its class, javax.persistence.PersistenceContext, is available from the following locations:
+
+    jar:file:/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/lib/javax.persistence.jar!/javax/persistence/PersistenceContext.class
+    jar:file:/Users/aidan/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar!/javax/persistence/PersistenceContext.class
+    jar:file:/Users/aidan/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar!/javax/persistence/PersistenceContext.class
+
+It was loaded from the following location:
+
+    file:/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/lib/javax.persistence.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains a single, compatible version of javax.persistence.PersistenceContext
+

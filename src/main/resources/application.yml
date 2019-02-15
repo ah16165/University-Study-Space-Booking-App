@@ -1,6 +1,6 @@
 initial_admin_account:
-  username: admin
-  password: ${initial_admin_password}
+  username: booker
+  password: ${db_password}
 
 
 logging:

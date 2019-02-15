@@ -712,3 +712,54 @@ Action:
 
 Correct the classpath of your application so that it contains a single, compatible version of javax.persistence.PersistenceContext
 
+2019-02-15 11:45:11.253  INFO 6283 --- [restartedMain] spe_booker.SpeBookingApplication         : Starting SpeBookingApplication on eduroam-88-201.nomadic.bris.ac.uk with PID 6283 (/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/target/classes started by aidan in /Users/aidan/Uni/Year_2/University-Study-Space-Booking-App)
+2019-02-15 11:45:11.262  INFO 6283 --- [restartedMain] spe_booker.SpeBookingApplication         : The following profiles are active: dev
+2019-02-15 11:45:11.399  INFO 6283 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-02-15 11:45:11.400  INFO 6283 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-02-15 11:45:11.796  INFO 6283 --- [restartedMain] o.s.c.a.ConfigurationClassParser         : Properties location [file:/home/ubuntu/.secret.properties] not resolvable: /home/ubuntu/.secret.properties (No such file or directory)
+2019-02-15 11:45:12.544  INFO 6283 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-02-15 11:45:12.644  INFO 6283 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86ms. Found 4 repository interfaces.
+2019-02-15 11:45:13.868  INFO 6283 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-02-15 11:45:13.891  INFO 6283 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-15 11:45:13.891  INFO 6283 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-02-15 11:45:13.900  INFO 6283 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/aidan/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-02-15 11:45:14.120  INFO 6283 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-15 11:45:14.124  INFO 6283 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-15 11:45:14.124 DEBUG 6283 --- [restartedMain] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-02-15 11:45:14.124  INFO 6283 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2724 ms
+2019-02-15 11:45:14.592  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-15 11:45:14.593  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-15 11:45:14.593  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-15 11:45:14.593  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-02-15 11:45:14.593  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-15 11:45:14.594  INFO 6283 --- [restartedMain] .s.DelegatingFilterProxyRegistrationBean : Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-15 11:45:14.595  INFO 6283 --- [restartedMain] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-15 11:45:14.595  INFO 6283 --- [restartedMain] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-15 11:45:14.647  WARN 6283 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'roomController': Unsatisfied dependency expressed through field 'roomRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'roomRepository': Post-processing of merged bean definition failed; nested exception is java.lang.NoSuchMethodError: javax.persistence.PersistenceContext.synchronization()Ljavax/persistence/SynchronizationType;
+2019-02-15 11:45:14.650  INFO 6283 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-02-15 11:45:14.672  INFO 6283 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-02-15 11:45:14.678 ERROR 6283 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+An attempt was made to call the method javax.persistence.PersistenceContext.synchronization()Ljavax/persistence/SynchronizationType; but it does not exist. Its class, javax.persistence.PersistenceContext, is available from the following locations:
+
+    jar:file:/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/lib/javax.persistence.jar!/javax/persistence/PersistenceContext.class
+    jar:file:/Users/aidan/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar!/javax/persistence/PersistenceContext.class
+    jar:file:/Users/aidan/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.0.Final/hibernate-jpa-2.0-api-1.0.0.Final.jar!/javax/persistence/PersistenceContext.class
+
+It was loaded from the following location:
+
+    file:/Users/aidan/Uni/Year_2/University-Study-Space-Booking-App/lib/javax.persistence.jar
+
+
+Action:
+
+Correct the classpath of your application so that it contains a single, compatible version of javax.persistence.PersistenceContext
+

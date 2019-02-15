@@ -98,7 +98,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="313">
@@ -107,14 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/spe_booker/Controllers/SlotBookingController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/spe_booker/models/Slot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="251">
+              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -144,7 +141,6 @@
         <option value="$PROJECT_DIR$/src/main/java/spe/booker/booker/SpeBookingApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/spe/booker/booker/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/spe/booker/booker/UserRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/spe_booker/models/Slot.java" />
         <option value="$PROJECT_DIR$/src/main/java/spe_booker/Repositorys/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/spe_booker/models/SlotBooking.java" />
         <option value="$PROJECT_DIR$/src/main/java/spe_booker/models/RoomDTO.java" />
@@ -167,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/spe_booker/models/Slot.java" />
       </list>
     </option>
   </component>
@@ -313,7 +310,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550232360196" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550232548178" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
@@ -382,12 +379,12 @@
       <workItem from="1549823164244" duration="1986000" />
       <workItem from="1549892007602" duration="18000" />
       <workItem from="1549969900178" duration="11869000" />
-      <workItem from="1550225043630" duration="6332000" />
+      <workItem from="1550225043630" duration="6574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21132000" />
+    <option name="totallyTimeSpent" value="21374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -451,13 +448,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/spe/booker/booker/UserController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/spe/booker/booker/SpeBookingApplication.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/function/Consumer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/spe_booker/models/Slot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-41">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/spe_booker/models/SlotBooking.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -680,6 +670,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/spe_booker/models/Slot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
         </state>
       </provider>
     </entry>

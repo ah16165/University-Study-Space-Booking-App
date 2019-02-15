@@ -1,6 +1,7 @@
 package spe_booker.Repositorys;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import spe_booker.models.Slot;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -3,11 +3,10 @@ spring:
   profiles: dev
 
   thymeleaf:
-    # do not cache -> hot reload of templates
     cache: false
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bookerdb
     username: booker
     password: ${db_password}
@@ -18,13 +17,6 @@ spring:
       connection:
         charset: utf8
         useUnicode: true
-        # Hibernate ddl auto (create, create-drop, update): with "update" the database
-        # schema will be automatically updated accordingly to java entities found in
-        # the project
       ddl-auto: update
-      # Show or not log for each sql query
-    #      show-sql: false
-    # Naming strategy
     naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    # Allows Hibernate to generate SQL optimized for a particular DBMS
     properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect

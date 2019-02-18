@@ -14,12 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "users")
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

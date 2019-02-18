@@ -1,12 +1,9 @@
 package spe_booker.models;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import spe_booker.Repositorys.UserRepository;
-import spe_booker.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import spe_booker.Repositorys.UserRepository;
 
 
 

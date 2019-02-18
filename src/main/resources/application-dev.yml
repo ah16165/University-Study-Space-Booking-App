@@ -17,6 +17,6 @@ spring:
       connection:
         charset: utf8
         useUnicode: true
-      ddl-auto: create
+      ddl-auto: update
     naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect

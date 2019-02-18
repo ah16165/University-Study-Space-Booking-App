@@ -11,7 +11,7 @@ logging:
     org.springframework.web: DEBUG
 
 spring:
-  profiles.active: dev
+  profiles.active: prod
 
   thymeleaf:
     cache: false

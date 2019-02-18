@@ -21,20 +21,15 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     private UserRepository userRepository;
 
-    @Value("${initial_admin_account.password}")
-    private String password;
-    @Value("${initial_admin_account.username}")
-    private String username;
-    @Value("${initial_admin_account.faculty}")
-    private String faculty;
-    @Value("${initial_admin_account.year}")
-    private String year;
+
+    private String password = "123";
+    private String username = "admin";
 
     public void run(ApplicationArguments args) {
 
         if (userRepository.findByName(username) == null) {
             LOG.debug("creating initial admin account");
-            userService.createUser(username, "ROLE_ADMIN", password, faculty, year);
+            userService.createUser(username, "ROLE_ADMIN", password, "engineering", "0");
         }
         if (userRepository.findByName("user") == null) {
             LOG.debug("creating test user account");

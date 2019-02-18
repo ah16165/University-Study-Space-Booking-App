@@ -14,33 +14,38 @@ import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Data
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Entity
+//@Table(name = "users")
 public class User{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue
+//    @Column(name = "id")
         private Long id;
-
-    @Column(name = "email")
-    @Email(message = "Enter Email")
+//
+//    @Column(name = "email")
+//    @Email(message = "Enter Email")
     private String email;
 
-    @Column(name = "full name")
-    @NotEmpty(message = "Enter full name")
+//    @Column(name = "full name")
+//    @NotEmpty(message = "Enter full name")
     String name;
 
-    @Column(name = "password")
-    @Length(min = 7, message = "Password must be 7 characters")
-    @NotEmpty(message = "Enter Password")
-    @JsonIgnore
+//    @Column(name = "password")
+//    @Length(min = 7, message = "Password must be 7 characters")
+//    @NotEmpty(message = "Enter Password")
+//    @JsonIgnore
     private String password;
 
-    @Column(name = "faculty")
-    @NotEmpty(message = "Enter your faculty")
+//    @Column(name = "faculty")
+//    @NotEmpty(message = "Enter your faculty")
     private String faculty;
 
-    @Column(name = "year of study")
-    @NotEmpty(message = "Enter your year of study")
+//    @Column(name = "year of study")
+//    @NotEmpty(message = "Enter your year of study")
     private String year;
 
     @OneToMany(mappedBy = "user")

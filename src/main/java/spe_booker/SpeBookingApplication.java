@@ -7,7 +7,6 @@ import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @PropertySources({
-        @PropertySource("classpath:application.properties"),
         @PropertySource(value = "file:/home/ubuntu/.secret.properties", ignoreResourceNotFound = true)
 })
 

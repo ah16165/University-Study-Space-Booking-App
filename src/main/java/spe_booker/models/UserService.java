@@ -15,10 +15,11 @@ public class UserService {
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    // @Autowired
+    // private UserRepository userRepository;
+    //
+    // @Autowired
+    // private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {

@@ -1,7 +1,7 @@
 //package spe.booker.booker;
 //
-//import static org.hamcrest.Matchers.*;
-//import static org.junit.Assert.*;
+//import templates org.hamcrest.Matchers.*;
+//import templates org.junit.Assert.*;
 //
 //import java.net.URL;
 //

@@ -1,8 +1,8 @@
 //package spe.booker.booker;
 //
-//import static org.hamcrest.Matchers.equalTo;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+//import templates org.hamcrest.Matchers.equalTo;
+//import templates org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+//import templates org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 //
 //import org.junit.Test;
 //import org.junit.runner.RunWith;

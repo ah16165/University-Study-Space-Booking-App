@@ -39,7 +39,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/css/**", "/images/**", "/webjars/**,/templates/**").permitAll()
+                .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
                 .antMatchers("/", "/terms", "/contact").permitAll()
                 .antMatchers("/api/**").permitAll();
 //                .anyRequest().authenticated();

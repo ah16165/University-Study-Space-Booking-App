@@ -43,5 +43,4 @@ public class RoomController {
                 .orElseGet(() -> roomRepository.findAll()));
         return "room_view";
     }
-
 }

@@ -1,4 +1,4 @@
-package ac.uk.bristol.cs.santa.grotto.controllers;
+package spe_booker.Controllers;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;

@@ -6,17 +6,21 @@
 <head th:include="fragments/header :: head (title='Error')"></head>
 
 
-<body>
-<div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 starter-template">
-
-            <h1>Something went wrong.</h1>
-
+    <div class="row pt-5">
+        <div class="col-md-12 mx-auto">
+            <div class="container">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="container">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="container pt-1">
+                    <a href="index" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div th:replace="fragments/footer :: footer">...</div>
-</body>
-</html>

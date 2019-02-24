@@ -30,6 +30,8 @@ public class Security extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth.
                 jdbcAuthentication()
+                .usersByUsernameQuery("select email, password, enabled from users where email=?")
+                .authoritiesByUsernameQuery("select email, year from users where email=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -55,5 +57,40 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+    @Configuration
+    @Order(1)
+    public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
+        @Autowired
+        private AuthenticationEntryPoint authEntryPoint;
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth)
+                throws Exception {
+            auth.
+                    jdbcAuthentication()
+                    .usersByUsernameQuery("select email, password, enabled from users where email=?")
+                    .authoritiesByUsernameQuery("select email, year from users where email=?")
+                    .dataSource(dataSource)
+                    .passwordEncoder(bCryptPasswordEncoder);
+
+            @Autowired
+            private BCryptPasswordEncoder bCryptPasswordEncoder;
+            //
+            @Autowired
+            private DataSource dataSource;
+
+            @Override
+            protected void configure (HttpSecurity http) throws Exception {
+
+
+                http.csrf().disable();
+                // the ant matcher is what limits the scope of this configuration.
+                http.antMatcher("/api/**").authorizeRequests()
+                        .antMatchers("/api/**").authenticated()
+                        .and().httpBasic().realmName(REALM_NAME)
+                        .authenticationEntryPoint(authEntryPoint);
+            }
+        }
+    }
 }

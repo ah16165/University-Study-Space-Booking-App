@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static ac.uk.bristol.cs.santa.grotto.configuration.SecurityConfiguration.REALM_NAME;
+import static spe_booker.Config.Security.REALM_NAME;
 
 @Component
 public class AuthenticationEntryPoint extends BasicAuthenticationEntryPoint {

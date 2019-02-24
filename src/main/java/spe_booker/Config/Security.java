@@ -1,4 +1,4 @@
-package spe_booker.Extras;
+package spe_booker.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -73,10 +73,10 @@ public class Security extends WebSecurityConfigurerAdapter {
                     .authoritiesByUsernameQuery("select email, year from users where email=?")
                     .dataSource(dataSource)
                     .passwordEncoder(bCryptPasswordEncoder);
-
+             }
             @Autowired
             private BCryptPasswordEncoder bCryptPasswordEncoder;
-            //
+
             @Autowired
             private DataSource dataSource;
 
@@ -91,6 +91,6 @@ public class Security extends WebSecurityConfigurerAdapter {
                         .and().httpBasic().realmName(REALM_NAME)
                         .authenticationEntryPoint(authEntryPoint);
             }
-        }
     }
+
 }

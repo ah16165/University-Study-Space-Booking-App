@@ -6,7 +6,9 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 
 <body>
-  <div th:replace="fragments/header :: header">&nbsp;</div>
+
+  <!--COMMENTING THIS MAKES IT WORK-->
+  <!--<div th:replace="fragments/header :: header">&nbsp;</div>-->
 
 
   <div class="container-fluid bg-danger text-white">
@@ -26,21 +28,29 @@ xmlns:th="http://www.thymeleaf.org">
           You have been logged out.
         </div>
         <p th:if="${loginError}" class="error">Wrong user or password</p>
+        <!--<form th:action="@{/login}" method="post">-->
+          <!--<div class="form-group">-->
+            <!--<label for="email">Email address:</label>-->
+            <!--<input type="email" class="form-control" id="email">-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<label for="password">Password:</label>-->
+            <!--<input type="password" class="form-control" id="password">-->
+          <!--</div>-->
+          <!--<div class="form-group form-check">-->
+            <!--<label class="form-check-label">-->
+              <!--<input class="form-check-input" type="checkbox"> Remember me-->
+            <!--</label>-->
+          <!--</div>-->
+          <!--<button type="submit" class="btn btn-danger">Submit</button>-->
+        <!--</form>-->
+
         <form th:action="@{/login}" method="post">
-          <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password">
-          </div>
-          <div class="form-group form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="form-group"><label> User Name : <input class="form-control" type="text" name="email"/>
+          </label></div>
+          <div class="form-group"><label> Password: <input class="form-control" type="password" name="password"/>
+          </label></div>
+          <button type="submit" class="btn btn-primary">Sign In</button>
         </form>
       </div>
     </div>

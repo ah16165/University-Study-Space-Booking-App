@@ -6,7 +6,7 @@ initial_admin_account:
 logging:
   path: logs
   level:
-    root: INFO
+    root: DEBUG
     ac.uk.bristol.cs.santa.grotto: DEBUG
     org.springframework.web: DEBUG
 

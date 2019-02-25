@@ -21,15 +21,11 @@ public class WebController extends WebMvcConfigurerAdapter {
     @Autowired
     private UserRepository userRepository;
 
-    /**
-     * view controllers without logic
-     *
-     * @param registry
-     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/login");
+
         }
 
     @RequestMapping("/login-error.html")
@@ -37,6 +33,5 @@ public class WebController extends WebMvcConfigurerAdapter {
         model.addAttribute("loginError", true);
         return "login";
     }
-
 
     }

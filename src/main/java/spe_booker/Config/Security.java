@@ -30,8 +30,8 @@ public class Security extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth.
                 jdbcAuthentication()
-                .usersByUsernameQuery("select email, password, enabled from users where email=?")
-                .authoritiesByUsernameQuery("select email, year from users where email=?")
+                .usersByUsernameQuery("select email, password from user where email=?")
+                .authoritiesByUsernameQuery("select email, year from user where email=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -65,15 +65,22 @@ public class Security extends WebSecurityConfigurerAdapter {
         private AuthenticationEntryPoint authEntryPoint;
 
         @Override
-        protected void configure(AuthenticationManagerBuilder auth)
-                throws Exception {
-            auth.
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+            System.out.println(auth.jdbcAuthentication());
+            System.out.println(auth.jdbcAuthentication().usersByUsernameQuery("select email, password from user where email=?"));
+            System.out.println(auth.jdbcAuthentication().usersByUsernameQuery("select email, password from user where email=?").authoritiesByUsernameQuery("select email, year from user where email=?"));
+            System.out.println(auth.jdbcAuthentication().usersByUsernameQuery("select email, password from user where email=?").authoritiesByUsernameQuery("select email, year from user where email=?").dataSource(dataSource));
+            System.out.println(auth.jdbcAuthentication().usersByUsernameQuery("select email, password from user where email=?").authoritiesByUsernameQuery("select email, year from user where email=?").dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder));
+
+                    auth.
                     jdbcAuthentication()
-                    .usersByUsernameQuery("select email, password, enabled from users where email=?")
-                    .authoritiesByUsernameQuery("select email, year from users where email=?")
+                    .usersByUsernameQuery("select email, password from user where email=?")
+                    .authoritiesByUsernameQuery("select email, year from user where email=?")
                     .dataSource(dataSource)
                     .passwordEncoder(bCryptPasswordEncoder);
-             }
+                }
+
             @Autowired
             private BCryptPasswordEncoder bCryptPasswordEncoder;
 

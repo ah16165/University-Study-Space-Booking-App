@@ -21,11 +21,15 @@ public class WebController extends WebMvcConfigurerAdapter {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * view controllers without logic
+     *
+     * @param registry
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/userhome").setViewName("userhome");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/login");
         }
 
     @RequestMapping("/login-error.html")

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- added head thymeleaf -->
+<head th:include="fragments/header :: head (title='ViewBookings')">
   <title>Study Space Booking App</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +21,8 @@
 </head>
 <body>
 
+<!--<div th:replace="fragments/header :: header">&nbsp;</div>-->
+
 <div class="container-fluid bg-danger text-white">
   <h3 class="p-1">
     UoB Engineering Study Space Booking App
@@ -28,7 +33,22 @@
 <div class="container-fluid pt-1">
   <div class="row">
     <div class="col-md-8 col-12 mx-auto">
-  <h2>Your current bookings:</h2>
+      <h2>Your current bookings:</h2>
+      <!-- trying thymeleaf -->
+      <table class="table table-hover">
+
+        <!-- trying to print every single slot booking inserted in db, regardless of which userID is currently logged
+        in (temporarily) - how to change so it prints only for specific userID? if statement in thymeleaf-->
+        <!-- <tr th:each="Slot bookings: ${slotbookings}">
+          <td><span th:text="${slotbooking.id}"/></td>
+          <td><span th:text="${slotbooking.user.id}"/></td>
+          <td><span th:text="${slotbooking.slot.id}"/></td>
+        </tr>
+      </table> -->
+
+
+
+
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>

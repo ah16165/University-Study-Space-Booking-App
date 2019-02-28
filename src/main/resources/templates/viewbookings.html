@@ -39,10 +39,14 @@
 
         <!-- trying to print every single slot booking inserted in db, regardless of which userID is currently logged
         in (temporarily) - how to change so it prints only for specific userID? if statement in thymeleaf-->
-        <!-- <tr th:each="Slot bookings: ${slotbookings}">
+        <!-- <tr th:each="Slot bookings: ${slotBookings}">
           <td><span th:text="${slotbooking.id}"/></td>
           <td><span th:text="${slotbooking.user.id}"/></td>
           <td><span th:text="${slotbooking.slot.id}"/></td>
+          <td><span th:text="${slotbooking.slot.room.roomNo}"/></td>
+          <td><span th:text="${slotbooking.dateTime}"/></td>
+          <td><span th:text="${slotbooking.slot.hoursOfSlot}"/></td>
+          <td><span th:text="${slotbooking.slot.numberOfStudents}"/></td>
         </tr>
       </table> -->
 

@@ -22,18 +22,19 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByUsername(String email) {
+        return userRepository.findByUsername(email);
     }
 
-    public User createUser(String name, String email, String password, String faculty, String year) {
+    public User createUser(String name, String email, String password, String faculty, String role, int enabled) {
         User s = new User();
 
         s.setName(name);
-        s.setEmail(email);
+        s.setUsername(email);
         s.setPassword(password);
         s.setFaculty(faculty);
-        s.setYear(year);
+        s.setRole(role);
+        s.enabled = 1;
         saveUser(s);
 
         return s;

@@ -28,7 +28,7 @@ public class User{
 //
 //    @Column(name = "email")
 //    @Email(message = "Enter Email")
-    private String email;
+    private String username;
 
 //    @Column(name = "full name")
 //    @NotEmpty(message = "Enter full name")
@@ -44,9 +44,12 @@ public class User{
 //    @NotEmpty(message = "Enter your faculty")
     private String faculty;
 
-//    @Column(name = "year of study")
-//    @NotEmpty(message = "Enter your year of study")
-    private String year;
+//    @Column(name = "role of study")
+//    @NotEmpty(message = "Enter your role of study")
+    private String role;
+
+    @Column(name = "enabled")
+    public int enabled;
 
     @OneToMany(mappedBy = "user")
     private List<SlotBooking> SlotBooking = new ArrayList<>();
@@ -59,12 +62,12 @@ public class User{
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     public String getName() {
@@ -91,12 +94,12 @@ public class User{
         this.faculty = faculty;
     }
 
-    public String getYear() {
-        return year;
+    public String getRole() {
+        return role;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
 

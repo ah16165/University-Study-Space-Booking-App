@@ -20,18 +20,18 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     private UserRepository userRepository;
 
-    private String password = "123";
+    private String password = "test";
     private String username = "admin";
 
     public void run(ApplicationArguments args) {
 
         if (userRepository.findByName(username) == null) {
             LOG.debug("creating initial admin account");
-            userService.createUser(username, "user@bristol.ac.uk", password, "engineering", "0");
+            userService.createUser(username, "user@bristol.ac.uk", password, "engineering", "1",1);
         }
         if (userRepository.findByName("user") == null) {
             LOG.debug("creating test user account");
-            userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "2");
+            userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "1",1);
         }
 
     }

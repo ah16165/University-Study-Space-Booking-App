@@ -30,8 +30,8 @@ public class Security extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth.
                 jdbcAuthentication()
-                .usersByUsernameQuery("select email, password from user where email=?")
-                .authoritiesByUsernameQuery("select email, year from user where email=?")
+                .usersByUsernameQuery("select username, password, enabled from user where username=?")
+                .authoritiesByUsernameQuery("select username, role from user where username=?")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }

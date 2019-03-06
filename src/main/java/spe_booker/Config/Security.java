@@ -49,7 +49,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .failureUrl("/login-error")
-                .defaultSuccessUrl("/userhome")
+                .defaultSuccessUrl("/userhome.html")
                 .permitAll()
                 .and()
                 .logout()

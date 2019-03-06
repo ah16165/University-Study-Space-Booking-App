@@ -25,7 +25,7 @@ public class WebController extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/login");
-
+        registry.addViewController("/userhome");
         }
 
     @RequestMapping("/login-error.html")
@@ -33,5 +33,7 @@ public class WebController extends WebMvcConfigurerAdapter {
         model.addAttribute("loginError", true);
         return "login";
     }
+
+
 
     }

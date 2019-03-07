@@ -14,7 +14,7 @@
         <form action="#" th:action="@{/booking}" th:object="${booking}" method="post" class="form-inline">
             <div class="form-group">
                 <label for="dateTime">dateTime</label>
-                <input type="date" th:field="*{dateTime}" class="form-control" id="dateTime" placeholder="Enter date time"/>
+                <input type="datetime-local" th:field="*{dateTime}" class="form-control" id="dateTime" placeholder="Enter date time"/>
             </div>
             <div class="form-group">
                 <label for="length">length</label>

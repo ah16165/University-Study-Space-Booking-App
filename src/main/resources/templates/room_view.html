@@ -9,56 +9,56 @@
 
 <div th:replace="fragments/header :: header">&nbsp;</div>
 
-<!--<div class="container">-->
-    <!--<div class="row">-->
-        <!--<div class="col-md-8 starter-template">-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 starter-template">
 
-            <!--<h1>Rooms</h1>-->
-            <!--<table class="table">-->
-                <!--<thead>-->
-                <!--<td>Building</td>-->
-                <!--<td>Room Number</td>-->
-                <!--<td>Capacity</td>-->
-                <!--</thead>-->
-                <!--<tr th:each="room: ${rooms}">-->
+            <h1>Rooms</h1>
+            <table class="table">
+                <thead>
+                <td>Building</td>
+                <td>Room Number</td>
+                <td>Capacity</td>
+                </thead>
+                <tr th:each="room: ${rooms}">
 
-                    <!--<td><span th:text="${room.roomNo}"/></td>-->
+                    <td><span th:text="${room.roomNo}"/></td>
 
-                    <!--<td><span th:text="${room.building}"/></td>-->
+                    <td><span th:text="${room.building}"/></td>
 
-                    <!--<td><span th:text="${room.capacity}"/></td>-->
-                <!--</tr>-->
-            <!--</table>-->
+                    <td><span th:text="${room.capacity}"/></td>
+                </tr>
+            </table>
 
 
-            <!--<a class="btn btn-default" href="/room/add">Add a new Room</a>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<div class="container" th:switch="${rooms}">
-    <h2 th:case="null">No users yet!</h2>
-    <div th:case="*">
-        <h2>Users</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>roomNo</th>
-                <th>building</th>
-                <th>capacity</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="room : ${rooms}">
-                <td th:text="${room.roomNo.name}"></td>
-                <td th:text="${room.building}"></td>
-                <td th:text="${room.capacity}"></td>
-            </tr>
-            </tbody>
-        </table>
+            <a class="btn btn-default" href="/room/add">Add a new Room</a>
+        </div>
     </div>
-    <p><a href="/signup">Add a new user</a></p>
 </div>
+
+<!--<div class="container" th:switch="${rooms}">-->
+    <!--<h2 th:case="null">No users yet!</h2>-->
+    <!--<div th:case="*">-->
+        <!--<h2>Users</h2>-->
+        <!--<table>-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>roomNo</th>-->
+                <!--<th>building</th>-->
+                <!--<th>capacity</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr th:each="room : ${rooms}">-->
+                <!--<td th:text="${room.roomNo}"></td>-->
+                <!--<td th:text="${room.building}"></td>-->
+                <!--<td th:text="${room.capacity}"></td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+    <!--<p><a href="/room/add">Add a new room</a></p>-->
+<!--</div>-->
 
 
 

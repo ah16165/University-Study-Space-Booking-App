@@ -22,7 +22,7 @@ public class Room {
     private Integer capacity;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-    private List<Slot> slots = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
 
     public Room() {
 
@@ -60,11 +60,11 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public List<Slot> getSlots() {
-        return slots;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setSlots(List<Slot> slots) {
-        this.slots = slots;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

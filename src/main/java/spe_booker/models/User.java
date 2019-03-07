@@ -52,7 +52,7 @@ public class User{
     public int enabled;
 
     @OneToMany(mappedBy = "user")
-    private List<SlotBooking> SlotBooking = new ArrayList<>();
+    private List<Booking> booking = new ArrayList<>();
 
     public Long getId() {
         return id;

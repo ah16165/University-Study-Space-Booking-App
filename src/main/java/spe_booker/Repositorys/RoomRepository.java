@@ -9,6 +9,5 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Repository
 public interface RoomRepository extends CrudRepository<Room, Long> {
-    List<Room> findByRoomNo(String RoomNo);
     List<Room> findAll();
 }

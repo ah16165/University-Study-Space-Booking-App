@@ -27,13 +27,18 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
 
-<div class="container-fluid bg-danger text-white" th:fragment="header">
+<div class="container-fluid bg-danger text-white" th:fragment="header" sec:authorize="isAuthenticated()">
   <h3 class="p-1">
     UoB Engineering Study Space Booking App
-    <a href="userhome" sec:authorize="isAuthenticated()"><span class="typcn typcn-home text-white float-right"></span></a>
+    <a href="userhome"><span class="typcn typcn-home text-white float-right"></span></a>
   </h3>
 </div>
 
+<div class="container-fluid bg-danger text-white" th:fragment="header" sec:authorize="isAnonymous()">
+<h3 class="p-1">
+  UoB Engineering Study Space Booking App
+</h3>
+</div>
 
 </body>
 </html>

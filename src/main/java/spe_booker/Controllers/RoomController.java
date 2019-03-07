@@ -43,4 +43,11 @@ public class RoomController {
                 .orElseGet(() -> roomRepository.findAll()));
         return "room_view";
     }
+
+    @GetMapping(value = {"/viewrooms"})
+    public String viewRoom(Model model) {
+        LOG.info("Listing rooms for viewrooms");
+        model.addAttribute("rooms", roomRepository.findAll());
+        return "viewrooms";
+    }
 }

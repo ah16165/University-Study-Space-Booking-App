@@ -41,7 +41,7 @@ public class BookingController {
         LOG.info("Listing bookings");
         model.addAttribute("bookings", id.map(aLong -> Collections.singletonList(bookingRepository.findById(aLong).get()))
                 .orElseGet(() -> bookingRepository.findAll()));
-        return "room_view";
+        return "booking_view";
     }
 
     @GetMapping(value = {"/viewbookings"})

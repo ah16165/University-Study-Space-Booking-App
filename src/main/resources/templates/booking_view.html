@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="fragments/header :: head (title='Room')">
+<head th:include="fragments/header :: head (title='Booking')">
 </head>
 <body>
 
@@ -16,17 +16,20 @@
             <h1>Rooms</h1>
             <table class="table">
                 <thead>
-                <td>Building</td>
-                <td>Room Number</td>
-                <td>Capacity</td>
+                <td>booking id</td>
+                <td>date time</td>
+                <td>room</td>
+                <td>user</td>
                 </thead>
-                <tr th:each="room: ${rooms}">
+                <tr th:each="booking: ${bookings}">
 
-                    <td><span th:text="${room.roomNo}"/></td>
+                    <td><span th:text="${booking.id}"/></td>
 
-                    <td><span th:text="${room.building}"/></td>
+                    <td><span th:text="${booking.dateTime}"/></td>
 
-                    <td><span th:text="${room.capacity}"/></td>
+                    <td><span th:text="${booking.room}"/></td>
+
+                    <td><span th:text="${booking.user}"/></td>
                 </tr>
             </table>
 

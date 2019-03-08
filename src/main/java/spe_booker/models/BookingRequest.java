@@ -6,29 +6,23 @@ import java.util.Date;
 
 
 @Entity
-public class Booking {
+public class BookingRequest {
 
+    //Maybe remove repeat?
     @Id
     @GeneratedValue
     private Long id;
 
     @NotNull
-
     private Date dateTime;
-
 
     @NotNull
     private Long length;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Room room;
+    private Long roomId;
 
-    @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
-
-    public Booking() {
+    public BookingRequest() {
     }
 
     public Long getId() {
@@ -39,17 +33,13 @@ public class Booking {
         this.id = id;
     }
 
-    public Room getRoom() {
-        return room;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
-
-    public User getUser() {return user;}
-
-    public void setUser(User user) {this.user = user;}
 
     public Date getDateTime() {
         return dateTime;

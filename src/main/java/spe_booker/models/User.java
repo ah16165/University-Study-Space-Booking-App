@@ -20,7 +20,7 @@ import java.util.List;
 //@NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User{
+public class User {
     @Id
     @GeneratedValue
 //    @Column(name = "id")

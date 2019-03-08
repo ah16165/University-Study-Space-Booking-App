@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <h1>New Booking</h1>
-        <form action="#" th:action="@{/booking}" th:object="${booking}" method="post" class="form-inline">
+        <form action="#" th:action="@{/booking}" th:object="${bookingRequest}" method="post" class="form-inline">
             <div class="form-group">
                 <label for="dateTime">dateTime</label>
                 <input type="datetime-local" th:field="*{dateTime}" class="form-control" id="dateTime" placeholder="Enter date time"/>
@@ -22,14 +22,9 @@
                        placeholder="Enter length"/>
             </div>
             <div class="form-group">
-                <label for="room">room</label>
-                <input type="text" th:field="*{room}" class="form-control" id="room"
-                       placeholder="Enter room"/>
-            </div>
-            <div class="form-group">
-                <label for="user">user</label>
-                <input type="text" th:field="*{user}" class="form-control" id="user"
-                       placeholder="Enter user"/>
+                <label for="roomId">roomid</label>
+                <input type="text" th:field="*{roomId}" class="form-control" id="roomId"
+                       placeholder="Enter roomId"/>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
 

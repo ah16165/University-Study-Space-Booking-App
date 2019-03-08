@@ -16,9 +16,7 @@ import spe_booker.Repositorys.UserRepository;
 import spe_booker.models.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class BookingController {
@@ -41,19 +39,20 @@ public class BookingController {
         return "booking_form";
     }
 
+    User getCurrentUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        return userService.findByUsername(username);
+    }
+
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName(); //get logged in username
-        System.out.print("##########Email = " + username + "########\n" +
-                "RoomId = " + bookingRequest.getRoomId() + "###########\n");
-        User user = userService.findByUsername(username);
         Booking booking = new Booking();
         Optional<Room> room = roomRepository.findById(bookingRequest.getRoomId());
         booking.setDateTime(bookingRequest.getDateTime());
         booking.setLength(bookingRequest.getLength());
         booking.setId(bookingRequest.getId());
-        booking.setUser(user);
+        booking.setUser(getCurrentUser());
         if (room.isPresent()) {
             booking.setRoom(room.get());
             LOG.info("Saving new booking with booking id " + booking.getId());
@@ -72,10 +71,22 @@ public class BookingController {
         return "booking_view";
     }
 
+    List<Booking> getCurrentUserBookings(List<Booking> bookings){
+        List<Booking> currentUserBookings = new ArrayList<>();
+        for (Booking booking : bookings){
+            if (booking.getUser() == getCurrentUser()){
+                currentUserBookings.add(booking);
+            }
+        }
+        return currentUserBookings;
+    }
+
     @GetMapping(value = {"/viewbookings"})
     public String viewBooking(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        model.addAttribute("bookings", bookingRepository.findAll());
+        List<Booking> bookings = bookingRepository.findAll();
+        List<Booking> currentUserBookings = getCurrentUserBookings(bookings);
+        model.addAttribute("bookings", currentUserBookings);
         return "viewbookings";
     }
 

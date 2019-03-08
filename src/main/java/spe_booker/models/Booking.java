@@ -16,6 +16,7 @@ public class Booking {
     private Long id;
 
     @NotNull
+
     private Date dateTime;
 
     @NotNull

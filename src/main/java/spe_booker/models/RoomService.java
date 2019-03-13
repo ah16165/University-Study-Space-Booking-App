@@ -15,7 +15,7 @@ public class RoomService {
 
 
     private RoomRepository roomRepository;
-    
+
 
     @Autowired
     public RoomService(RoomRepository roomRepository) {

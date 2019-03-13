@@ -77,21 +77,11 @@ public class BookingController {
         return "booking_view";
     }
 
-    List<Booking> getCurrentUserBookings(List<Booking> bookings){
-        List<Booking> currentUserBookings = new ArrayList<>();
-        for (Booking booking : bookings){
-            if (booking.getUser() == getCurrentUser()){
-                currentUserBookings.add(booking);
-            }
-        }
-        return currentUserBookings;
-    }
 
     @GetMapping(value = {"/viewbookings"})
     public String viewBooking(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        List<Booking> bookings = bookingRepository.findAll();
-        List<Booking> currentUserBookings = getCurrentUserBookings(bookings);
+        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(getCurrentUser());
         model.addAttribute("bookings", currentUserBookings);
         return "viewbookings";
     }

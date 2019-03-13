@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import spe_booker.Repositorys.BookingRepository;
+import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.models.RoomService;
 import spe_booker.models.UserService;
 
 
@@ -19,6 +22,13 @@ public class DataLoader implements ApplicationRunner {
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoomService roomService;
+    @Autowired
+    private RoomRepository roomRepository;
+    @Autowired
+    private BookingRepository bookingRepository;
+
 
     private String password = "test";
     private String username = "admin";
@@ -34,7 +44,12 @@ public class DataLoader implements ApplicationRunner {
             userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "1",1);
         }
 
+        if (! roomRepository.existsById((long) 100)){
+            LOG.debug("creating room 100");
+            roomService.createRoom((long) 100, "100", "100", 100, null);
+        }
 
+        if ()
 
     }
 

@@ -15,8 +15,7 @@ public class RoomService {
 
 
     private RoomRepository roomRepository;
-
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
 
     @Autowired
     public RoomService(RoomRepository roomRepository) {

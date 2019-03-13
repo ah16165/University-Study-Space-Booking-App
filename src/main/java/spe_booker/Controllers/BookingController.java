@@ -52,7 +52,7 @@ public class BookingController {
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
         Booking booking = new Booking();
-        Optional<Room> room = roomService.findByRoomNoAndBuilding("100", "100");
+        Optional<Room> room = roomService.findByRoomNoAndBuilding(bookingRequest.getRoomNo(), bookingRequest.getBuilding());
         booking.setDateTime(bookingRequest.getDateTime());
         booking.setLength(bookingRequest.getLength());
         booking.setId(bookingRequest.getId());

@@ -20,10 +20,10 @@ public class BookingRequest {
     private Long length;
 
     @NotNull
-    private Long roomNo;
+    private String roomNo;
 
     @NotNull
-    private Long building;
+    private String building;
 
     public BookingRequest() {
     }
@@ -36,17 +36,17 @@ public class BookingRequest {
         this.id = id;
     }
 
-    public Long getRoomNo() {
+    public String getRoomNo() {
         return roomNo;
     }
 
-    public void setRoomNo(Long roomId) {
+    public void setRoomNo(String roomId) {
         this.roomNo = roomId;
     }
 
-    public Long getBuilding() {return building;}
+    public String getBuilding() {return building;}
 
-    public void setBuilding(Long building) {this.building = building; }
+    public void setBuilding(String building) {this.building = building; }
 
     public Date getDateTime() {
         return dateTime;

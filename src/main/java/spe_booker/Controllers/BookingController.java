@@ -39,8 +39,24 @@ public class BookingController {
     @GetMapping("/booking/add")
     public String addBooking(Model model) {
         model.addAttribute("bookingRequest", new BookingRequest());
-
         return "booking_form";
+    }
+
+    @GetMapping("/makebooking")
+    public String makeBooking(Model model){
+        model.addAttribute("bookingRequest",new BookingRequest() );
+        return "makebooking";
+    }
+
+    @PostMapping("/makebooking")
+    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest){
+        return "redirect:/makebookingRoom/" + bookingRequest.getDateTime() + bookingRequest.getLength();
+    }
+
+    @GetMapping(value = {"/makebookingRoom/{dateTime}{length}"})
+    public String makebookingRoom(@PathVariable Date dateTime, @PathVariable Long length,  Model model) {
+        model.addAttribute("rooms", roomRepository.findAll());
+        return "makebookingRoom";
     }
 
     User getCurrentUser(){

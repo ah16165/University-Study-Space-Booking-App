@@ -24,14 +24,13 @@ public class RoomService {
     }
 
 
-    public Room findById(Long id) {
-        return roomRepository.findById(id).get();
+    public Room findByRoomNoAndBuilding(String roomNo, String building) {
+        return roomRepository.findByRoomNoAndBuilding(roomNo, building);
     }
 
-    public Room createRoom(Long id, String roomNo, String building, Integer capacity, List<Booking> bookings) {
+    public Room createRoom(String roomNo, String building, Integer capacity, List<Booking> bookings) {
         Room s = new Room();
 
-        s.setId(id);
         s.setRoomNo(roomNo);
         s.setBuilding(building);
         s.setCapacity(capacity);

@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
-import spe_booker.models.RoomService;
-import spe_booker.models.UserService;
+import spe_booker.models.*;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Component
@@ -26,6 +29,8 @@ public class DataLoader implements ApplicationRunner {
     private RoomService roomService;
     @Autowired
     private RoomRepository roomRepository;
+    @Autowired
+    private BookingService bookingService;
     @Autowired
     private BookingRepository bookingRepository;
 
@@ -45,11 +50,19 @@ public class DataLoader implements ApplicationRunner {
         }
 
         if (! roomRepository.existsById((long) 100)){
-            LOG.debug("creating room 100");
-            roomService.createRoom((long) 100, "100", "100", 100, null);
+            LOG.debug("creating room 100, 100");
+            List<Booking> bookings = new ArrayList<>();
+            roomService.createRoom("100", "100", 100, bookings);
         }
 
-        if ()
+//        if (! bookingRepository.existsById((long) 100)){
+//            LOG.debug("creating booking 100");
+//            Date date = new Date(2019, 3, 31, 2, 0);
+//            User user = userService.findByUsername("admin");
+//            Room room = roomService.findByRoomNoAndBuilding("100", "100");
+//            bookingService.createBooking((long) 2, date, user, room);
+//
+//        }
 
     }
 

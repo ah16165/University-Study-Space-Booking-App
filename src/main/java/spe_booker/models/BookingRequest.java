@@ -20,7 +20,10 @@ public class BookingRequest {
     private Long length;
 
     @NotNull
-    private Long roomId;
+    private Long roomNo;
+
+    @NotNull
+    private Long building;
 
     public BookingRequest() {
     }
@@ -33,13 +36,17 @@ public class BookingRequest {
         this.id = id;
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public Long getRoomNo() {
+        return roomNo;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
+    public void setRoomNo(Long roomId) {
+        this.roomNo = roomId;
     }
+
+    public Long getBuilding() {return building;}
+
+    public void setBuilding(Long building) {this.building = building; }
 
     public Date getDateTime() {
         return dateTime;

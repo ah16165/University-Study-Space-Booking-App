@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.models.RoomService;
 import spe_booker.models.*;
 
 import java.text.SimpleDateFormat;
@@ -32,6 +33,9 @@ public class BookingController {
     @Autowired
     private RoomRepository roomRepository;
 
+    @Autowired
+    private RoomService roomService;
+
     @GetMapping("/booking/add")
     public String addBooking(Model model) {
         model.addAttribute("bookingRequest", new BookingRequest());
@@ -48,17 +52,19 @@ public class BookingController {
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
         Booking booking = new Booking();
-        Optional<Room> room = roomRepository.findById(bookingRequest.getRoomId());
+        Optional<Room> room = roomService.findByRoomNoAndBuilding("100", "100");
         booking.setDateTime(bookingRequest.getDateTime());
         booking.setLength(bookingRequest.getLength());
         booking.setId(bookingRequest.getId());
         booking.setUser(getCurrentUser());
         if (room.isPresent()) {
+            System.out.print("####Room IS present!");
             booking.setRoom(room.get());
             LOG.info("Saving new booking with booking id " + booking.getId());
             Booking booking1 = bookingRepository.save(booking);
             return "redirect:/booking/" + booking1.getId();
         } else {
+            System.out.print("####Room not present!");
             return "/error/error";
         }
     }

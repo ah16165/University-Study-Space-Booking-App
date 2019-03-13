@@ -24,7 +24,7 @@ public class RoomService {
     }
 
 
-    public Room findByRoomNoAndBuilding(String roomNo, String building) {
+    public Optional<Room> findByRoomNoAndBuilding(String roomNo, String building) {
         return roomRepository.findByRoomNoAndBuilding(roomNo, building);
     }
 

@@ -12,18 +12,18 @@
 <div class="container pt-1">
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
-            <h3>Make a Booking:</h3>
-            <form action="#" th:action="@{/booking}" th:object="${bookingRequest}" method="post">
-                <div class="form-group row">
-                    <label for="date-input" class="col-2 col-form-label">Date:</label>
+            <h3>Select a Room:</h3>
+            <form action="#" th:action="@{/makebookingRoom}" th:object="${bookingRequest}" method="post">
+                <div class="row">
+                    <div class="col-2">Date:</div>
                     <div class="col-10">
-                        <input class="form-control" type="date" value="2019-06-07" id="date-input">
+                        <span th:text="${bookingRequestDateAndLength.getDateTime()}" />
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="time-input" class="col-2 col-form-label">Time:</label>
+                <div class="row">
+                    <div class="col-2">Length:</div>
                     <div class="col-10">
-                        <input class="form-control" type="time" value="13:45:00" id="time-input">
+                        <span th:text="${bookingRequestDateAndLength.getLength()}"/>
                     </div>
                 </div>
                 <table class="table table-hover">
@@ -54,6 +54,7 @@
         </div>
     </div>
 </div>
+
 
 
 <div th:replace="fragments/footer :: footer">...</div>

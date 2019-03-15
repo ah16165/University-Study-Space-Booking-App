@@ -12,15 +12,33 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <meta name="author" content=""/>
 
 
-  <!-- <title th:text="${title}">Page Title</title> -->
   <title>Study Space Booking App</title>
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
   th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"
-  rel="stylesheet" media="screen"/>
+  rel="stylesheet" media="all"/>
 
+  <link href="../css/typicons.min.css"
+  th:href="@{/webjars/typicons/2.0.7/typicons.min.css}"
+  rel="stylesheet" media="all"/>
 
 
 </head>
-<body></body>
+<body>
+
+
+<div class="container-fluid bg-danger text-white" th:fragment="header" sec:authorize="isAuthenticated()">
+  <h3 class="p-1">
+    UoB Engineering Study Space Booking App
+    <a href="/userhome"><span class="typcn typcn-home text-white float-right"></span></a>
+  </h3>
+</div>
+
+<div class="container-fluid bg-danger text-white" th:fragment="header" sec:authorize="isAnonymous()">
+<h3 class="p-1">
+  UoB Engineering Study Space Booking App
+</h3>
+</div>
+
+</body>
 </html>

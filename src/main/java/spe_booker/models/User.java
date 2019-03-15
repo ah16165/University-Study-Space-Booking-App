@@ -20,7 +20,7 @@ import java.util.List;
 //@NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class User{
+public class User {
     @Id
     @GeneratedValue
 //    @Column(name = "id")
@@ -52,7 +52,7 @@ public class User{
     public int enabled;
 
     @OneToMany(mappedBy = "user")
-    private List<SlotBooking> SlotBooking = new ArrayList<>();
+    private List<Booking> booking = new ArrayList<>();
 
     public Long getId() {
         return id;

@@ -1,97 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<!-- added head thymeleaf -->
-<head th:include="fragments/header :: head (title='ViewBookings')">
-  <title>Study Space Booking App</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<head th:include="fragments/header :: head (title='Room')">
 </head>
 <body>
 
-<!--<div th:replace="fragments/header :: header">&nbsp;</div>-->
 
-<div class="container-fluid bg-danger text-white">
-  <h3 class="p-1">
-    UoB Engineering Study Space Booking App
-    <a href="userhome.html"><span class="oi oi-home text-white float-right" aria-hidden="true"></span></a>
-  </h3>
-</div>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
 
 <div class="container-fluid pt-1">
   <div class="row">
     <div class="col-md-8 col-12 mx-auto">
       <h2>Your current bookings:</h2>
-      <!-- trying thymeleaf -->
-      <table class="table table-hover">
-
-        <!-- trying to print every single slot booking inserted in db, regardless of which userID is currently logged
-        in (temporarily) - how to change so it prints only for specific userID? if statement in thymeleaf-->
-        <!-- <tr th:each="Slot bookings: ${slotBookings}">
-          <td><span th:text="${slotbooking.id}"/></td>
-          <td><span th:text="${slotbooking.user.id}"/></td>
-          <td><span th:text="${slotbooking.slot.id}"/></td>
-          <td><span th:text="${slotbooking.slot.room.roomNo}"/></td>
-          <td><span th:text="${slotbooking.dateTime}"/></td>
-          <td><span th:text="${slotbooking.slot.hoursOfSlot}"/></td>
-          <td><span th:text="${slotbooking.slot.numberOfStudents}"/></td>
-        </tr>
-      </table> -->
-
-
-
-
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>Booking ID</th>
+          <th>Date Time</th>
+          <th>Length</th>
+          <th>RoomNo</th>
           <th>Building</th>
-          <th>Room</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Duration</th>
+          <th>UserID</th>
         </tr>
       </thead>
-      <tr onclick="document.location = 'viewBooking.html';">
-        <td>Queens</td>
-        <td>1.34</td>
-        <td>14/12/2018</td>
-        <td>12:00</td>
-        <td>2 hours</td>
+      <tr onclick="document.location = 'viewBooking';">
+        <td>Test</td>
+        <td>Test</td>
+        <td>Test</td>
+        <td>Test</td>
+        <td>Test</td>
+        <td>Test</td>
       </tr>
       </a>
-      <tr onclick="document.location = 'viewBooking.html';">
-        <td>Queens</td>
-        <td>3.44</td>
-        <td>16/12/2018</td>
-        <td>11:00</td>
-        <td>2 hours</td>
-      </tr>
-      <tr onclick="document.location = 'viewBooking.html';">
-        <td>MVB</td>
-        <td>1.11</td>
-        <td>25/12/2018</td>
-        <td>11:00</td>
-        <td>2 hours</td>
-      </tr>
-      <tr onclick="document.location = 'viewBooking.html';">
-        <td>Queens</td>
-        <td>1.34</td>
-        <td>12/01/2019</td>
-        <td>15:00</td>
-        <td>2 hours</td>
+      <tr th:each="booking: ${bookings}">
+        <td><span th:text="${booking.getId()}"/></td>
+        <td><span th:text="${booking.getDateTime()}"/></td>
+        <td><span th:text="${booking.getLength()}"/></td>
+        <td><span th:text="${booking.room.getRoomNo()}"/></td>
+        <td><span th:text="${booking.room.getBuilding()}"/></td>
+        <td><span th:text="${booking.getUser().getId()}"</td>
+
       </tr>
     </table>
   </div>
@@ -100,5 +51,7 @@
 </div>
 
 
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
+

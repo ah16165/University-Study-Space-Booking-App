@@ -7,21 +7,15 @@
 <body>
 
 
-
-<div class="container-fluid bg-danger text-white">
-  <h3 class="p-1">
-    UoB Engineering Study Space Booking App
-    <a href="userhome.html"><span class="oi oi-home text-white float-right" aria-hidden="true"></span></a>
-  </h3>
-</div>
+<div th:replace="fragments/header :: header">&nbsp;</div>
 
 <div class="container pt-5">
   <div class="row">
     <div class="col-md-6 col-12 mx-auto">
       <div class="container">
-        <a href="viewbookings.html" class="btn btn-danger text-center btn-block">View Bookings</a>
-        <a href="viewrooms.html" class="btn btn-danger text-center btn-block">Make a Booking</a>
-        <a href="index.html" class="btn btn-danger text-center btn-block">Logout</a>
+        <a href="viewbookings" class="btn btn-danger text-center btn-block">View Bookings</a>
+        <a href="viewrooms" class="btn btn-danger text-center btn-block">Make a Booking</a>
+        <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>
       </div>
     </div>
   </div>

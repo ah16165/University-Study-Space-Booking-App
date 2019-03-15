@@ -50,10 +50,10 @@ public class BookingController {
 
     @PostMapping("/makebooking")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest){
-        return "redirect:/makebookingRoom/" + bookingRequest.getDateTime() + bookingRequest.getLength();
+        return "redirect:/makebookingRoom/" + bookingRequest.getDateTime() + "+" + bookingRequest.getLength();
     }
 
-    @GetMapping(value = {"/makebookingRoom/{dateTime}{length}"})
+    @GetMapping(value = {"/makebookingRoom/{dateTime}+{length}"})
     public String makebookingRoom(@PathVariable Date dateTime, @PathVariable Long length,  Model model) {
         model.addAttribute("rooms", roomRepository.findAll());
         return "makebookingRoom";

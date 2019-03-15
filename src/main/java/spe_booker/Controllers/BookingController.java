@@ -36,11 +36,7 @@ public class BookingController {
     @Autowired
     private RoomService roomService;
 
-    @GetMapping("/booking/add")
-    public String addBooking(Model model) {
-        model.addAttribute("bookingRequest", new BookingRequest());
-        return "booking_form";
-    }
+
 
     @GetMapping("/makebooking")
     public String makeBooking(Model model){
@@ -50,14 +46,15 @@ public class BookingController {
 
     @PostMapping("/makebooking")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, Model model){
+        System.out.print("########1 - " + bookingRequest.getDateTime());
         model.addAttribute("bookingRequest", bookingRequest);
         return "makebookingRoom";
     }
 
     @GetMapping(value = {"/makebookingRoom"})
-    public String makebookingRoom(@ModelAttribute BookingRequest bookingRequest, Model model) {
-        
-        model.addAttribute("bookingRequestDateAndLength", bookingRequest);
+    public String makebookingRoom(@ModelAttribute BookingRequest bookingRequestDateAndLength, Model model) {
+        System.out.print("########2 - "+ bookingRequestDateAndLength.getDateTime());
+        model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
         model.addAttribute("rooms", roomRepository.findAll());
         return "makebookingRoom";
     }
@@ -66,6 +63,12 @@ public class BookingController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return userService.findByUsername(username);
+    }
+
+    @GetMapping("/booking/add")
+    public String addBooking(Model model) {
+        model.addAttribute("bookingRequest", new BookingRequest());
+        return "booking_form";
     }
 
     @PostMapping("/booking")

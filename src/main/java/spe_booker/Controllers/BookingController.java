@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
@@ -45,14 +46,14 @@ public class BookingController {
     }
 
     @PostMapping("/makebooking")
-    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, Model model){
-        System.out.print("########1 - " + bookingRequest.getDateTime());
-        model.addAttribute("bookingRequest", bookingRequest);
-        return "makebookingRoom";
+    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes){
+        System.out.print("########1 - " + bookingRequest.getDateTime() +"#####\n");
+        redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
+        return "redirect:/makebookingRoom";
     }
 
     @GetMapping(value = {"/makebookingRoom"})
-    public String makebookingRoom(@ModelAttribute BookingRequest bookingRequestDateAndLength, Model model) {
+    public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndLength, Model model) {
         System.out.print("########2 - "+ bookingRequestDateAndLength.getDateTime());
         model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
         model.addAttribute("rooms", roomRepository.findAll());

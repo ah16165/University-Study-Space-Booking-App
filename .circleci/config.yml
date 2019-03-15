@@ -45,7 +45,7 @@ jobs:
   deploy:
     machine:
       enabled: true
-
+    steps:
 
     - run:
         name: Deploy Over SSH

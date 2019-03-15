@@ -50,12 +50,14 @@ public class BookingController {
 
     @PostMapping("/makebooking")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, Model model){
-        model.addAttribute("bookingRequest", new BookingRequest());
+        model.addAttribute("bookingRequest", bookingRequest);
         return "makebookingRoom";
     }
 
     @GetMapping(value = {"/makebookingRoom"})
     public String makebookingRoom(@ModelAttribute BookingRequest bookingRequest, Model model) {
+        
+        model.addAttribute("bookingRequestDateAndLength", bookingRequest);
         model.addAttribute("rooms", roomRepository.findAll());
         return "makebookingRoom";
     }

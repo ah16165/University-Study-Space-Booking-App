@@ -55,6 +55,8 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/viewstatistics").permitAll()
                 .antMatchers("/viewstudent").permitAll()
                 .antMatchers("/viewstudents").permitAll()
+                .antMatchers("/makebookingRoom").permitAll()
+
 
                 .anyRequest().authenticated()
                 .and()

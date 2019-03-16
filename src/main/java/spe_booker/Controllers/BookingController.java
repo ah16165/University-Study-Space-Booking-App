@@ -38,29 +38,28 @@ public class BookingController {
     private RoomService roomService;
 
 
-
     @GetMapping("/makebooking")
-    public String makeBooking(Model model){
-        model.addAttribute("bookingRequest",new BookingRequest() );
+    public String makeBooking(Model model) {
+        model.addAttribute("bookingRequest", new BookingRequest());
         return "makebooking";
     }
 
     @PostMapping("/makebooking")
-    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes){
-        System.out.print("########1 - " + bookingRequest.getDateTime() +"#####\n");
+    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
+        System.out.print("########1 - " + bookingRequest.getDateTime() + "#####\n");
         redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
         return "redirect:/makebookingRoom";
     }
 
     @GetMapping(value = {"/makebookingRoom"})
     public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndLength, Model model) {
-        System.out.print("########2 - "+ bookingRequestDateAndLength.getDateTime());
+        System.out.print("########2 - " + bookingRequestDateAndLength.getDateTime());
         model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
         model.addAttribute("rooms", roomRepository.findAll());
         return "makebookingRoom";
     }
 
-    User getCurrentUser(){
+    User getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return userService.findByUsername(username);
@@ -109,6 +108,14 @@ public class BookingController {
         return "viewbookings";
     }
 
+
+    @GetMapping(value = {"/viewbooking/{id}"})
+    public String viewbooking(@PathVariable Long id, Model model) {
+        LOG.info("Listing details for a single booking");
+        Optional<Booking> booking = bookingRepository.findById(id);
+        model.addAttribute("booking", booking);
+        return "viewbooking";
+    }
 
     //Called automatically when building the model
     //Formats the date/time

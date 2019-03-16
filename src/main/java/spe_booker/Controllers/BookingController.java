@@ -113,8 +113,13 @@ public class BookingController {
     public String viewbooking(@PathVariable Long id, Model model) {
         LOG.info("Listing details for a single booking");
         Optional<Booking> booking = bookingRepository.findById(id);
-        model.addAttribute("booking", booking);
-        return "viewbooking";
+        if (booking.isPresent()){
+            model.addAttribute("booking", booking.get());
+            return "viewbooking";
+        } else {
+            System.out.print("####Booking not present!");
+            return "/error/error";
+        }
     }
 
     //Called automatically when building the model

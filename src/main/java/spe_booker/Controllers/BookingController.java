@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
@@ -37,29 +38,28 @@ public class BookingController {
     private RoomService roomService;
 
 
-
     @GetMapping("/makebooking")
-    public String makeBooking(Model model){
-        model.addAttribute("bookingRequest",new BookingRequest() );
+    public String makeBooking(Model model) {
+        model.addAttribute("bookingRequest", new BookingRequest());
         return "makebooking";
     }
 
     @PostMapping("/makebooking")
-    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, Model model){
-        System.out.print("########1 - " + bookingRequest.getDateTime());
-        model.addAttribute("bookingRequest", bookingRequest);
-        return "makebookingRoom";
+    public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
+        System.out.print("########1 - " + bookingRequest.getDateTime() + "#####\n");
+        redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
+        return "redirect:/makebookingRoom";
     }
 
     @GetMapping(value = {"/makebookingRoom"})
-    public String makebookingRoom(@ModelAttribute BookingRequest bookingRequestDateAndLength, Model model) {
-        System.out.print("########2 - "+ bookingRequestDateAndLength.getDateTime());
+    public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndLength, Model model) {
+        System.out.print("########2 - " + bookingRequestDateAndLength.getDateTime());
         model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
         model.addAttribute("rooms", roomRepository.findAll());
         return "makebookingRoom";
     }
 
-    User getCurrentUser(){
+    User getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return userService.findByUsername(username);
@@ -108,6 +108,19 @@ public class BookingController {
         return "viewbookings";
     }
 
+
+    @GetMapping(value = {"/viewbooking/{id}"})
+    public String viewbooking(@PathVariable Long id, Model model) {
+        LOG.info("Listing details for a single booking");
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()){
+            model.addAttribute("booking", booking.get());
+            return "viewbooking";
+        } else {
+            System.out.print("####Booking not present!");
+            return "/error/error";
+        }
+    }
 
     //Called automatically when building the model
     //Formats the date/time

@@ -20,8 +20,9 @@
           <th>Name</th>
           <th>ID</th>
           <th>Email</th>
-          <th>Course</th>
-          <th>Year of Study</th>
+          <th>Faculty</th>
+          <th>Role</th>
+          <th>Info</th>
         </tr>
       </thead>
       <tr onclick="document.location = 'viewstudent';">
@@ -29,14 +30,17 @@
         <td>17646</td>
         <td>zd17646@bristol.ac.uk</td>
         <td>Computer Science</td>
-        <td>2</td>
+        <td>Student</td>
       </tr>
-      <tr onclick="document.location = 'viewstudent';">
-        <td>Aidan</td>
-        <td>12832</td>
-        <td>ah23123@bristol.ac.uk</td>
-        <td>Computer Science</td>
-        <td>3</td>
+      <tr th:each="user: ${users}">
+        <td><span th:text="${user.getName()}"/></td>
+        <td><span th:text="${user.getId()}"/></td>
+        <td><span th:text="${user.getUsername()}"/></td>
+        <td><span th:text="${user.getFaculty()}"/></td>
+        <td><span th:text="${user.getRole()}"/></td>
+        <td><a th:href="@{'/user/' + ${user.getId()}}">
+          <span class="typcn typcn-info text-danger"></span></a>
+        </td>
       </tr>
     </table>
   </div>

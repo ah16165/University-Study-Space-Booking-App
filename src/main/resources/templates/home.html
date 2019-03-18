@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+
+<head th:include="fragments/header :: head (title='Room')">
+</head>
+<body>
+
+
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
+<div class="container pt-5" sec:authorize="hasAuthority('admin')">
+    <div class="row">
+        <div class="col-md-6 col-12 mx-auto">
+            <div class="container">
+                <a href="viewbookings" class="btn btn-danger text-center btn-block">View Bookings</a>
+                <a href="viewrooms" class="btn btn-danger text-center btn-block">Make a Booking</a>
+                <a href="viewstatistics" class="btn btn-danger text-center btn-block">View Statistics</a>
+                <a href="viewstudents" class="btn btn-danger text-center btn-block">View Students</a>
+                <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-5" sec:authorize="hasAuthority('student')">
+    <div class="row">
+        <div class="col-md-6 col-12 mx-auto">
+            <div class="container">
+                <a href="viewbookings" class="btn btn-danger text-center btn-block">View Bookings</a>
+                <a href="viewrooms" class="btn btn-danger text-center btn-block">Make a Booking</a>
+                <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>

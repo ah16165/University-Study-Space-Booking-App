@@ -28,27 +28,27 @@
             <table class="table">
               <tr>
                 <th>Name:</th>
-                  <td>Zack</td>
+                  <td><span th:text="${user.getName()}"/></td>
                 </tr>
                 <tr>
                   <th>ID:</th>
-                  <td>17646</td>
+                  <td><span th:text="${user.getId()}"/></td>
                 </tr>
                 <tr>
                   <th>Email:</th>
-                  <td>zd17646@bristol.ac.uk</td>
+                  <td><span th:text="${user.getUsername()}"/></td>
                 </tr>
                 <tr>
-                  <th>Course:</th>
-                  <td>Computer Science</td>
+                  <th>Faculty:</th>
+                  <td><span th:text="${user.getFaculty()}"/></td>
                 </tr>
                 <tr>
-                  <th>Year of Study</th>
-                  <td>2</td>
+                  <th>Role</th>
+                  <td><span th:text="${user.getRole()}"/></td>
                 </tr>
                 <tr>
                   <th>No. of Bookings:</th>
-                  <td>5</td>
+                  <td>unimplimented!</td>
                 </tr>
               </table>
             </div>
@@ -57,7 +57,9 @@
               <div id="collapsible1" class="collapse">
                 <div class="container">
                   <p class="pt-3">Are you sure you want to blacklist this student?</p>
-                  <a href="viewstudents" class="btn btn-danger text-center btn-block">Yes, blacklist this student.</a>
+                  <form action="#" th:action="@{'/user/delete/' + ${user.getId()}}" method="post">
+                    <button type="submit" class="btn btn-danger text-center btn-block">Yes, blacklist this student.</button>
+                  </form>
                 </div>
             </div>
           </div>

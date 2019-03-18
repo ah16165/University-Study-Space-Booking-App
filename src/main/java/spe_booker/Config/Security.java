@@ -56,13 +56,14 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/viewstudent").permitAll()
                 .antMatchers("/viewstudents").permitAll()
                 .antMatchers("/makebookingRoom").permitAll()
+                .antMatchers("/home").permitAll()
 
 
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/userhome", true)
+                .defaultSuccessUrl("/home", true)
                 .failureUrl("/login-error")
                 .permitAll()
                 .and()

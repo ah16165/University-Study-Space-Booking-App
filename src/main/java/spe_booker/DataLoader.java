@@ -42,11 +42,11 @@ public class DataLoader implements ApplicationRunner {
 
         if (userRepository.findByName(username) == null) {
             LOG.debug("creating initial admin account");
-            userService.createUser(username, "admin@bristol.ac.uk", password, "engineering", "1",1);
+            userService.createUser(username, "admin@bristol.ac.uk", password, "engineering", "admin",1);
         }
         if (userRepository.findByName("user") == null) {
             LOG.debug("creating test user account");
-            userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "1",1);
+            userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "student",1);
         }
 
         if (! roomRepository.existsById((long) 100)){

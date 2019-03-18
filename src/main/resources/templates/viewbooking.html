@@ -34,11 +34,11 @@
                   </tr>
                   <tr>
                     <th>Date</th>
-                    <td> <span th:text="${booking.getDateTime().}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'dd-MM-yyyy')}"/> </td>
                   </tr>
                   <tr>
                     <th>Time</th>
-                    <td> <span th:text="${booking.getDateTime().getHours()}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'HH:mm')}"/> </td>
                   </tr>
                   <tr>
                     <th>Duration:</th>
@@ -55,7 +55,9 @@
                 <div id="collapsible1" class="collapse">
                   <div class="container">
                     <p class="pt-3">Are you sure you want to cancel?</p>
-                    <a href="viewbookings" class="btn btn-danger text-center btn-block">Yes, cancel this booking.</a>
+                    <form action="#" th:action="@{'/booking/delete/' + ${booking.getId()}}" method="post">
+                      <button type="submit" class="btn btn-danger text-center btn-block">Yes, cancel this booking.</button>
+                    </form>
                   </div>
               </div>
             </div>

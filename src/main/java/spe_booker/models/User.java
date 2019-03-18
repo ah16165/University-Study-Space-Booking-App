@@ -29,12 +29,13 @@ public class User {
 
     String name;
 
-
     private String password;
 
     private String faculty;
 
     private String role;
+
+    private Boolean blacklisted;
 
     @Column(name = "enabled")
     public int enabled;
@@ -89,6 +90,10 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public Boolean getBlacklisted() {return blacklisted;}
+
+    public void setBlacklisted(Boolean blacklisted) {this.blacklisted = blacklisted;}
 }
 
 

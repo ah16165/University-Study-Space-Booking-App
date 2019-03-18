@@ -27,7 +27,7 @@ public class UserService {
         return userRepository.findByUsername(email);
     }
 
-    public User createUser(String name, String email, String password, String faculty, String role, int enabled) {
+    public User createUser(String name, String email, String password, String faculty, String role, Boolean blacklisted) {
         User s = new User();
 
         s.setName(name);
@@ -36,6 +36,7 @@ public class UserService {
         s.setFaculty(faculty);
         s.setRole(role);
         s.enabled = 1;
+        s.setBlacklisted(blacklisted);
         saveUser(s);
 
         return s;

@@ -36,6 +36,7 @@ public class WebController extends WebMvcConfigurerAdapter {
         registry.addViewController("/viewstatistics");
         registry.addViewController("/viewstudent");
         registry.addViewController("/viewstudents");
+        registry.addViewController("/home");
         }
 
     @RequestMapping("/login-error.html")

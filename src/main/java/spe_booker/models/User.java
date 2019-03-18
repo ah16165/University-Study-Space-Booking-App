@@ -23,29 +23,17 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue
-//    @Column(name = "id")
         private Long id;
-//
-//    @Column(name = "email")
-//    @Email(message = "Enter Email")
+
     private String username;
 
-//    @Column(name = "full name")
-//    @NotEmpty(message = "Enter full name")
     String name;
 
-//    @Column(name = "password")
-//    @Length(min = 7, message = "Password must be 7 characters")
-//    @NotEmpty(message = "Enter Password")
-//    @JsonIgnore
+
     private String password;
 
-//    @Column(name = "faculty")
-//    @NotEmpty(message = "Enter your faculty")
     private String faculty;
 
-//    @Column(name = "role of study")
-//    @NotEmpty(message = "Enter your role of study")
     private String role;
 
     @Column(name = "enabled")

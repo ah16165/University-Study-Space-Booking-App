@@ -1,5 +1,7 @@
 package spe_booker.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -62,5 +64,6 @@ public class Booking {
     public Long getLength() { return length; }
 
     public void setLength(Long length) { this.length = length; }
+
 
 }

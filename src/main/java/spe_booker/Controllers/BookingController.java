@@ -122,6 +122,19 @@ public class BookingController {
         }
     }
 
+    @PostMapping(value = {"/booking/delete/{id}"})
+    public String deleteBooking(@PathVariable Long id){
+        LOG.info("Deleting booking: "+ id+ "\n");
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()){
+            bookingRepository.deleteById(id);
+            return "viewbookings";
+        } else {
+            System.out.print("####Booking not present!");
+            return "/error/error";
+        }
+    }
+
     //Called automatically when building the model
     //Formats the date/time
     @InitBinder

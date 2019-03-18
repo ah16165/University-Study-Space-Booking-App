@@ -44,13 +44,6 @@ public class UserController {
         return "viewusers";
     }
 
-    @GetMapping(value = {"/user", "/user/{id}"})
-    public String viewRoom(@PathVariable Optional<Long> id, Model model) {
-
-        model.addAttribute("users", id.map(aLong -> Collections.singletonList(userRepository.findById(aLong).get()))
-                .orElseGet(() -> userRepository.findAll()));
-        return "room_view";
-    }
 
     @GetMapping(value = {"/user/{id}"})
     public String viewbooking(@PathVariable Long id, Model model) {
@@ -59,6 +52,19 @@ public class UserController {
         if (user.isPresent()){
             model.addAttribute("user", user.get());
             return "viewuser";
+        } else {
+            LOG.info("####User not present!");
+            return "/error/error";
+        }
+    }
+
+    @PostMapping(value = {"/user/delete/{id}"})
+    public String deleteUser(@PathVariable Long id){
+        LOG.info("Deleting user: "+ id+ "\n");
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()){
+            userRepository.deleteById(id);
+            return "redirect:/users";
         } else {
             System.out.print("####User not present!");
             return "/error/error";

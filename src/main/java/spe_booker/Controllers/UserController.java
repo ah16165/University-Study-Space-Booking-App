@@ -71,4 +71,33 @@ public class UserController {
         }
     }
 
+    @PostMapping(value = {"/user/blacklist/{id}"})
+    public String blacklistUser(@PathVariable Long id){
+        LOG.info("Blacklisting user: "+ id+ "\n");
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()){
+            user.get().setBlacklisted(true);
+            userRepository.save(user.get());
+            return "redirect:/user/" + user.get().getId();
+        } else {
+            System.out.print("####User not present!");
+            return "/error/error";
+        }
+    }
+
+
+    @PostMapping(value = {"/user/unblacklist/{id}"})
+    public String unblacklistUser(@PathVariable Long id){
+        LOG.info("Unblacklisting user: "+ id+ "\n");
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()){
+            user.get().setBlacklisted(false);
+            userRepository.save(user.get());
+            return "redirect:/user/" + user.get().getId();
+        } else {
+            System.out.print("####User not present!");
+            return "/error/error";
+        }
+    }
+
 }

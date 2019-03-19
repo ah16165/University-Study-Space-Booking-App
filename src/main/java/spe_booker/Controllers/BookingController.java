@@ -112,10 +112,6 @@ public class BookingController {
     }
 
 
-
-
-
-
     @PostMapping(value = {"/booking/delete/{id}"})
     public String deleteBooking(@PathVariable Long id){
         LOG.info("Deleting booking: "+ id+ "\n");

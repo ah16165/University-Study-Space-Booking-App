@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
 
 <head th:include="fragments/header :: head (title='Room')">
 </head>
@@ -10,7 +11,7 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 
 
-<div class="container-fluid pt-1">
+<div class="container-fluid pt-1" sec:authorize="hasAuthority('admin')">
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
             <h2>Your current bookings:</h2>
@@ -18,31 +19,54 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Booking ID</th>
                         <th>Date Time</th>
                         <th>Length</th>
                         <th>RoomNo</th>
                         <th>Building</th>
-                        <th>UserID</th>
+                        <th>User</th>
                         <th>Info</th>
                     </tr>
                     </thead>
-                    <tr onclick="document.location = 'viewBooking';">
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                        <td>Test</td>
-                    </tr>
-                    </a>
                     <tr th:each="booking: ${bookings}">
-                        <td><span th:text="${booking.getId()}"/></td>
                         <td><span th:text="${booking.getDateTime()}"/></td>
                         <td><span th:text="${booking.getLength()}"/></td>
                         <td><span th:text="${booking.room.getRoomNo()}"/></td>
                         <td><span th:text="${booking.room.getBuilding()}"/></td>
-                        <td><span th:text="${booking.getUser().getId()}"/></td>
+                        <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
+                            <span th:text="${booking.getUser().getUsername()}"/>
+                        </a>
+                        </td>
+                        <td><a th:href="@{'/booking/' + ${booking.getId()}}">
+                            <span class="typcn typcn-info text-danger"></span></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid pt-1" sec:authorize="hasAuthority('student')">
+    <div class="row">
+        <div class="col-md-8 col-12 mx-auto">
+            <h2>Your current bookings:</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Date Time</th>
+                        <th>Length</th>
+                        <th>RoomNo</th>
+                        <th>Building</th>
+                        <th>Info</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="booking: ${bookings}">
+                        <td><span th:text="${booking.getDateTime()}"/></td>
+                        <td><span th:text="${booking.getLength()}"/></td>
+                        <td><span th:text="${booking.room.getRoomNo()}"/></td>
+                        <td><span th:text="${booking.room.getBuilding()}"/></td>
                         <td><a th:href="@{'/booking/' + ${booking.getId()}}">
                             <span class="typcn typcn-info text-danger"></span></a>
                         </td>

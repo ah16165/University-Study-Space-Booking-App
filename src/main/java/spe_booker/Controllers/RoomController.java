@@ -56,7 +56,7 @@ public class RoomController {
         LOG.info("Displaying info for a single room");
         Optional<Room> room = roomRepository.findByRoomNoAndBuilding(roomNo, building);
         if (room.isPresent()){
-            model.addAttribute("room");
+            model.addAttribute("room", room.get());
             return "view_room";
         } else {
             return "/error/error";

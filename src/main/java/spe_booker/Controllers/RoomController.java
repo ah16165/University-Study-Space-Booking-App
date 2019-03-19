@@ -33,7 +33,7 @@ public class RoomController {
     public String submitRoom(@ModelAttribute Room room) {
         LOG.info("Saving new room with room number " + room.getRoomNo());
         Room room1 = roomRepository.save(room);
-        return "redirect:/room/" + room1.getId();
+        return "redirect:/room/" + room1.getBuilding() + "/" +room1.getRoomNo();
     }
 
 //    @GetMapping(value = {"/room", "/room/{id}"})

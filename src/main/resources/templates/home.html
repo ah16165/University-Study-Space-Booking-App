@@ -15,7 +15,8 @@
         <div class="col-md-6 col-12 mx-auto">
             <div class="container">
                 <a href="/bookings" class="btn btn-danger text-center btn-block">View Bookings</a>
-                <a href="/rooms" class="btn btn-danger text-center btn-block">Make a Booking</a>
+                <a href="/booking/add2" class="btn btn-danger text-center btn-block">Make a Booking</a>
+                <a href="/rooms" class="btn btn-danger text-center btn-block">View All Rooms</a>
                 <a href="viewstatistics" class="btn btn-danger text-center btn-block">View Statistics</a>
                 <a href="viewstudents" class="btn btn-danger text-center btn-block">View Students</a>
                 <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>
@@ -32,8 +33,9 @@
                     <h2>You have been blacklisted. You will not be able to make any new bookings. Please speak to an administrator for more information.</h2>
                 </div>
                 <a href="/bookings" class="btn btn-danger text-center btn-block">View Bookings</a>
-                <a href="/rooms" class="btn btn-danger text-center btn-block" th:unless="${blacklisted}">Make a Booking</a>
-                <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>
+                <a href="/booking/add2" class="btn btn-danger text-center btn-block" th:unless="${blacklisted}">Make a Booking</a>
+                <a href="/rooms" class="btn btn-danger text-center btn-block">View All Rooms</a>
+                <a href="/logout" class="btn btn-danger text-center btn-block">Logout</a>
             </div>
         </div>
     </div>

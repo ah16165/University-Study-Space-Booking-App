@@ -43,7 +43,7 @@
                         <td><span th:text="${booking.room.getRoomNo()}"/></td>
                         <td><span th:text="${booking.room.getBuilding()}"/></td>
                         <td><span th:text="${booking.getUser().getId()}"/></td>
-                        <td><a th:href="@{'/viewbooking/' + ${booking.getId()}}">
+                        <td><a th:href="@{'/booking/' + ${booking.getId()}}">
                             <span class="typcn typcn-info text-danger"></span></a>
                         </td>
                     </tr>

@@ -67,8 +67,8 @@ public class WebController extends WebMvcConfigurerAdapter {
             System.out.print("Non admin user attempted to access statistics\n");
             return "/error/error";
         }
-
     }
+
 
 
 }

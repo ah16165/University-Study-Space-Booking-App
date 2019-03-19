@@ -39,40 +39,42 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
+//                .antMatchers("/", "/terms", "/contact").permitAll()
+//                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/home").permitAll()
+//                .antMatchers("/statistics").access("hasAuthority('admin')")
+//                .antMatchers("/students").access("hasAuthority('admin')")
+//                .antMatchers("/student/*").access("hasAuthority('admin')")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/home", true)
+//                .failureUrl("/login-error")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/")
+//                .permitAll();
+//    }
         http
                 .authorizeRequests()
-                .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
-                .antMatchers("/", "/terms", "/contact").permitAll()
-                .antMatchers("/api/**").permitAll()
-                .antMatchers("/userhome").permitAll()
-                .antMatchers("/adminhome").permitAll()
-                .antMatchers("/room_form").permitAll()
-                .antMatchers("/room_view").permitAll()
-                .antMatchers("/viewBooking").permitAll()
-                .antMatchers("/viewbookings").permitAll()
-                .antMatchers("/viewroom").permitAll()
-                .antMatchers("/viewrooms").permitAll()
-                .antMatchers("/viewstatistics").permitAll()
-                .antMatchers("/viewstudent").permitAll()
-                .antMatchers("/viewstudents").permitAll()
-                .antMatchers("/makebookingRoom").permitAll()
-                .antMatchers("/home").permitAll()
-
-
-                .anyRequest().authenticated()
+                    .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/statistics").access("hasAuthority('admin')")
+                    .antMatchers("/users").access("hasAuthority('admin')")
+                    .antMatchers("/user/*").access("hasAuthority('admin')")
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/home", true)
-                .failureUrl("/login-error")
-                .permitAll()
+                    .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).failureUrl("/login-error").permitAll()
                 .and()
-                .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .permitAll();
+                    .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
+        ;
     }
-
     @Configuration
     @Order(1)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {

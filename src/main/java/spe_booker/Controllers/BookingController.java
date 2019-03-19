@@ -68,21 +68,27 @@ public class BookingController {
 
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
-        Booking booking = new Booking();
-        Optional<Room> room = roomService.findByRoomNoAndBuilding(bookingRequest.getRoomNo(), bookingRequest.getBuilding());
-        booking.setDateTime(bookingRequest.getDateTime());
-        booking.setLength(bookingRequest.getLength());
-        booking.setId(bookingRequest.getId());
-        booking.setUser(userService.getCurrentUser());
-        if (room.isPresent()) {
-            System.out.print("####Room IS present!");
-            booking.setRoom(room.get());
-            LOG.info("Saving new booking with booking id " + booking.getId());
-            Booking booking1 = bookingRepository.save(booking);
-            return "redirect:/booking/" + booking1.getId();
-        } else {
-            System.out.print("####Room not present!");
+
+        User user = userService.getCurrentUser();
+        if (user.getBlacklisted()){
+            System.out.print("Blacklisted user attempted to make booking, but was blocked.");
             return "/error/error";
+        } else {
+            Optional<Room> room = roomService.findByRoomNoAndBuilding(bookingRequest.getRoomNo(), bookingRequest.getBuilding());
+            if (room.isPresent()){
+                Booking booking = new Booking();
+                booking.setUser(user);
+                booking.setDateTime(bookingRequest.getDateTime());
+                booking.setLength(bookingRequest.getLength());
+                booking.setId(bookingRequest.getId());
+                booking.setRoom(room.get());
+                LOG.info("Saving new booking with booking id " + booking.getId());
+                Booking booking1 = bookingRepository.save(booking);
+                return "redirect:/booking/" + booking1.getId();
+            } else {
+                System.out.print("Room not found for booking creation.");
+                return "/error/error";
+            }
         }
     }
 

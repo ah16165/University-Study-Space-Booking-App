@@ -19,20 +19,16 @@ public class CustomErrorController implements ErrorController {
             Integer statusCode = Integer.valueOf(status.toString());
 
             switch (statusCode) {
+                case 400:
+                    return "error/error-400";
                 case 403:
-                  return "error/error";
-                    // return "error/error-403";
-
-            }
-
-
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
-              return "error/error";
-                // return "error/error-404";
-            }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-              return "error/error";
-                // return "error/error-500";
+                  return "error/error-403";
+                case 404:
+                    return "error/error-404";
+                case 500:
+                    return "error/error-500";
+                default:
+                    return "error/error";
             }
         }
         return "error/error";

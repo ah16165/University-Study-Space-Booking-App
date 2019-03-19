@@ -52,8 +52,8 @@ public class BookingController {
             model.addAttribute("booking", booking.get());
             return "view_booking";
         } else {
-            System.out.print("####Booking not present!");
-            return "/error/error";
+            System.out.print("Booking not present!");
+            return "/error/error-400";
         }
     }
 
@@ -105,8 +105,8 @@ public class BookingController {
                 Booking booking1 = bookingRepository.save(booking);
                 return "redirect:/booking/" + booking1.getId();
             } else {
-                System.out.print("Room not found for booking creation.");
-                return "/error/error";
+                System.out.print("Room not found for booking creation.\n");
+                return "/error/error-400";
             }
         }
     }

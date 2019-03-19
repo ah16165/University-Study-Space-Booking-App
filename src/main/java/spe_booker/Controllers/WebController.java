@@ -58,5 +58,10 @@ public class WebController extends WebMvcConfigurerAdapter {
         return "home";
     }
 
+    @RequestMapping("/statistics")
+    public String statistics(Model model){
+        return "view_statistics";
+    }
+
 
 }

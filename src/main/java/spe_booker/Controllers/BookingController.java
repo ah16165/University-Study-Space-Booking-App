@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
-import spe_booker.Repositorys.UserRepository;
 import spe_booker.models.RoomService;
 import spe_booker.models.*;
 
@@ -38,25 +35,47 @@ public class BookingController {
     private RoomService roomService;
 
 
-    @GetMapping("/makebooking")
-    public String makeBooking(Model model) {
-        model.addAttribute("bookingRequest", new BookingRequest());
-        return "makebooking";
+    @GetMapping(value = {"/bookings"})
+    public String viewBooking(Model model) {
+        LOG.info("Listing bookings for viewbookings");
+        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.getCurrentUser());
+        model.addAttribute("bookings", currentUserBookings);
+        return "view_bookings";
     }
 
-    @PostMapping("/makebooking")
+
+    @GetMapping(value = {"/booking/{id}"})
+    public String viewbooking(@PathVariable Long id, Model model) {
+        LOG.info("Listing details for a single booking");
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()){
+            model.addAttribute("booking", booking.get());
+            return "view_booking";
+        } else {
+            System.out.print("####Booking not present!");
+            return "/error/error";
+        }
+    }
+
+    @GetMapping("/booking/add2")
+    public String makeBooking(Model model) {
+        model.addAttribute("bookingRequest", new BookingRequest());
+        return "make_booking";
+    }
+
+    @PostMapping("/booking/add2")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
         System.out.print("########1 - " + bookingRequest.getDateTime() + "#####\n");
         redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
-        return "redirect:/makebookingRoom";
+        return "redirect:/booking/add2/room";
     }
 
-    @GetMapping(value = {"/makebookingRoom"})
+    @GetMapping(value = {"/booking/add2/room"})
     public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndLength, Model model) {
         System.out.print("########2 - " + bookingRequestDateAndLength.getDateTime());
         model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
         model.addAttribute("rooms", roomRepository.findAll());
-        return "makebookingRoom";
+        return "make_booking_room";
     }
 
 
@@ -92,36 +111,10 @@ public class BookingController {
         }
     }
 
-    @GetMapping(value = {"/booking", "/booking/{id}"})
-    public String viewBooking(@PathVariable Optional<Long> id, Model model) {
-        LOG.info("Listing bookings");
-        model.addAttribute("bookings", id.map(aLong -> Collections.singletonList(bookingRepository.findById(aLong).get()))
-                .orElseGet(() -> bookingRepository.findAll()));
-        return "booking_view";
-    }
 
 
-    @GetMapping(value = {"/viewbookings"})
-    public String viewBooking(Model model) {
-        LOG.info("Listing bookings for viewbookings");
-        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.getCurrentUser());
-        model.addAttribute("bookings", currentUserBookings);
-        return "viewbookings";
-    }
 
 
-    @GetMapping(value = {"/viewbooking/{id}"})
-    public String viewbooking(@PathVariable Long id, Model model) {
-        LOG.info("Listing details for a single booking");
-        Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()){
-            model.addAttribute("booking", booking.get());
-            return "viewbooking";
-        } else {
-            System.out.print("####Booking not present!");
-            return "/error/error";
-        }
-    }
 
     @PostMapping(value = {"/booking/delete/{id}"})
     public String deleteBooking(@PathVariable Long id){
@@ -129,7 +122,7 @@ public class BookingController {
         Optional<Booking> booking = bookingRepository.findById(id);
         if (booking.isPresent()){
             bookingRepository.deleteById(id);
-            return "viewbookings";
+            return "view_bookings";
         } else {
             System.out.print("####Booking not present!");
             return "/error/error";

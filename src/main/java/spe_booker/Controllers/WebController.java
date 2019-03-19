@@ -27,18 +27,6 @@ public class WebController extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/login");
-        registry.addViewController("/userhome");
-        registry.addViewController("/adminhome");
-        registry.addViewController("/room_form");
-        registry.addViewController("/room_view");
-        registry.addViewController("/viewBooking");
-        registry.addViewController("/viewbookings");
-        registry.addViewController("/viewroom");
-        registry.addViewController("/viewrooms");
-        registry.addViewController("/viewstatistics");
-        registry.addViewController("/viewstudent");
-        registry.addViewController("/viewstudents");
-        registry.addViewController("/home");
     }
 
     @RequestMapping("/login-error.html")

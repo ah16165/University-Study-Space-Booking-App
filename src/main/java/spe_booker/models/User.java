@@ -87,6 +87,8 @@ public class User {
         return role;
     }
 
+    public Boolean isAdmin(){ return role.equals("admin"); }
+
     public void setRole(String role) {
         this.role = role;
     }
@@ -94,6 +96,7 @@ public class User {
     public Boolean getBlacklisted() {return blacklisted;}
 
     public void setBlacklisted(Boolean blacklisted) {this.blacklisted = blacklisted;}
+
 }
 
 

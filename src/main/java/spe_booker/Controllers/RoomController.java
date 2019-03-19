@@ -36,18 +36,32 @@ public class RoomController {
         return "redirect:/room/" + room1.getId();
     }
 
-    @GetMapping(value = {"/room", "/room/{id}"})
-    public String viewRoom(@PathVariable Optional<Long> id, Model model) {
+//    @GetMapping(value = {"/room", "/room/{id}"})
+//    public String viewRoom(@PathVariable Optional<Long> id, Model model) {
+//        LOG.info("Listing rooms");
+//        model.addAttribute("rooms", id.map(aLong -> Collections.singletonList(roomRepository.findById(aLong).get()))
+//                .orElseGet(() -> roomRepository.findAll()));
+//        return "room_view";
+//    }
+
+    @GetMapping(value = {"/rooms"})
+    public String viewRooms(Model model) {
         LOG.info("Listing rooms");
-        model.addAttribute("rooms", id.map(aLong -> Collections.singletonList(roomRepository.findById(aLong).get()))
-                .orElseGet(() -> roomRepository.findAll()));
-        return "room_view";
+        model.addAttribute("rooms", roomRepository.findAll());
+        return "view_rooms";
     }
 
-    @GetMapping(value = {"/viewrooms"})
-    public String viewRoom(Model model) {
-        LOG.info("Listing rooms for viewrooms");
-        model.addAttribute("rooms", roomRepository.findAll());
-        return "viewrooms";
+    @GetMapping(value = {"/room/{building}/{roomNo}"})
+    public String viewRoom(@PathVariable String building, @PathVariable String roomNo, Model model){
+        LOG.info("Displaying info for a single room");
+        Optional<Room> room = roomRepository.findByRoomNoAndBuilding(roomNo, building);
+        if (room.isPresent()){
+            model.addAttribute("room");
+            return "view_room";
+        } else {
+            return "/error/error";
+        }
+
     }
+
 }

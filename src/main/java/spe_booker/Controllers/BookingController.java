@@ -59,11 +59,6 @@ public class BookingController {
         return "makebookingRoom";
     }
 
-    User getCurrentUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        return userService.findByUsername(username);
-    }
 
     @GetMapping("/booking/add")
     public String addBooking(Model model) {
@@ -78,7 +73,7 @@ public class BookingController {
         booking.setDateTime(bookingRequest.getDateTime());
         booking.setLength(bookingRequest.getLength());
         booking.setId(bookingRequest.getId());
-        booking.setUser(getCurrentUser());
+        booking.setUser(userService.getCurrentUser());
         if (room.isPresent()) {
             System.out.print("####Room IS present!");
             booking.setRoom(room.get());
@@ -103,7 +98,7 @@ public class BookingController {
     @GetMapping(value = {"/viewbookings"})
     public String viewBooking(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(getCurrentUser());
+        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.getCurrentUser());
         model.addAttribute("bookings", currentUserBookings);
         return "viewbookings";
     }

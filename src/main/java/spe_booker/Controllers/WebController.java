@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.models.User;
 import spe_booker.models.UserService;
 import org.springframework.ui.Model;
 
@@ -37,7 +38,7 @@ public class WebController extends WebMvcConfigurerAdapter {
         registry.addViewController("/viewstudent");
         registry.addViewController("/viewstudents");
         registry.addViewController("/home");
-        }
+    }
 
     @RequestMapping("/login-error.html")
     public String loginError(Model model) {
@@ -46,5 +47,16 @@ public class WebController extends WebMvcConfigurerAdapter {
     }
 
 
-
+    @RequestMapping("/home")
+    public String home(Model model) {
+        User user = userService.getCurrentUser();
+        if (user.getBlacklisted()) {
+            model.addAttribute("blacklisted", true);
+        } else {
+            model.addAttribute("blacklisted", false);
+        }
+        return "home";
     }
+
+
+}

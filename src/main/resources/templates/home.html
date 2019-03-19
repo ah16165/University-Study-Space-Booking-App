@@ -28,6 +28,9 @@
     <div class="row">
         <div class="col-md-6 col-12 mx-auto">
             <div class="container">
+                <div class="container text-center" th:if="${blacklisted}">
+                    <h2>You have been blacklisted. You will not be able to make a new booking. Please speak to an administrator for more information.</h2>
+                </div>
                 <a href="viewbookings" class="btn btn-danger text-center btn-block">View Bookings</a>
                 <a href="viewrooms" class="btn btn-danger text-center btn-block">Make a Booking</a>
                 <a href="logout" class="btn btn-danger text-center btn-block">Logout</a>

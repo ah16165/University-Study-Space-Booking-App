@@ -36,9 +36,18 @@ public class BookingController {
 
 
     @GetMapping(value = {"/bookings"})
-    public String viewBooking(Model model) {
+    public String viewBookings(Model model) {
         LOG.info("Listing bookings for viewbookings");
         List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.getCurrentUser());
+        model.addAttribute("bookings", currentUserBookings);
+        return "view_bookings";
+    }
+
+
+    @GetMapping(value = {"/user/{username}/bookings"})
+    public String viewBookingsForuser(@PathVariable String username, Model model) {
+        LOG.info("Listing bookings for a specific user\n");
+        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.findByUsername(username));
         model.addAttribute("bookings", currentUserBookings);
         return "view_bookings";
     }

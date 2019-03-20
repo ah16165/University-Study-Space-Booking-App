@@ -54,6 +54,12 @@
                                 <th>Blacklisted:</th>
                                 <td><span th:text="${user.getBlacklisted()}"/></td>
                             </tr>
+                            <tr>
+                                <th>Bookings:</th>
+                                <td><a th:href="@{'/user/' + ${user.getUsername()} + '/bookings'}">
+                                    <span class="typcn typcn-info text-danger"></span></a>
+                                </td>
+                            </tr>
                         </table>
                     </div>
                     <div class="row">

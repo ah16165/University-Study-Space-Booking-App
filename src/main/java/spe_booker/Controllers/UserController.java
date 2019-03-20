@@ -51,7 +51,7 @@ public class UserController {
             model.addAttribute("user", user.get());
             return "view_user";
         } else {
-            LOG.info("####User not present!");
+            LOG.info("User not present!");
             return "/error/error";
         }
     }

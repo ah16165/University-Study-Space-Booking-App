@@ -57,7 +57,7 @@
                             <tr>
                                 <th>Bookings:</th>
                                 <td><a th:href="@{'/user/' + ${user.getUsername()} + '/bookings'}">
-                                    <span class="typcn typcn-info text-danger"></span></a>
+                                    <span th:text="${user.getNumberOfBookings()}"></span></a>
                                 </td>
                             </tr>
                         </table>

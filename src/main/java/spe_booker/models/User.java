@@ -41,7 +41,7 @@ public class User {
     public int enabled;
 
     @OneToMany(mappedBy = "user")
-    private List<Booking> booking = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -96,6 +96,10 @@ public class User {
     public Boolean getBlacklisted() {return blacklisted;}
 
     public void setBlacklisted(Boolean blacklisted) {this.blacklisted = blacklisted;}
+
+    public Integer getNumberOfBookings(){
+        return bookings.size();
+    }
 
 }
 

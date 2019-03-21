@@ -50,6 +50,10 @@
                     <th>Room Capacity:</th>
                     <td> <span th:text="${booking.getRoom().getCapacity()}"/> </td>
                   </tr>
+                  <tr>
+                    <th>Creation Date:</th>
+                    <td><span th:text="${booking.getCreationDate()}"/></td>
+                  </tr>
 
                   <span sec:authorize="hasAuthority('admin')">
                     <tr>

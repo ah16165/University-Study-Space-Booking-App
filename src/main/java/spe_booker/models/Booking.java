@@ -1,10 +1,13 @@
 package spe_booker.models;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 
 @Entity
@@ -15,7 +18,6 @@ public class Booking {
     private Long id;
 
     @NotNull
-
     private Date dateTime;
 
 
@@ -30,8 +32,9 @@ public class Booking {
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
-    public Booking() {
-    }
+    private Date creationDate;
+
+    public Booking() {  }
 
     public Long getId() {
         return id;
@@ -64,6 +67,12 @@ public class Booking {
     public Long getLength() { return length; }
 
     public void setLength(Long length) { this.length = length; }
+
+    public Date getCreationDate(){
+        System.out.print("######Creation Date = " + creationDate + "\n");
+        return creationDate; }
+
+    public void setCreationDate(Date creationDate) { this.creationDate = creationDate;}
 
 
 }

@@ -24,15 +24,17 @@
                 </thead>
                 <tr th:each="booking: ${bookings}">
 
-                    <td><span th:text="${booking.id}"/></td>
+                    <td><span th:text="${booking.getId()}"/></td>
 
-                    <td><span th:text="${booking.dateTime}"/></td>
+                    <td><span th:text="${booking.getDateTime}"/></td>
 
                     <td><span th:text="${booking.getLength()}"/></td>
 
                     <td><span th:text="${booking.room.getId()}"/></td>
 
                     <td><span th:text="${booking.user.getId()}"/></td>
+
+                    <td><span th:text="${booking.getCreationDate()}"/></td>
                 </tr>
             </table>
 

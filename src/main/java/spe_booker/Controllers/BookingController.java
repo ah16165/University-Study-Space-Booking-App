@@ -111,6 +111,9 @@ public class BookingController {
                 booking.setLength(bookingRequest.getLength());
                 booking.setId(bookingRequest.getId());
                 booking.setRoom(room.get());
+                Date creationDate = new Date();
+                booking.setCreationDate(creationDate);
+                System.out.print("Creation Date and Time: "+creationDate+"\n");
                 LOG.info("Saving new booking with booking id " + booking.getId());
                 Booking booking1 = bookingRepository.save(booking);
                 return "redirect:/booking/" + booking1.getId();

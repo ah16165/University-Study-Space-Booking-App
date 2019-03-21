@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
-import spe_booker.models.RoomService;
+import spe_booker.Services.RoomService;
+import spe_booker.Services.UserService;
 import spe_booker.models.*;
 
 import java.text.SimpleDateFormat;

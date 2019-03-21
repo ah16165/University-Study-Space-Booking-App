@@ -9,10 +9,12 @@ import org.springframework.stereotype.Component;
 import spe_booker.Repositorys.BookingRepository;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.Services.BookingService;
+import spe_booker.Services.RoomService;
+import spe_booker.Services.UserService;
 import spe_booker.models.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 

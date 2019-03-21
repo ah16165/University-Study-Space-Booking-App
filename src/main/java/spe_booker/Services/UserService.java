@@ -1,4 +1,4 @@
-package spe_booker.models;
+package spe_booker.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -6,7 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.UserRepository;
-
+import spe_booker.models.User;
 
 
 @Service

@@ -1,10 +1,12 @@
-package spe_booker.models;
+package spe_booker.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.models.Booking;
+import spe_booker.models.Room;
 
 import java.util.List;
 import java.util.Optional;

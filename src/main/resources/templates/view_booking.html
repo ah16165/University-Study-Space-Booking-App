@@ -36,7 +36,7 @@
                   </tr>
                   <tr>
                     <th>Date</th>
-                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'dd-MM-yyyy')}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
                   </tr>
                   <tr>
                     <th>Time</th>
@@ -52,7 +52,7 @@
                   </tr>
                   <tr>
                     <th>Creation Date:</th>
-                    <td> <span th:text="${#dates.format(booking.getCreationDate(), 'dd-MM-yyyy')}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getCreationDate(), 'dd-MMMMM-yyyy')}"/> </td>
                   </tr>
 
                   <span sec:authorize="hasAuthority('admin')">

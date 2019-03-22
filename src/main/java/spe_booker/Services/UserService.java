@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.UserRepository;
 import spe_booker.models.User;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 
 @Service
 public class UserService {
@@ -53,7 +57,19 @@ public class UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
 
+    public List<User> findTop10ByNumberOfBookings(){
+        List<User> top10ByNumberOfBookings = new ArrayList<>();
+        List<User> users = getAllUsers();
+        users.sort(Comparator.comparing(User::getNumberOfBookings).reversed());
+        for (int i = 0; i < 10 && i < users.size(); i++){
+            top10ByNumberOfBookings.add(users.get(i));
+        }
+        return top10ByNumberOfBookings;
+    }
 
 
 }

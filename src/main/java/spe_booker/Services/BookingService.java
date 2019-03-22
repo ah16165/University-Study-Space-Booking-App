@@ -1,5 +1,6 @@
 package spe_booker.Services;
 
+import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,9 @@ import spe_booker.models.User;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -47,5 +50,19 @@ public class BookingService {
         return bookingRepository.save(booking);
 
     }
+
+//    public List<Booking> getBookingsInLastWeek(){
+//        Date currentDate = new Date();
+//        Date lastWeek = new Date();
+//        lastWeek.setTime((long) currentDate.getTime()-604800000);
+//        return bookingRepository.findBookingsByDateTimeGreaterThanEqual(lastWeek);
+//    }
+
+//    public List<Pair<Room, Integer>> getRoomsAndNoOfBookingWeek(){
+//        List<Pair<Room, Integer>> roomsAndNoOfBookingWeek = new ArrayList<>();
+//        for (Booking booking : getBookingsInLastWeek()){
+//            if (roomsAndNoOfBookingWeek.contains())
+//        }
+//    }
 
 }

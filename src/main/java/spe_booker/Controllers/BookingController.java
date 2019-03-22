@@ -142,7 +142,7 @@ public class BookingController {
     //Formats the date/time
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm"), true));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MMMMM-dd'T'HH:mm"), true));
     }
 
 }

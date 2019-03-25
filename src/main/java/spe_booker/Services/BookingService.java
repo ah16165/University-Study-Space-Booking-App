@@ -1,25 +1,24 @@
 package spe_booker.Services;
 
-import org.javatuples.Pair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.BookingRepository;
-import spe_booker.Repositorys.UserRepository;
 import spe_booker.models.Booking;
+import spe_booker.models.BookingRequest;
 import spe_booker.models.Room;
 import spe_booker.models.User;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class BookingService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(BookingService.class);
 
     private BookingRepository bookingRepository;
 
@@ -29,26 +28,41 @@ public class BookingService {
     }
 
 
-    public Booking createBooking(Long length, Date date, User user, Room room) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+    public Booking createBooking(User user, Date dateTime, Long duration, Long id, Room room) {
+        Booking booking = new Booking();
+        booking.setUser(user);
+        booking.setDateTime(dateTime);
+        booking.setDuration(duration);
+        booking.setId(id);
+        booking.setRoom(room);
         Date creationDate = new Date();
+        booking.setCreationDate(creationDate);
+        System.out.print("Creation Date and Time: "+creationDate+"\n");
+        LOG.info("Saving new booking with booking id " + booking.getId());
+        saveBooking(booking);
+        return booking;
+    }
 
-        System.out.print("Booking Date: "+date+"\n");
-
-        Booking b = new Booking();
-        b.setDuration(length);
-        b.setDateTime(date);
-        b.setUser(user);
-        b.setRoom(room);
-        b.setCreationDate(creationDate);
-        saveBooking(b);
-        return b;
+    public Booking createBookingFromBookingRequest(BookingRequest bookingRequest, User user, Room room){
+        return createBooking(user, bookingRequest.getDateTime(), bookingRequest.getDuration(), bookingRequest.getId(), room);
     }
 
     public Booking saveBooking(Booking booking) {
-
         return bookingRepository.save(booking);
 
+    }
+
+    public List<Booking> findBookingsByUser(User user){
+        return bookingRepository.findBookingsByUser(user);
+    }
+
+    public Optional<Booking> findById(Long id){
+        return bookingRepository.findById(id);
+    }
+
+    public void deleteById(Long id){
+        bookingRepository.deleteById(id);
     }
 
 //    public List<Booking> getBookingsInLastWeek(){

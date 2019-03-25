@@ -24,8 +24,6 @@ public class BookingController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BookingController.class);
 
-    @Autowired
-    private BookingRepository bookingRepository;
 
     @Autowired
     private UserService userService;
@@ -43,7 +41,7 @@ public class BookingController {
     @GetMapping(value = {"/bookings"})
     public String viewBookings(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.getCurrentUser());
+        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.getCurrentUser());
         model.addAttribute("bookings", currentUserBookings);
         return "view_bookings";
     }
@@ -52,7 +50,7 @@ public class BookingController {
     @GetMapping(value = {"/user/{username}/bookings"})
     public String viewBookingsForuser(@PathVariable String username, Model model) {
         LOG.info("Listing bookings for a specific user\n");
-        List<Booking> currentUserBookings = bookingRepository.findBookingsByUser(userService.findByUsername(username));
+        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.findByUsername(username));
         model.addAttribute("bookings", currentUserBookings);
         return "view_bookings";
     }
@@ -61,7 +59,7 @@ public class BookingController {
     @GetMapping(value = {"/booking/{id}"})
     public String viewbooking(@PathVariable Long id, Model model) {
         LOG.info("Listing details for a single booking");
-        Optional<Booking> booking = bookingRepository.findById(id);
+        Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
             model.addAttribute("booking", booking.get());
             return "view_booking";
@@ -101,7 +99,6 @@ public class BookingController {
 
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
-
         User user = userService.getCurrentUser();
         if (user.getBlacklisted()){
             System.out.print("Blacklisted user attempted to make booking, but was blocked.");
@@ -109,17 +106,7 @@ public class BookingController {
         } else {
             Optional<Room> room = roomService.findByRoomNoAndBuilding(bookingRequest.getRoomNo(), bookingRequest.getBuilding());
             if (room.isPresent()){
-                Booking booking = new Booking();
-                booking.setUser(user);
-                booking.setDateTime(bookingRequest.getDateTime());
-                booking.setDuration(bookingRequest.getDuration());
-                booking.setId(bookingRequest.getId());
-                booking.setRoom(room.get());
-                Date creationDate = new Date();
-                booking.setCreationDate(creationDate);
-                System.out.print("Creation Date and Time: "+creationDate+"\n");
-                LOG.info("Saving new booking with booking id " + booking.getId());
-                Booking booking1 = bookingRepository.save(booking);
+                Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
                 return "redirect:/booking/" + booking1.getId();
             } else {
                 System.out.print("Room not found for booking creation.\n");
@@ -132,9 +119,9 @@ public class BookingController {
     @PostMapping(value = {"/booking/delete/{id}"})
     public String deleteBooking(@PathVariable Long id){
         LOG.info("Deleting booking: "+ id+ "\n");
-        Optional<Booking> booking = bookingRepository.findById(id);
+        Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
-            bookingRepository.deleteById(id);
+            bookingService.deleteById(id);
             return "view_bookings";
         } else {
             System.out.print("####Booking not present!");

@@ -76,4 +76,8 @@ public class RoomService {
         }
         return rooms;
     }
+
+    public List<Room> findAvailable(Date date, Long duration){
+        return roomRepository.findAvailable(date, duration);
+    }
 }

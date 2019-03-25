@@ -19,7 +19,7 @@ public interface RoomRepository extends CrudRepository<Room, Long> {
 //    @Query("select r from room r join booking b on r.id = b.id where b.date_time = :date and b.length = :len ")
 
     @Query("select r from rooms r where not exists (select 1 from bookings b where b.room_id = r.room_id and :input_date_time < date_add ( b.date_time, INTERVAL b.length HOUR)) and date_add(:input_date_time, INTERVAL :input_length HOUR) > b.date_time")
-    List<Room> findByDateTimeLength(@Param("date") Date date, @Param("len") Long length);
+    List<Room> findAvailable(@Param("date") Date date, @Param("len") Long length);
 
     List<Room> findAll();
     Optional<Room> findByRoomNoAndBuilding(String roomNo, String building);

@@ -29,7 +29,7 @@
                     </thead>
                     <tr th:each="booking: ${bookings}">
                         <td><span th:text="${booking.getDateTime()}"/></td>
-                        <td><span th:text="${booking.getLength()}"/></td>
+                        <td><span th:text="${booking.getDuration()}"/></td>
                         <td><span th:text="${booking.room.getRoomNo()}"/></td>
                         <td><span th:text="${booking.room.getBuilding()}"/></td>
                         <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">

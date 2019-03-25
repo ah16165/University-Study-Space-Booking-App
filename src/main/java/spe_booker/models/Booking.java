@@ -22,7 +22,7 @@ public class Booking {
 
 
     @NotNull
-    private Long length;
+    private Long duration;
 
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
@@ -64,9 +64,9 @@ public class Booking {
         this.dateTime = dateTime;
     }
 
-    public Long getLength() { return length; }
+    public Long getDuration() { return duration; }
 
-    public void setLength(Long length) { this.length = length; }
+    public void setDuration(Long duration) { this.duration = duration; }
 
     public Date getCreationDate(){
         System.out.print("######Creation Date = " + creationDate + "\n");

@@ -17,7 +17,7 @@ public class BookingRequest {
     private Date dateTime;
 
     @NotNull
-    private Long length;
+    private Long duration;
 
     @NotNull
     private String roomNo;
@@ -56,8 +56,8 @@ public class BookingRequest {
         this.dateTime = dateTime;
     }
 
-    public Long getLength() { return length; }
+    public Long getDuration() { return duration; }
 
-    public void setLength(Long length) { this.length = length; }
+    public void setDuration(Long duration) { this.duration = duration; }
 
 }

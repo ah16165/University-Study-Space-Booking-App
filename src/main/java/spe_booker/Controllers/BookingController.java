@@ -85,9 +85,9 @@ public class BookingController {
     }
 
     @GetMapping(value = {"/booking/add2/room"})
-    public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndLength, Model model) {
-        System.out.print("########2 - " + bookingRequestDateAndLength.getDateTime());
-        model.addAttribute("bookingRequestDateAndLength", bookingRequestDateAndLength);
+    public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndDuration, Model model) {
+        System.out.print("########2 - " + bookingRequestDateAndDuration.getDateTime());
+        model.addAttribute("bookingRequestDateAndDuration", bookingRequestDateAndDuration);
         model.addAttribute("rooms", roomRepository.findAll());
         return "make_booking_room";
     }
@@ -112,7 +112,7 @@ public class BookingController {
                 Booking booking = new Booking();
                 booking.setUser(user);
                 booking.setDateTime(bookingRequest.getDateTime());
-                booking.setLength(bookingRequest.getLength());
+                booking.setDuration(bookingRequest.getDuration());
                 booking.setId(bookingRequest.getId());
                 booking.setRoom(room.get());
                 Date creationDate = new Date();

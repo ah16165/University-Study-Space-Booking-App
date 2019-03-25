@@ -36,7 +36,7 @@ public class BookingService {
         System.out.print("Booking Date: "+date+"\n");
 
         Booking b = new Booking();
-        b.setLength(length);
+        b.setDuration(length);
         b.setDateTime(date);
         b.setUser(user);
         b.setRoom(room);

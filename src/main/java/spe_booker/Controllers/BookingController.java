@@ -86,7 +86,7 @@ public class BookingController {
     public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndDuration, Model model) {
         System.out.print("########2 - " + bookingRequestDateAndDuration.getDateTime());
         model.addAttribute("bookingRequestDateAndDuration", bookingRequestDateAndDuration);
-        model.addAttribute("rooms", roomService.findAll());
+        model.addAttribute("rooms", roomRepository.findByDateTimeLength(bookingRequestDateAndDuration.getDateTime(), bookingRequestDateAndDuration.getDuration()));
         return "make_booking_room";
     }
 

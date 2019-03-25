@@ -26,7 +26,7 @@ public class StatisticsController {
     public String statistics(Model model){
         LOG.info("Showing statistics page");
 
-        model.addAttribute("rooms", roomService.getAllRooms());
+        model.addAttribute("rooms", roomService.findAll());
         model.addAttribute("top10Users", userService.findTop10ByNumberOfBookings());
         return "view_statistics";
     }

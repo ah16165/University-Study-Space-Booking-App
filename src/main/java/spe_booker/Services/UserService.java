@@ -11,6 +11,7 @@ import spe_booker.models.User;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -48,22 +49,22 @@ public class UserService {
         s.setRole(role);
         s.enabled = 1;
         s.setBlacklisted(blacklisted);
-        saveUser(s);
+        save(s);
 
         return s;
     }
 
-    public User saveUser(User user) {
+    public User save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
-    public List<User> getAllUsers(){
+    public List<User> findAll(){
         return userRepository.findAll();
     }
 
     public List<User> findTop10ByNumberOfBookings(){
         List<User> top10ByNumberOfBookings = new ArrayList<>();
-        List<User> users = getAllUsers();
+        List<User> users = findAll();
         users.sort(Comparator.comparing(User::getNumberOfBookings).reversed());
         for (int i = 0; i < 10 && i < users.size(); i++){
             top10ByNumberOfBookings.add(users.get(i));
@@ -71,5 +72,12 @@ public class UserService {
         return top10ByNumberOfBookings;
     }
 
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
+    }
+
+    public void deleteById(Long id){
+        userRepository.deleteById(id);
+    }
 
 }

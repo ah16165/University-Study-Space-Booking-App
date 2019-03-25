@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.Services.UserService;
 import spe_booker.models.User;
 
 import java.util.Optional;
@@ -20,7 +21,7 @@ public class UserController {
     private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
 //    @GetMapping("/user/add")
 //    public String addRoom(Model model) {
@@ -31,14 +32,14 @@ public class UserController {
     @PostMapping("/user")
     public String submitRoom(@ModelAttribute User user) {
         LOG.info("Saving new user with user id " + user.getId());
-        User user1 = userRepository.save(user);
+        User user1 = userService.save(user);
         return "redirect:/user/" + user1.getId();
     }
 
     @GetMapping(value = {"/users"})
     public  String viewAllUsers(Model model){
         LOG.info("Listing users");
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userService.findAll());
         return "view_users";
     }
 
@@ -46,7 +47,7 @@ public class UserController {
     @GetMapping(value = {"/user/{id}"})
     public String viewbooking(@PathVariable Long id, Model model) {
         LOG.info("Listing details for a single user");
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             model.addAttribute("user", user.get());
             return "view_user";
@@ -59,9 +60,9 @@ public class UserController {
     @PostMapping(value = {"/user/delete/{id}"})
     public String deleteUser(@PathVariable Long id){
         LOG.info("Deleting user: "+ id+ "\n");
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = userService.findById(id);
         if (user.isPresent()){
-            userRepository.deleteById(id);
+            userService.deleteById(id);
             return "redirect:/users";
         } else {
             System.out.print("####User not present!");
@@ -72,10 +73,10 @@ public class UserController {
     @PostMapping(value = {"/user/blacklist/{id}"})
     public String blacklistUser(@PathVariable Long id){
         LOG.info("Blacklisting user: "+ id+ "\n");
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             user.get().setBlacklisted(true);
-            userRepository.save(user.get());
+            userService.save(user.get());
             return "redirect:/user/" + user.get().getId();
         } else {
             System.out.print("####User not present!");
@@ -87,10 +88,10 @@ public class UserController {
     @PostMapping(value = {"/user/unblacklist/{id}"})
     public String unblacklistUser(@PathVariable Long id){
         LOG.info("Unblacklisting user: "+ id+ "\n");
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             user.get().setBlacklisted(false);
-            userRepository.save(user.get());
+            userService.save(user.get());
             return "redirect:/user/" + user.get().getId();
         } else {
             System.out.print("####User not present!");

@@ -19,8 +19,6 @@ public class WebController extends WebMvcConfigurerAdapter {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

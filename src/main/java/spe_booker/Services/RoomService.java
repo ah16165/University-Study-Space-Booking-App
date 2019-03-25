@@ -28,7 +28,7 @@ public class RoomService {
 
     }
 
-    public List<Room> getAllRooms(){
+    public List<Room> findAll(){
         return roomRepository.findAll();
     }
 
@@ -38,17 +38,15 @@ public class RoomService {
 
     public Room createRoom(String roomNo, String building, Integer capacity, List<Booking> bookings) {
         Room s = new Room();
-
         s.setRoomNo(roomNo);
         s.setBuilding(building);
         s.setCapacity(capacity);
         s.setBookings(bookings);
-        saveRoom(s);
-
+        save(s);
         return s;
     }
 
-    public Room saveRoom(Room room) {
+    public Room save(Room room) {
         return roomRepository.save(room);
     }
 
@@ -61,8 +59,9 @@ public class RoomService {
 //        return roomsAndNoOfBookings;
 //    }
 
+
     public List<Room> getRoomsAndNoBookingsForLastWeek(){
-        List<Room> rooms = getAllRooms();
+        List<Room> rooms = findAll();
         Date currentDate = new Date();
         Date lastWeek = new Date();
         lastWeek.setTime((long) currentDate.getTime()-604800000);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import spe_booker.Repositorys.RoomRepository;
+import spe_booker.Services.RoomService;
 import spe_booker.models.Room;
 
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class RoomController {
     private static final Logger LOG = LoggerFactory.getLogger(RoomController.class);
 
     @Autowired
-    private RoomRepository roomRepository;
+    private RoomService roomService;
 
     @GetMapping("/room/add")
     public String addRoom(Model model) {
@@ -32,7 +33,7 @@ public class RoomController {
     @PostMapping("/room")
     public String submitRoom(@ModelAttribute Room room) {
         LOG.info("Saving new room with room number " + room.getRoomNo());
-        Room room1 = roomRepository.save(room);
+        Room room1 = roomService.save(room);
         return "redirect:/room/" + room1.getBuilding() + "/" +room1.getRoomNo();
     }
 
@@ -47,14 +48,14 @@ public class RoomController {
     @GetMapping(value = {"/rooms"})
     public String viewRooms(Model model) {
         LOG.info("Listing rooms");
-        model.addAttribute("rooms", roomRepository.findAll());
+        model.addAttribute("rooms", roomService.findAll());
         return "view_rooms";
     }
 
     @GetMapping(value = {"/room/{building}/{roomNo}"})
     public String viewRoom(@PathVariable String building, @PathVariable String roomNo, Model model){
         LOG.info("Displaying info for a single room");
-        Optional<Room> room = roomRepository.findByRoomNoAndBuilding(roomNo, building);
+        Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
         if (room.isPresent()){
             model.addAttribute("room", room.get());
             return "view_room";

@@ -36,15 +36,15 @@
                   </tr>
                   <tr>
                     <th>Date</th>
-                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
                   </tr>
                   <tr>
                     <th>Time</th>
-                    <td> <span th:text="${#dates.format(booking.getDateTime(), 'HH:mm')}"/> </td>
+                    <td> <span th:text="${#dates.format(booking.getEndDateTime(), 'HH:mm')}"/> </td>
                   </tr>
                   <tr>
                     <th>Duration:</th>
-                    <td> <span th:text="${booking.getDuration()}"/> </td>
+                    <td> <span th:text="${booking.getDuration()}"/> hour(s)</td>
                   </tr>
                   <tr>
                     <th>Room Capacity:</th>

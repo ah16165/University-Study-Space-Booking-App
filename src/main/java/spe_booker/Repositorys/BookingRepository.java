@@ -15,5 +15,5 @@ import spe_booker.models.User;
 public interface BookingRepository extends CrudRepository<Booking, Long> {
     List<Booking> findAll();
     List<Booking> findBookingsByUser(User user);
-    List<Booking> findBookingsByDateTimeGreaterThanEqual(Date date);
+//    List<Booking> findBookingsByDateTimeGreaterThanEqual(Date date);
 }

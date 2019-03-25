@@ -29,11 +29,11 @@ public class BookingService {
 
 
 
-    public Booking createBooking(User user, Date dateTime, Long duration, Long id, Room room) {
+    public Booking createBooking(User user, Date startDateTime, Date endDateTime, Long id, Room room) {
         Booking booking = new Booking();
         booking.setUser(user);
-        booking.setDateTime(dateTime);
-        booking.setDuration(duration);
+        booking.setStartDateTime(startDateTime);
+        booking.setEndDateTime(endDateTime);
         booking.setId(id);
         booking.setRoom(room);
         Date creationDate = new Date();
@@ -45,7 +45,9 @@ public class BookingService {
     }
 
     public Booking createBookingFromBookingRequest(BookingRequest bookingRequest, User user, Room room){
-        return createBooking(user, bookingRequest.getDateTime(), bookingRequest.getDuration(), bookingRequest.getId(), room);
+        Date endDateTime = new Date();
+        endDateTime.setTime(bookingRequest.getDateTime().getTime() + (bookingRequest.getDuration() * 3600000));
+        return createBooking(user, bookingRequest.getDateTime(), endDateTime, bookingRequest.getId(), room);
     }
 
     public Booking saveBooking(Booking booking) {

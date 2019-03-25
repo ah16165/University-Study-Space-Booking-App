@@ -18,11 +18,11 @@ public class Booking {
     private Long id;
 
     @NotNull
-    private Date dateTime;
-
+    private Date startDateTime;
 
     @NotNull
-    private Long duration;
+    private Date endDateTime;
+
 
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
@@ -56,18 +56,26 @@ public class Booking {
 
     public void setUser(User user) {this.user = user;}
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setStartDateTime(Date startDateTime) {
+        this.startDateTime = startDateTime;
     }
 
-    public Long getDuration() { return duration; }
+    public Date getEndDateTime() {
+        return endDateTime;
+    }
 
-    public void setDuration(Long duration) { this.duration = duration; }
+    public void setEndDateTime(Date endDateTime) {
+        this.endDateTime = endDateTime;
+    }
 
+    public long getDuration() {
+        return ((endDateTime.getTime() - startDateTime.getTime()) / 3600000);
+
+    }
     public Date getCreationDate(){
         System.out.print("######Creation Date = " + creationDate + "\n");
         return creationDate; }

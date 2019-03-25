@@ -68,7 +68,7 @@ public class RoomService {
         for (Room room : rooms){
             List<Booking> bookings = room.getBookings();
             for (Booking booking : bookings){
-                if (booking.getDateTime().before(lastWeek)){
+                if (booking.getStartDateTime().before(lastWeek)){
                     bookings.remove(booking);
                 }
             }
@@ -77,7 +77,7 @@ public class RoomService {
         return rooms;
     }
 
-    public List<Room> findAvailable(Date date, Long duration){
-        return roomRepository.findAvailable(date, duration);
-    }
+//    public List<Room> findAvailable(Date date, Long duration){
+//        return roomRepository.findAvailable(date, duration);
+//    }
 }

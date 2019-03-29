@@ -15,15 +15,15 @@
             <h3>Make a Booking:</h3>
             <form action="#" th:action="@{/booking/add2}" th:object="${bookingRequest}" method="post">
                 <div class="form-group row">
-                    <label for="dateTime"class="col-2 col-form-label">Date and Time:</label>
+                    <label for="startDateTime" class="col-2 col-form-label">Date and Time:</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" th:field="*{startDateTime}" value="22-03-2019, 12:00" id="dateTime">
+                        <input class="form-control" type="datetime-local" th:field="*{startDateTime}" id="startDateTime">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="duration" class="col-2 col-form-label">length</label>
                     <div class="col-10">
-                        <input type="text" th:field="*{duration}" class="form-control" id="duration" value="2" placeholder="Enter duration"/>
+                        <input type="text" th:field="*{duration}" class="form-control" id="duration" placeholder="Enter duration"/>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger btn-block">Submit</button>

@@ -13,8 +13,8 @@
         <h1>New Booking</h1>
         <form action="#" th:action="@{/booking}" th:object="${bookingRequest}" method="post" class="form-inline">
             <div class="form-group">
-                <label for="dateTime">dateTime</label>
-                <input type="datetime-local" th:field="*{dateTime}" class="form-control" id="dateTime" placeholder="Enter date time"/>
+                <label for="startDateTime">startDateTime</label>
+                <input type="datetime-local" th:field="*{startDateTime}" class="form-control" id="startDateTime" placeholder="Enter date time"/>
             </div>
             <div class="form-group">
                 <label for="duration">duration</label>

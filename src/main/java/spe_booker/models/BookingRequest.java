@@ -14,7 +14,7 @@ public class BookingRequest {
     private Long id;
 
     @NotNull
-    private Date dateTime;
+    private Date startDateTime;
 
     @NotNull
     private Long duration;
@@ -48,16 +48,22 @@ public class BookingRequest {
 
     public void setBuilding(String building) {this.building = building; }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getStartDateTime() {
+        return startDateTime;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setStartDateTime(Date dateTime) {
+        this.startDateTime = startDateTime;
     }
 
     public Long getDuration() { return duration; }
 
     public void setDuration(Long duration) { this.duration = duration; }
+
+    public Date getEndDateTime () {
+        Date endDateTime = new Date();
+        endDateTime.setTime(this.startDateTime.getTime() + (this.duration * 3600000));
+        return endDateTime;
+    }
 
 }

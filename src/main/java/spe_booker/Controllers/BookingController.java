@@ -77,16 +77,16 @@ public class BookingController {
 
     @PostMapping("/booking/add2")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
-        System.out.print("########1 - " + bookingRequest.getDateTime() + "#####\n");
+        System.out.print("########1 - " + bookingRequest.getStartDateTime() + "#####\n " + bookingRequest.getDuration() + " \n");
         redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
         return "redirect:/booking/add2/room";
     }
 
     @GetMapping(value = {"/booking/add2/room"})
     public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndDuration, Model model) {
-        System.out.print("########2 - " + bookingRequestDateAndDuration.getDateTime());
+        System.out.print("########2 - " + bookingRequestDateAndDuration.getStartDateTime() + " - ####\n");
         model.addAttribute("bookingRequestDateAndDuration", bookingRequestDateAndDuration);
-//        model.addAttribute("rooms", roomService.findAvailable(bookingRequestDateAndDuration.getDateTime(), bookingRequestDateAndDuration.getDuration()));
+        model.addAttribute("rooms", roomService.findAvailable(bookingRequestDateAndDuration.getStartDateTime(), bookingRequestDateAndDuration.getEndDateTime()));
         return "make_booking_room";
     }
 

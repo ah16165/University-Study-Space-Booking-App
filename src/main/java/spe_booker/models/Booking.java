@@ -23,7 +23,6 @@ public class Booking {
     @NotNull
     private Date endDateTime;
 
-
     @NotNull
     @ManyToOne(cascade = CascadeType.ALL)
     private Room room;

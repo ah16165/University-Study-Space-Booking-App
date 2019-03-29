@@ -45,9 +45,7 @@ public class BookingService {
     }
 
     public Booking createBookingFromBookingRequest(BookingRequest bookingRequest, User user, Room room){
-        Date endDateTime = new Date();
-        endDateTime.setTime(bookingRequest.getDateTime().getTime() + (bookingRequest.getDuration() * 3600000));
-        return createBooking(user, bookingRequest.getDateTime(), endDateTime, bookingRequest.getId(), room);
+        return createBooking(user, bookingRequest.getStartDateTime(), bookingRequest.getEndDateTime(), bookingRequest.getId(), room);
     }
 
     public Booking saveBooking(Booking booking) {

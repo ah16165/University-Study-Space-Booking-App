@@ -1,13 +1,8 @@
 package spe_booker.models;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
-import static javax.persistence.TemporalType.TIMESTAMP;
 
 
 @Entity
@@ -24,11 +19,11 @@ public class Booking {
     private Date endDateTime;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Room room;
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
     private Date creationDate;

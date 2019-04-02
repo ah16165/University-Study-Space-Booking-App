@@ -10,33 +10,39 @@
 <div th:replace="fragments/header :: header">&nbsp;</div>
 
 
-
 <div class="container-fluid pt-1">
-  <h2>Users:</h2>
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>ID</th>
-          <th>Email</th>
-          <th>Faculty</th>
-          <th>Role</th>
-          <th>Info</th>
-        </tr>
-      </thead>
-      <tr th:each="user: ${users}">
-        <td><span th:text="${user.getName()}"/></td>
-        <td><span th:text="${user.getId()}"/></td>
-        <td><span th:text="${user.getUsername()}"/></td>
-        <td><span th:text="${user.getFaculty()}"/></td>
-        <td><span th:text="${user.getRole()}"/></td>
-        <td><a th:href="@{'/user/' + ${user.getId()}}">
-          <span class="typcn typcn-info text-danger"></span></a>
-        </td>
-      </tr>
-    </table>
-  </div>
+    <div th:if="${users.isEmpty()}" class="container text-center">
+        <h2 class="pt-5 pb-3">There are no users</h2>
+        <a href="/home" class="btn btn-danger text-center">Take me home</a>
+    </div>
+
+    <div th:unless="${users.isEmpty()}" class="container">
+    <h2>Users:</h2>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Faculty</th>
+                <th>Role</th>
+                <th>Info</th>
+            </tr>
+            </thead>
+            <tr th:each="user: ${users}">
+                <td><span th:text="${user.getName()}"/></td>
+                <td><span th:text="${user.getId()}"/></td>
+                <td><span th:text="${user.getUsername()}"/></td>
+                <td><span th:text="${user.getFaculty()}"/></td>
+                <td><span th:text="${user.getRole()}"/></td>
+                <td><a th:href="@{'/user/' + ${user.getId()}}">
+                    <span class="typcn typcn-info text-danger"></span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
 </div>
 
 

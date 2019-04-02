@@ -25,32 +25,35 @@
                     <span th:text="${bookingRequest.getDuration()}"/>
                 </div>
             </div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Building</th>
-                    <th>Room</th>
-                    <th>Capacity</th>
-                    <th>Confirm Booking</th>
-                </tr>
-                </thead>
-                <tr th:each="room: ${rooms}">
 
-                    <td><span th:text="${room.roomNo}"/></td>
+            <div th:if="${rooms.isEmpty()}" class="container text-center">
+                <h2 class="pt-5 pb-3">There are no available rooms at this time</h2>
+                <a href="/booking/add2" class="btn btn-danger text-center">Select a different date and time</a>
+            </div>
 
-                    <td><span th:text="${room.building}"/></td>
-
-                    <td><span th:text="${room.capacity}"/></td>
-
-                    <td>
-                        <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
-                              th:object="${bookingRequest}" method="post">
-                            <button type="submit" class="btn btn-danger btn-block">select</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-
+            <div th:unless="${rooms.isEmpty()}"class="container-fluid">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Building</th>
+                        <th>Room</th>
+                        <th>Capacity</th>
+                        <th>Confirm Booking</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="room: ${rooms}">
+                        <td><span th:text="${room.roomNo}"/></td>
+                        <td><span th:text="${room.building}"/></td>
+                        <td><span th:text="${room.capacity}"/></td>
+                        <td>
+                            <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
+                                  th:object="${bookingRequest}" method="post">
+                                <button type="submit" class="btn btn-danger btn-block">select</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>

@@ -26,7 +26,8 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Date Time</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Length</th>
                         <th>RoomNo</th>
                         <th>Building</th>
@@ -35,7 +36,8 @@
                     </tr>
                     </thead>
                     <tr th:each="booking: ${bookings}">
-                        <td><span th:text="${booking.getStartDateTime()}"/></td>
+                        <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
+                        <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'HH:mm')}"/> </td>
                         <td><span th:text="${booking.getDuration()}"/></td>
                         <td><span th:text="${booking.room.getRoomNo()}"/></td>
                         <td><span th:text="${booking.room.getBuilding()}"/></td>

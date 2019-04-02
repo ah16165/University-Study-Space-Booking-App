@@ -9,36 +9,35 @@
 
 <div th:replace="fragments/header :: header">&nbsp;</div>
 
-<div class="container pt-1">
+<div class="container-fluid pt-1">
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
             <h3>Select a Room:</h3>
-            <div class="row">
-                <div class="col-2">Date:</div>
+            <div class="form-group row">
+                <label for="startDateTime" class="col-2 col-form-label">Date and Time:</label>
                 <div class="col-10">
-                    <span th:text="${bookingRequest.getStartDateTime()}"/>
+                    <input disabled class="form-control" type="text" th:value="${#dates.format(bookingRequest.getStartDateTime(), 'dd/MM/yyyy, HH:mm')}" id="startDateTime">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-2">Duration:</div>
+            <div class="form-group row">
+                <label for="duration" class="col-2 col-form-label">Duration (Hours)</label>
                 <div class="col-10">
-                    <span th:text="${bookingRequest.getDuration()}"/>
+                    <input disabled type="text" th:value="${bookingRequest.getDuration()}" class="form-control" id="duration"/>
                 </div>
             </div>
-
             <div th:if="${rooms.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no available rooms at this time</h2>
                 <a href="/booking/add2" class="btn btn-danger text-center">Select a different date and time</a>
             </div>
 
-            <div th:unless="${rooms.isEmpty()}"class="container-fluid">
+            <div th:unless="${rooms.isEmpty()}" class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>Building</th>
                         <th>Room</th>
                         <th>Capacity</th>
-                        <th>Confirm Booking</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tr th:each="room: ${rooms}">
@@ -46,10 +45,66 @@
                         <td><span th:text="${room.building}"/></td>
                         <td><span th:text="${room.capacity}"/></td>
                         <td>
-                            <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
-                                  th:object="${bookingRequest}" method="post">
-                                <button type="submit" class="btn btn-danger btn-block">select</button>
-                            </form>
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                Select
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirm Booking</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tr>
+                                                        <th>Room Number</th>
+                                                        <td><span th:text="${room.roomNo}"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Building</th>
+                                                        <td><span th:text="${room.building}"/></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <th>Capacity</th>
+                                                        <td><span th:text="${room.roomNo}"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <td><span
+                                                                th:text="${#dates.format(bookingRequest.getStartDateTime(), 'dd-MMMMM-yyyy')}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Time</th>
+                                                        <td><span
+                                                                th:text="${#dates.format(bookingRequest.getStartDateTime(), 'HH:mm')}"/>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Duration</th>
+                                                        <td><span
+                                                                th:text="${bookingRequest.getDuration()} + ' hour(s)'"/>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
+                                                  th:object="${bookingRequest}" method="post">
+                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </table>

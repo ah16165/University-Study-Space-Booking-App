@@ -22,7 +22,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
+@SessionAttributes("bookingRequest")
 public class BookingController {
 
     private static final Logger LOG = LoggerFactory.getLogger(BookingController.class);
@@ -41,7 +43,7 @@ public class BookingController {
     @GetMapping(value = {"/bookings"})
     public String viewBookings(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.getCurrentUser());
+        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.getCurrentUser().get());
         model.addAttribute("bookings", currentUserBookings);
         return "view_bookings";
     }
@@ -50,7 +52,7 @@ public class BookingController {
     @GetMapping(value = {"/user/{username}/bookings"})
     public String viewBookingsForuser(@PathVariable String username, Model model) {
         LOG.info("Listing bookings for a specific user\n");
-        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.findByUsername(username));
+        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.findByUsername(username).get());
         model.addAttribute("bookings", currentUserBookings);
         return "view_bookings";
     }
@@ -83,11 +85,33 @@ public class BookingController {
     }
 
     @GetMapping(value = {"/booking/add2/room"})
-    public String makebookingRoom(@ModelAttribute("bookingRequest") final BookingRequest bookingRequestDateAndDuration, Model model) {
-        System.out.print("########2 - " + bookingRequestDateAndDuration.getStartDateTime() + " - ####\n");
-        model.addAttribute("bookingRequestDateAndDuration", bookingRequestDateAndDuration);
-        model.addAttribute("rooms", roomService.findAvailable(bookingRequestDateAndDuration.getStartDateTime(), bookingRequestDateAndDuration.getEndDateTime()));
+    public String makebookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, Model model) {
+        System.out.print("########2 - " + bookingRequest.getStartDateTime() + " - ####\n");
+        model.addAttribute("bookingRequestDateAndDuration", bookingRequest);
+        model.addAttribute("rooms", roomService.findAvailable(bookingRequest.getStartDateTime(), bookingRequest.getEndDateTime()));
         return "make_booking_room";
+    }
+
+    @PostMapping("/booking/add2/room/{building}/{roomNo}")
+    public String submitBookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, @PathVariable String building, @PathVariable String roomNo, Model model){
+        System.out.print("###5 Booking " + bookingRequest.getDuration() + " - " + "\n");
+        bookingRequest.setBuilding(building);
+        bookingRequest.setRoomNo(roomNo);
+
+        User user = userService.getCurrentUser().get();
+        if (user.getBlacklisted()){
+            System.out.print("Blacklisted user attempted to make booking, but was blocked.");
+            return "/error/error";
+        } else {
+            Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
+            if (room.isPresent()){
+                Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
+                return "redirect:/booking/" + booking1.getId();
+            } else {
+                System.out.print("Room not found for booking creation.\n");
+                return "/error/error-400";
+            }
+        }
     }
 
 
@@ -99,7 +123,7 @@ public class BookingController {
 
     @PostMapping("/booking")
     public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
-        User user = userService.getCurrentUser();
+        User user = userService.getCurrentUser().get();
         if (user.getBlacklisted()){
             System.out.print("Blacklisted user attempted to make booking, but was blocked.");
             return "/error/error";
@@ -122,7 +146,7 @@ public class BookingController {
         Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
             bookingService.deleteById(id);
-            return "view_bookings";
+            return "redirect:/bookings";
         } else {
             System.out.print("####Booking not present!");
             return "/error/error";

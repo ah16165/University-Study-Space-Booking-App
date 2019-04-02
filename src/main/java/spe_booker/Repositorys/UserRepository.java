@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
     User findByName(String name);
 }

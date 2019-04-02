@@ -29,13 +29,13 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User getCurrentUser() {
+    public Optional<User> getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return findByUsername(username);
     }
 
-    public User findByUsername(String email) {
+    public Optional<User> findByUsername(String email) {
         return userRepository.findByUsername(email);
     }
 

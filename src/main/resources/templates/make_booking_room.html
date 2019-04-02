@@ -13,48 +13,47 @@
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
             <h3>Select a Room:</h3>
-            <form action="#" th:action="@{/makebookingRoom}" th:object="${bookingRequest}" method="post">
-                <div class="row">
-                    <div class="col-2">Date:</div>
-                    <div class="col-10">
-                        <span th:text="${bookingRequestDateAndDuration.getStartDateTime()}" />
-                    </div>
+            <div class="row">
+                <div class="col-2">Date:</div>
+                <div class="col-10">
+                    <span th:text="${bookingRequest.getStartDateTime()}"/>
                 </div>
-                <div class="row">
-                    <div class="col-2">Duration:</div>
-                    <div class="col-10">
-                        <span th:text="${bookingRequestDateAndDuration.getDuration()}"/>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-2">Duration:</div>
+                <div class="col-10">
+                    <span th:text="${bookingRequest.getDuration()}"/>
                 </div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Building</th>
-                        <th>Room</th>
-                        <th>Capacity</th>
-                    </tr>
-                    </thead>
-                    <tr onclick="document.location = 'viewroom';">
-                        <td>Queens</td>
-                        <td>1.34</td>
-                        <td>6</td>
-                    </tr>
-                    </a>
-                    <tr th:each="room: ${rooms}">
+            </div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Building</th>
+                    <th>Room</th>
+                    <th>Capacity</th>
+                    <th>Confirm Booking</th>
+                </tr>
+                </thead>
+                <tr th:each="room: ${rooms}">
 
-                        <td><span th:text="${room.roomNo}"/></td>
+                    <td><span th:text="${room.roomNo}"/></td>
 
-                        <td><span th:text="${room.building}"/></td>
+                    <td><span th:text="${room.building}"/></td>
 
-                        <td><span th:text="${room.capacity}"/></td>
-                    </tr>
-                </table>
-                <button type="submit" class="btn btn-danger btn-block">Submit</button>
-            </form>
+                    <td><span th:text="${room.capacity}"/></td>
+
+                    <td>
+                        <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
+                              th:object="${bookingRequest}" method="post">
+                            <button type="submit" class="btn btn-danger btn-block">select</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </div>
 </div>
-
 
 
 <div th:replace="fragments/footer :: footer">...</div>

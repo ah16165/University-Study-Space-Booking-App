@@ -12,6 +12,8 @@ import spe_booker.models.User;
 import spe_booker.Services.UserService;
 import org.springframework.ui.Model;
 
+import java.util.Optional;
+
 @Controller
 public class WebController extends WebMvcConfigurerAdapter {
 
@@ -35,8 +37,9 @@ public class WebController extends WebMvcConfigurerAdapter {
 
     @RequestMapping("/home")
     public String home(Model model) {
-        User user = userService.getCurrentUser();
-        if (user.getBlacklisted()) {
+        Optional<User> user = userService.getCurrentUser();
+        if (!user.isPresent()) {System.out.print("USER NOT FOUND AAAAA");}
+        if (user.get().getBlacklisted()) {
             model.addAttribute("blacklisted", true);
         } else {
             model.addAttribute("blacklisted", false);

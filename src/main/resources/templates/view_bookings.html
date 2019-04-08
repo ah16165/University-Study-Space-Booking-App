@@ -14,49 +14,113 @@
 <div class="container-fluid pt-1">
     <div class="row">
         <div class="col-md-8 col-12 mx-auto">
-
             <div th:if="${bookings.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">You haven't made any bookings yet</h2>
                 <a href="/booking/add2" class="btn btn-danger text-center">Make a Booking</a>
             </div>
-
             <div th:unless="${bookings.isEmpty()}">
-            <h2>Bookings:</h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Length</th>
-                        <th>RoomNo</th>
-                        <th>Building</th>
-                        <th sec:authorize="hasAuthority('admin')">User</th>
-                        <th>Info</th>
-                    </tr>
-                    </thead>
-                    <tr th:each="booking: ${bookings}">
-                        <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
-                        <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'HH:mm')}"/> </td>
-                        <td><span th:text="${booking.getDuration()}"/></td>
-                        <td><span th:text="${booking.room.getRoomNo()}"/></td>
-                        <td><span th:text="${booking.room.getBuilding()}"/></td>
-                        <td sec:authorize="hasAuthority('admin')"><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
-                            <span th:text="${booking.getUser().getUsername()}"/>
-                        </a>
-                        </td>
-                        <td><a th:href="@{'/booking/' + ${booking.getId()}}">
-                            <span class="typcn typcn-info text-danger"></span></a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
+                <h2>Bookings:</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Length</th>
+                            <th>RoomNo</th>
+                            <th>Building</th>
+                            <th sec:authorize="hasAuthority('admin')">User</th>
+                            <th>Info</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="booking: ${bookings}">
+                            <td><span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/></td>
+                            <td><span th:text="${#dates.format(booking.getStartDateTime(), 'HH:mm')}"/></td>
+                            <td><span th:text="${booking.getDuration()}"/></td>
+                            <td><span th:text="${booking.room.getRoomNo()}"/></td>
+                            <td><span th:text="${booking.room.getBuilding()}"/></td>
+                            <td sec:authorize="hasAuthority('admin')">
+                                <a th:href="@{'/user/' + ${booking.getUser().getId()}}">
+                                    <span th:text="${booking.getUser().getUsername()}"/>
+                                </a>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                        data-target="#exampleModal">
+                                    <span class="typcn typcn-info-large text-white"></span>
+                                </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Booking:</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-borderless">
+                                                        <tr>
+                                                            <th>Building:</th>
+                                                            <td><span th:text="${booking.getRoom().getBuilding()}"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Room Number:</th>
+                                                            <td><span th:text="${booking.getRoom().getRoomNo()}"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Date:</th>
+                                                            <td><span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Duration:</th>
+                                                            <td><span th:text="${booking.getDuration()}"/> hour(s)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Room Capacity:</th>
+                                                            <td><span th:text="${booking.getRoom().getCapacity()}"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Creation Date:</th>
+                                                            <td><span th:text="${#dates.format(booking.getCreationDate(), 'dd-MMMMM-yyyy')}"/></td>
+                                                        </tr>
+                                                        <tr sec:authorize="hasAuthority('admin')">
+                                                            <th>User:</th>
+                                                            <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
+                                                                <span th:text="${booking.getUser().getUsername()}"/></a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <div class="container-fluid">
+                                                        <button class="btn btn-danger text-center btn-block" data-toggle="collapse"
+                                                                data-target="#collapsible1">Cancel Booking
+                                                        </button>
+                                                        <div id="collapsible1" class="collapse">
+                                                            <div class="container-fluid">
+                                                                <p class="pt-3">Are you sure you want to cancel?</p>
+                                                                <form action="#" th:action="@{'/booking/delete/' + ${booking.getId()}}" method="post">
+                                                                    <button type="submit" class="btn btn-danger text-center btn-block">Yes, cancel this
+                                                                        booking.
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <div th:replace="fragments/footer :: footer">...</div>

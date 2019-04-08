@@ -10,76 +10,79 @@
 
 <div th:replace="fragments/header :: header">&nbsp;</div>
 
-  <div class="container-fluid pt-3">
+<div class="container-fluid pt-3">
     <div class="row">
-      <div class="col-md-6 col-12 mx-auto">
-        <div class="card">
-          <div class="card-head bd-danger text-white">
-            <div class="container-fluid bg-danger text-white">
-              <h3 class="py-2">
-                Booking:
-                <a href="/bookings"><span class="typcn typcn-delete text-white float-right"
-                                       aria-hidden="true"></span></a>
-              </h3>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="container-fluid">
-              <table class="table">
-                <tr>
-                  <th>Building:</td>
-                    <td><span th:text="${booking.getRoom().getBuilding()}"/></td>
-                  </tr>
-                  <tr>
-                    <th>Room Number:</th>
-                    <td> <span th:text="${booking.getRoom().getRoomNo()}"/>  </td>
-                  </tr>
-                  <tr>
-                    <th>Date</th>
-                    <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/> </td>
-                  </tr>
-                  <tr>
-                    <th>Time</th>
-                    <td> <span th:text="${#dates.format(booking.getStartDateTime(), 'HH:mm')}"/> </td>
-                  </tr>
-                  <tr>
-                    <th>Duration:</th>
-                    <td> <span th:text="${booking.getDuration()}"/> hour(s)</td>
-                  </tr>
-                  <tr>
-                    <th>Room Capacity:</th>
-                    <td> <span th:text="${booking.getRoom().getCapacity()}"/> </td>
-                  </tr>
-                  <tr>
-                    <th>Creation Date:</th>
-                    <td> <span th:text="${#dates.format(booking.getCreationDate(), 'dd-MMMMM-yyyy')}"/> </td>
-                  </tr>
+        <div class="col-md-6 col-12 mx-auto">
+            <div class="card">
+                <div class="card-head bd-danger text-white">
+                    <div class="container-fluid bg-danger text-white">
+                        <h3 class="py-2">
+                            Booking:
+                            <a href="/bookings"><span class="typcn typcn-delete text-white float-right"
+                                                      aria-hidden="true"></span></a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <table class="table">
+                            <tr>
+                                <th>Building:</th>
+                                <td><span th:text="${booking.getRoom().getBuilding()}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Room Number:</th>
+                                <td><span th:text="${booking.getRoom().getRoomNo()}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td><span th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Time</th>
+                                <td><span th:text="${#dates.format(booking.getStartDateTime(), 'HH:mm')}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Duration:</th>
+                                <td><span th:text="${booking.getDuration()}"/> hour(s)</td>
+                            </tr>
+                            <tr>
+                                <th>Room Capacity:</th>
+                                <td><span th:text="${booking.getRoom().getCapacity()}"/></td>
+                            </tr>
+                            <tr>
+                                <th>Creation Date:</th>
+                                <td><span th:text="${#dates.format(booking.getCreationDate(), 'dd-MMMMM-yyyy')}"/></td>
+                            </tr>
 
-                  <span sec:authorize="hasAuthority('admin')">
-                    <tr>
-                      <th>User:</th>
-                      <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
-                            <span th:text="${booking.getUser().getUsername()}"/></a>
-                      </td>
-                    </tr>
-                  </span>
-
-                </table>
-              </div>
-              <div class="container">
-                <button class="btn btn-danger text-center btn-block" data-toggle="collapse" data-target="#collapsible1">Cancel Booking</button>
-                <div id="collapsible1" class="collapse">
-                  <div class="container">
-                    <p class="pt-3">Are you sure you want to cancel?</p>
-                    <form action="#" th:action="@{'/booking/delete/' + ${booking.getId()}}" method="post">
-                      <button type="submit" class="btn btn-danger text-center btn-block">Yes, cancel this booking.</button>
-                    </form>
-                  </div>
-              </div>
+                            <span sec:authorize="hasAuthority('admin')">
+                                <tr>
+                                    <th>User:</th>
+                                    <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
+                                        <span th:text="${booking.getUser().getUsername()}"/></a>
+                                    </td>
+                                </tr>
+                             </span>
+                        </table>
+                    </div>
+                    <div class="container">
+                        <button class="btn btn-danger text-center btn-block" data-toggle="collapse"
+                                data-target="#collapsible1">Cancel Booking
+                        </button>
+                        <div id="collapsible1" class="collapse">
+                            <div class="container">
+                                <p class="pt-3">Are you sure you want to cancel?</p>
+                                <form action="#" th:action="@{'/booking/delete/' + ${booking.getId()}}" method="post">
+                                    <button type="submit" class="btn btn-danger text-center btn-block">Yes, cancel this
+                                        booking.
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
     <div th:replace="fragments/footer :: footer">...</div>
 </body>

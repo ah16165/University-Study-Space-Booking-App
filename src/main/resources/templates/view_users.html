@@ -40,11 +40,11 @@
                             <td><span th:text="${user.getRole()}"/></td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#exampleModal">
+                                        data-target="#userModal" th:attrappend="data-target=${user.getId()}">
                                     <span class="typcn typcn-info-large text-white"></span>
                                 </button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="userModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="userModalLabel" aria-hidden="true" th:attrappend="id=${user.getId()}">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -148,7 +148,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

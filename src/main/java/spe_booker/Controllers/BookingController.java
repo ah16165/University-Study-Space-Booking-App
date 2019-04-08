@@ -18,6 +18,7 @@ import spe_booker.models.Room;
 import spe_booker.models.User;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -43,8 +44,13 @@ public class BookingController {
     @GetMapping(value = {"/bookings"})
     public String viewBookings(Model model) {
         LOG.info("Listing bookings for viewbookings");
-        List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.getCurrentUser().get());
-        model.addAttribute("bookings", currentUserBookings);
+        List<Booking> bookings = new ArrayList<>();
+        if (userService.getCurrentUser().get().isAdmin()){
+            bookings.addAll(bookingService.findAll());
+        } else {
+            bookings.addAll(bookingService.findBookingsByUser(userService.getCurrentUser().get()));
+        }
+        model.addAttribute("bookings", bookings);
         return "view_bookings";
     }
 
@@ -106,12 +112,17 @@ public class BookingController {
             Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
             if (room.isPresent()){
                 Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
-                return "redirect:/booking/" + booking1.getId();
+                return "redirect:/booking/confirmed";
             } else {
                 System.out.print("Room not found for booking creation.\n");
                 return "/error/error-400";
             }
         }
+    }
+
+    @GetMapping("/booking/confirmed")
+    public String bookingConfirmed(){
+        return "booking_confirmed";
     }
 
 

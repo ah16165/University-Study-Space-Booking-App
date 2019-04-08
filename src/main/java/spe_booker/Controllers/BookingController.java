@@ -27,10 +27,7 @@ import java.util.Optional;
 @Controller
 @SessionAttributes("bookingRequest")
 public class BookingController {
-
     private static final Logger LOG = LoggerFactory.getLogger(BookingController.class);
-
-
     @Autowired
     private UserService userService;
 
@@ -157,11 +154,16 @@ public class BookingController {
         Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
             bookingService.deleteById(id);
-            return "redirect:/bookings";
+            return "redirect:/booking/cancelled";
         } else {
             System.out.print("####Booking not present!");
             return "/error/error";
         }
+    }
+
+    @GetMapping("/booking/cancelled")
+    public String bookingCancelled(){
+        return "booking_cancelled";
     }
 
     //Called automatically when building the model

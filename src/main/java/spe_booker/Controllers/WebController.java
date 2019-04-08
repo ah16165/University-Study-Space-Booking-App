@@ -38,13 +38,17 @@ public class WebController extends WebMvcConfigurerAdapter {
     @RequestMapping("/home")
     public String home(Model model) {
         Optional<User> user = userService.getCurrentUser();
-        if (!user.isPresent()) {System.out.print("USER NOT FOUND AAAAA");}
-        if (user.get().getBlacklisted()) {
-            model.addAttribute("blacklisted", true);
+        if (!user.isPresent()) {
+            System.out.print("USER NOT FOUND AAAAA");
+            return "/";
         } else {
-            model.addAttribute("blacklisted", false);
+            if (user.get().getBlacklisted()) {
+                model.addAttribute("blacklisted", true);
+            } else {
+                model.addAttribute("blacklisted", false);
+            }
+            return "home";
         }
-        return "home";
     }
 
 

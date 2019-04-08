@@ -63,11 +63,16 @@ public class UserController {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             userService.deleteById(id);
-            return "redirect:/users";
+            return "redirect:/user/deleted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
+    }
+
+    @GetMapping("/user/deleted")
+    public String userDeleted(){
+        return "user_deleted";
     }
 
     @PostMapping(value = {"/user/blacklist/{id}"})
@@ -77,11 +82,16 @@ public class UserController {
         if (user.isPresent()){
             user.get().setBlacklisted(true);
             userService.save(user.get());
-            return "redirect:/user/" + user.get().getId();
+            return "redirect:/user/blacklisted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
+    }
+
+    @GetMapping("/user/blacklisted")
+    public String userBlacklisted(){
+        return "user_blacklisted";
     }
 
 
@@ -92,11 +102,18 @@ public class UserController {
         if (user.isPresent()){
             user.get().setBlacklisted(false);
             userService.save(user.get());
-            return "redirect:/user/" + user.get().getId();
+            return "redirect:/user/unblacklisted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
     }
+
+    @GetMapping("/user/unblacklisted")
+    public String userUnblacklisted(){
+        return "user_unblacklisted";
+    }
+
+
 
 }

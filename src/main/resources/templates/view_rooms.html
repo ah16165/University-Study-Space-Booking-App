@@ -40,11 +40,11 @@
 
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModal">
+                                    data-target="#exampleModal" th:attrappend="data-target=${room.getId()}">
                                 <span class="typcn typcn-info-large text-white"></span>
                             </button>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

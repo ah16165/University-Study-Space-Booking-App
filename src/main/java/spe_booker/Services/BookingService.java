@@ -65,6 +65,8 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
+    public List<Booking> findAll() { return bookingRepository.findAll(); }
+
 //    public List<Booking> getBookingsInLastWeek(){
 //        Date currentDate = new Date();
 //        Date lastWeek = new Date();

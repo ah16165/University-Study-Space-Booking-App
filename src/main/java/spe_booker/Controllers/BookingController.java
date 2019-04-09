@@ -74,17 +74,48 @@ public class BookingController {
         }
     }
 
+    Date roundToNextHour(Date datetime){
+        long resultLong = Math.round((datetime.getTime() / 3600000) + 0.5) * 3600000;
+        Date resultDate = new Date();
+        resultDate.setTime(resultLong);
+        return resultDate;
+
+    }
+
     @GetMapping("/booking/add")
     public String makeBooking(Model model) {
-        model.addAttribute("bookingRequest", new BookingRequest());
+        BookingRequest bookingRequest = new BookingRequest();
+        Date currentDateTime = new Date();
+        Date nextHour = roundToNextHour(currentDateTime);
+        bookingRequest.setStartDateTime(nextHour);
+        bookingRequest.setDuration((long) 2);
+        model.addAttribute("bookingRequest", bookingRequest);
         return "make_booking";
+    }
+
+    private Boolean isDateInPast(Date date){
+        Date currentDate = new Date();
+        return (date.getTime() < currentDate.getTime());
+    }
+
+    private Boolean isDateMoreThanTwoWeeksAway(Date date){
+        Date currentDate = new Date();
+        return (date.getTime() > (currentDate.getTime() + 1209600000 ));
     }
 
     @PostMapping("/booking/add")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
         System.out.print("########1 - " + bookingRequest.getStartDateTime() + "#####\n " + bookingRequest.getDuration() + " \n");
-        redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
-        return "redirect:/booking/add/room";
+        Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
+        Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
+        if (dateInPast || dateMoreThanTwoWeeksAway){
+            redirectAttributes.addFlashAttribute("dateInPast", dateInPast);
+            redirectAttributes.addFlashAttribute("dateMoreThanTwoWeeksAway", dateMoreThanTwoWeeksAway);
+            return "redirect:/booking/add";
+        } else {
+            redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
+            return "redirect:/booking/add/room";
+        }
     }
 
     @GetMapping(value = {"/booking/add/room"})

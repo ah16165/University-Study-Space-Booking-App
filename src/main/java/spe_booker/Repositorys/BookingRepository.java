@@ -2,6 +2,7 @@ package spe_booker.Repositorys;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import spe_booker.models.Booking;
 import spe_booker.models.User;
 
@@ -11,4 +12,7 @@ import java.util.List;
 public interface BookingRepository extends CrudRepository<Booking, Long> {
     List<Booking> findAll();
     List<Booking> findBookingsByUser(User user);
+
+    @Transactional
+    void deleteAllByUser(User user);
 }

@@ -81,4 +81,8 @@ public class BookingService {
 //        }
 //    }
 
+    public void deleteAllByUser(User user){
+        bookingRepository.deleteAllByUser(user);
+    }
+
 }

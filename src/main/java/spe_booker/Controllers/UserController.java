@@ -62,7 +62,7 @@ public class UserController {
         LOG.info("Deleting user: "+ id+ "\n");
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
-            userService.deleteById(id);
+            userService.deleteUser(user.get());
             return "redirect:/user/deleted";
         } else {
             System.out.print("####User not present!");

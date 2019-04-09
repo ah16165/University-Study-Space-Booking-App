@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.UserRepository;
+import spe_booker.models.Booking;
 import spe_booker.models.User;
 
 import java.util.ArrayList;
@@ -20,11 +21,14 @@ public class UserService {
 
     private UserRepository userRepository;
 
+    private BookingService bookingService;
+
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserService(UserRepository userRepository, BookingService bookingService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bookingService = bookingService;
 
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -76,8 +80,10 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public void deleteById(Long id){
-        userRepository.deleteById(id);
+    public void deleteUser(User user){
+        System.out.print("# Username = " + user.getUsername() + "\n");
+        bookingService.deleteAllByUser(user);
+        userRepository.delete(user);
     }
 
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head></head>
+<body>
+
+<div th:fragment="room_modal" th:remove="tag">
+
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Room:</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>Building:</th>
+                            <td><span th:text="${room.getBuilding()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Room:</th>
+                            <td><span th:text="${room.getRoomNo()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Capacity:</th>
+                            <td><span th:text="${room.getCapacity()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>ID:</th>
+                            <td><span th:text="${room.getId()}"/></td>
+                        </tr>
+                        <tr sec:authorize="hasAuthority('admin')">
+                            <th>Number of Bookings:</th>
+                            <td>
+                                <span th:text="${room.getBookings().size()}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

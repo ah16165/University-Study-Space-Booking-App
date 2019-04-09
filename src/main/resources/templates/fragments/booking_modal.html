@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head></head>
+<body>
+
+<div th:fragment="booking_modal" th:remove="tag">
+
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">User:</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>Building:</th>
+                            <td><span th:text="${booking.getRoom().getBuilding()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Room Number:</th>
+                            <td><span th:text="${booking.getRoom().getRoomNo()}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Date:</th>
+                            <td><span
+                                    th:text="${#dates.format(booking.getStartDateTime(), 'dd-MMMMM-yyyy')}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Duration:</th>
+                            <td><span th:text="${booking.getDuration()}"/> hour(s)</td>
+                        </tr>
+                        <tr>
+                            <th>Room Capacity:</th>
+                            <td><span th:text="${booking.getRoom().getCapacity()}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Creation Date:</th>
+                            <td><span
+                                    th:text="${#dates.format(booking.getCreationDate(), 'dd-MMMMM-yyyy')}"/>
+                            </td>
+                        </tr>
+                        <tr sec:authorize="hasAuthority('admin')">
+                            <th>User:</th>
+                            <td><a th:href="@{'/user/' + ${booking.getUser().getId()}}">
+                                <span th:text="${booking.getUser().getUsername()}"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="container-fluid">
+                        <button class="btn btn-danger text-center btn-block"
+                                data-toggle="collapse"
+                                data-target="#collapsible1">Cancel Booking
+                        </button>
+                        <div id="collapsible1" class="collapse">
+                            <div class="container-fluid">
+                                <p class="pt-3">Are you sure you want to cancel?</p>
+                                <form action="#"
+                                      th:action="@{'/booking/delete/' + ${booking.getId()}}"
+                                      method="post">
+                                    <button type="submit"
+                                            class="btn btn-danger text-center btn-block">
+                                        Yes, cancel this
+                                        booking.
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

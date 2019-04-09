@@ -16,7 +16,7 @@
         <div class="col-md-8 col-12 mx-auto">
             <div th:if="${bookings.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">You haven't made any bookings yet</h2>
-                <a href="/booking/add2" class="btn btn-danger text-center">Make a Booking</a>
+                <a href="/booking/add" class="btn btn-danger text-center">Make a Booking</a>
             </div>
             <div th:unless="${bookings.isEmpty()}">
                 <h2>Bookings:</h2>

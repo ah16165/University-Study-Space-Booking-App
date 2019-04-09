@@ -27,7 +27,7 @@
             </div>
             <div th:if="${rooms.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no available rooms at this time</h2>
-                <a href="/booking/add2" class="btn btn-danger text-center">Select a different date and time</a>
+                <a href="/booking/add" class="btn btn-danger text-center">Select a different date and time</a>
             </div>
 
             <div th:unless="${rooms.isEmpty()}" class="table-responsive">

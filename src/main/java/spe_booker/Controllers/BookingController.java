@@ -74,20 +74,20 @@ public class BookingController {
         }
     }
 
-    @GetMapping("/booking/add2")
+    @GetMapping("/booking/add")
     public String makeBooking(Model model) {
         model.addAttribute("bookingRequest", new BookingRequest());
         return "make_booking";
     }
 
-    @PostMapping("/booking/add2")
+    @PostMapping("/booking/add")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
         System.out.print("########1 - " + bookingRequest.getStartDateTime() + "#####\n " + bookingRequest.getDuration() + " \n");
         redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);
-        return "redirect:/booking/add2/room";
+        return "redirect:/booking/add/room";
     }
 
-    @GetMapping(value = {"/booking/add2/room"})
+    @GetMapping(value = {"/booking/add/room"})
     public String makebookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, Model model) {
         System.out.print("########2 - " + bookingRequest.getStartDateTime() + " - ####\n");
         model.addAttribute("bookingRequestDateAndDuration", bookingRequest);
@@ -95,7 +95,7 @@ public class BookingController {
         return "make_booking_room";
     }
 
-    @PostMapping("/booking/add2/room/{building}/{roomNo}")
+    @PostMapping("/booking/add/room/{building}/{roomNo}")
     public String submitBookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, @PathVariable String building, @PathVariable String roomNo, Model model){
         System.out.print("###5 Booking " + bookingRequest.getDuration() + " - " + "\n");
         bookingRequest.setBuilding(building);
@@ -122,30 +122,6 @@ public class BookingController {
         return "booking_confirmed";
     }
 
-
-    @GetMapping("/booking/add")
-    public String addBooking(Model model) {
-        model.addAttribute("bookingRequest", new BookingRequest());
-        return "booking_form";
-    }
-
-    @PostMapping("/booking")
-    public String submitBooking(@ModelAttribute BookingRequest bookingRequest) {
-        User user = userService.getCurrentUser().get();
-        if (user.getBlacklisted()){
-            System.out.print("Blacklisted user attempted to make booking, but was blocked.");
-            return "/error/error";
-        } else {
-            Optional<Room> room = roomService.findByRoomNoAndBuilding(bookingRequest.getRoomNo(), bookingRequest.getBuilding());
-            if (room.isPresent()){
-                Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
-                return "redirect:/booking/" + booking1.getId();
-            } else {
-                System.out.print("Room not found for booking creation.\n");
-                return "/error/error-400";
-            }
-        }
-    }
 
 
     @PostMapping(value = {"/booking/delete/{id}"})

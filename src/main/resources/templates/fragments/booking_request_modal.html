@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form th:action="@{'/booking/add2/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
+                <form th:action="@{'/booking/add/room/' + ${room.getBuilding()} + '/' + ${room.getRoomNo()}}"
                       th:object="${bookingRequest}" method="post">
                     <button type="submit" class="btn btn-danger">Submit</button>
                 </form>

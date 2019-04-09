@@ -39,28 +39,6 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
-//                .antMatchers("/", "/terms", "/contact").permitAll()
-//                .antMatchers("/api/**").permitAll()
-//                .antMatchers("/home").permitAll()
-//                .antMatchers("/statistics").access("hasAuthority('admin')")
-//                .antMatchers("/students").access("hasAuthority('admin')")
-//                .antMatchers("/student/*").access("hasAuthority('admin')")
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/home", true)
-//                .failureUrl("/login-error")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .logoutSuccessUrl("/")
-//                .permitAll();
-//    }
         http
                 .authorizeRequests()
                     .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
@@ -70,7 +48,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/*").access("hasAuthority('admin')")
                     .anyRequest().authenticated()
                 .and()
-                    .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).failureUrl("/login-error").permitAll()
+                    .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).failureUrl("/login-error.html").permitAll()
                 .and()
                     .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
         ;

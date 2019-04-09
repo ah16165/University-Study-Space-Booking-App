@@ -129,7 +129,7 @@ public class BookingController {
         LOG.info("Deleting booking: "+ id+ "\n");
         Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
-            bookingService.deleteById(id);
+            bookingService.deleteBooking(booking.get());
             return "redirect:/booking/cancelled";
         } else {
             System.out.print("####Booking not present!");

@@ -65,6 +65,10 @@ public class BookingService {
         bookingRepository.deleteById(id);
     }
 
+    public void deleteBooking(Booking booking) {
+        bookingRepository.delete(booking);
+    }
+
     public List<Booking> findAll() { return bookingRepository.findAll(); }
 
 //    public List<Booking> getBookingsInLastWeek(){

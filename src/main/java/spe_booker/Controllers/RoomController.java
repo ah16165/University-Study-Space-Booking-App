@@ -37,14 +37,6 @@ public class RoomController {
         return "redirect:/room/" + room1.getBuilding() + "/" +room1.getRoomNo();
     }
 
-//    @GetMapping(value = {"/room", "/room/{id}"})
-//    public String viewRoom(@PathVariable Optional<Long> id, Model model) {
-//        LOG.info("Listing rooms");
-//        model.addAttribute("rooms", id.map(aLong -> Collections.singletonList(roomRepository.findById(aLong).get()))
-//                .orElseGet(() -> roomRepository.findAll()));
-//        return "room_view";
-//    }
-
     @GetMapping(value = {"/rooms"})
     public String viewRooms(Model model) {
         LOG.info("Listing rooms");

@@ -11,7 +11,7 @@ import spe_booker.SpeBookingApplication;
 public class SpeBookingApplicationTests {
 
     @Test
-    public void contextLoads() {
+    public void contextLoads() throws Exception {
     }
 
 }

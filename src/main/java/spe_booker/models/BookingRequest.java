@@ -10,7 +10,7 @@ public class BookingRequest {
 
     //Maybe remove repeat?
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @NotNull

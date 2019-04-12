@@ -37,8 +37,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpeBookingApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class})
-@ActiveProfiles("test")
-@Transactional
+//@ActiveProfiles("test")
+//@Transactional
 public class SpeBookingApplicationTests {
 
     @Autowired
@@ -59,8 +59,7 @@ public class SpeBookingApplicationTests {
     @Autowired
     private RoomService roomService;
 
-    @Autowired
-    private StatisticsService statService;
+
 
     @Autowired
     private BookingService bookingService;
@@ -102,7 +101,6 @@ public class SpeBookingApplicationTests {
 
         assertThat(userService).isNotNull();
         assertThat(roomService).isNotNull();
-        assertThat(statService).isNotNull();
         assertThat(bookingService).isNotNull();
 
 

@@ -7,7 +7,7 @@ import spe_booker.models.User;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+
 public class StatisticsService {
 
     public List<User> getRoomsAndNoOfBookings(){

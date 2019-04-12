@@ -74,7 +74,7 @@ public class BookingController {
         }
     }
 
-    private Date roundToNextHour(Date datetime){
+     Date roundToNextHour(Date datetime){
         long resultLong = Math.round((datetime.getTime() / 3600000) + 0.5) * 3600000;
         Date resultDate = new Date();
         resultDate.setTime(resultLong);

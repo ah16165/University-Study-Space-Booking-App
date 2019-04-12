@@ -43,8 +43,29 @@
                             </td>
                         </tr>
                     </table>
+                    <div class="container-fluid">
+                        <button class="btn btn-danger text-center btn-block"
+                                data-toggle="collapse"
+                                data-target="#collapsible1">Delete Room
+                        </button>
+                        <div id="collapsible1" class="collapse">
+                            <div class="container-fluid">
+                                <p class="pt-3">Are you sure you want to delete this room?</p>
+                                <form action="#"
+                                      th:action="@{'/room/delete/' + ${room.getId()}}"
+                                      method="post">
+                                    <button type="submit"
+                                            class="btn btn-danger text-center btn-block">
+                                        Yes, delete this
+                                        room.
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 

@@ -50,6 +50,14 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
+    public void deleteRoom(Room room){
+        roomRepository.delete(room);
+    }
+
+    public void deleteById(Long id){
+        roomRepository.deleteById(id);
+    }
+
 //    public List<Pair<Room, Integer>> getRoomsAndNoOfBookings(){
 //        List<Pair<Room, Integer>> roomsAndNoOfBookings = new ArrayList<>();
 //        List<Room> rooms = roomRepository.findAll();

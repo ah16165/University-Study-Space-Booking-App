@@ -27,14 +27,14 @@ public class RoomController {
     @GetMapping("/room/add")
     public String addRoom(Model model) {
         model.addAttribute("room", new Room());
-        return "room_form";
+        return "room_add";
     }
 
-    @PostMapping("/room")
+    @PostMapping("/room/add")
     public String submitRoom(@ModelAttribute Room room) {
         LOG.info("Saving new room with room number " + room.getRoomNo());
         Room room1 = roomService.save(room);
-        return "redirect:/room/" + room1.getBuilding() + "/" +room1.getRoomNo();
+        return "room_added";
     }
 
     @GetMapping(value = {"/rooms"})
@@ -54,6 +54,13 @@ public class RoomController {
         } else {
             return "/error/error";
         }
+
+    }
+
+    @PostMapping(value = {"/room/delete/{id}"})
+    public String deleteUser(@PathVariable Long id){
+        roomService.deleteById(id);
+        return "room_deleted";
 
     }
 

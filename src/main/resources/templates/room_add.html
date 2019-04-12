@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: head (title='Room')">
+</head>
+<body>
+
+
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
+<div class="container-fluid pt-1">
+    <div class="row">
+        <div class="col-md-8 col-12 mx-auto">
+            <h2>Add a Room:</h2>
+            <form action="#" th:action="@{/room/add}" th:object="${room}" method="post">
+                <div class="form-group row">
+                    <label for="roomNo" class="col-2 col-form-label">Room Number</label>
+                    <div class="col-10">
+                        <input type="text" th:field="*{roomNo}" class="form-control" id="roomNo" placeholder="Enter room number"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Building" class="col-2 col-form-label">Building</label>
+                    <div class="col-10">
+                        <input type="text" th:field="*{building}" class="form-control" id="building" placeholder="Enter building"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Capacity" class="col-2 col-form-label">Capacity</label>
+                    <div class="col-10">
+                        <input type="text" th:field="*{capacity}" class="form-control" id="Capacity" placeholder="Enter capacity"/>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>
+

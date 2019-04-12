@@ -1,11 +1,12 @@
 package spe.booker.booker;
 
-
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import spe_booker.*;
 import org.junit.Assert;
@@ -28,12 +29,10 @@ import spe_booker.Services.UserService;
 import spe_booker.models.Booking;
 import spe_booker.models.Room;
 import spe_booker.models.User;
-
 import java.util.Date;
 import java.util.Optional;
-
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpeBookingApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -87,6 +86,7 @@ public class SpeBookingApplicationTests {
     private WebController WController;
 
 
+    // Test that controllers, services and repositories are created correctly.
     @Test
     public void CreationTests() throws Exception {
         assertThat(BController).isNotNull();
@@ -109,7 +109,7 @@ public class SpeBookingApplicationTests {
     }
 
 
-
+    // Test that database integration works and the database information is accessible by repositories.
     @Test
     @DatabaseSetup("booker_test.xml")
     public void DB_test() {
@@ -120,6 +120,7 @@ public class SpeBookingApplicationTests {
     }
 
 
+    // Test for booking repository and that bookings are created and stored correctly
     @Test
     public void CreateBookingTest() {
         User user = new User();
@@ -144,11 +145,13 @@ public class SpeBookingApplicationTests {
 
         Optional<Booking> x = bookingRepository.findById(69L);
         if (x.isPresent()) {
-            Assert.assertEquals(booking.getId(), x.get().getId());
+            assertEquals(booking.getId(), x.get().getId());
         }
 
     }
 
+
+    // Test that User creation and user repository is working fine.
     @Test
     public void CreateUserTest() {
         User user = new User();
@@ -157,10 +160,12 @@ public class SpeBookingApplicationTests {
 
         Optional<User> x = userRepository.findById(1L);
         if (x.isPresent()) {
-            Assert.assertEquals(user.getId(), x.get().getId());
+            assertEquals(user.getId(), x.get().getId());
         }
 
     }
+
+
 
     @LocalServerPort
     private int port;
@@ -168,14 +173,33 @@ public class SpeBookingApplicationTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
+
+    // Test that static HTML pages are served correctly
     @Test
-    public void HomeAndLoginHTML() throws Exception {
+    public void StaticHTMLTests() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class)).contains("Go To Login");
 
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/login",
                 String.class)).contains("Remember me");
 
+
     }
+
+    // Authentication tests where we check that a user can perform secured tasks once logged in.
+    @Test
+    public void AuthenticationTests() throws Exception {
+
+        ResponseEntity<String> result1 = restTemplate.withBasicAuth("user@bristol.ac.uk", "test")
+                .getForEntity("/booking/add", String.class);
+
+        ResponseEntity<String> result2 = restTemplate.withBasicAuth("user@bristol.ac.uk", "test")
+                .getForEntity("/bookings", String.class);
+
+        assertEquals(HttpStatus.OK, result1.getStatusCode());
+        assertEquals(HttpStatus.OK, result2.getStatusCode());
+
+    }
+
 
 }

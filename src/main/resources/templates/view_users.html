@@ -15,7 +15,7 @@
         <div class="col-md-8 col-12 mx-auto">
             <div th:if="${users.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no users</h2>
-                <a href="/home" class="btn btn-danger text-center">Take me home</a>
+                <a href="/user/add" class="btn btn-danger text-center">Add a user</a>
             </div>
 
             <div th:unless="${users.isEmpty()}">

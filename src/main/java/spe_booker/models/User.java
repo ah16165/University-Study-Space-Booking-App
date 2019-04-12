@@ -13,7 +13,7 @@ public class User {
 
     private String username;
 
-    String name;
+    private String name;
 
     private String password;
 
@@ -87,6 +87,9 @@ public class User {
         return bookings.size();
     }
 
+    public void setEnabled(int enabled) { this.enabled = enabled; }
+
+    public int getEnabled() { return this.enabled; }
 }
 
 

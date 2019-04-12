@@ -140,7 +140,7 @@ public class BookingController {
             Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
             if (room.isPresent()){
                 Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
-                return "redirect:/booking/confirmed";
+                return "booking_confirmed";
             } else {
                 System.out.print("Room not found for booking creation.\n");
                 return "/error/error-400";
@@ -148,10 +148,6 @@ public class BookingController {
         }
     }
 
-    @GetMapping("/booking/confirmed")
-    public String bookingConfirmed(){
-        return "booking_confirmed";
-    }
 
 
 
@@ -161,17 +157,13 @@ public class BookingController {
         Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
             bookingService.deleteBooking(booking.get());
-            return "redirect:/booking/cancelled";
+            return "booking_cancelled";
         } else {
             System.out.print("####Booking not present!");
             return "/error/error";
         }
     }
 
-    @GetMapping("/booking/cancelled")
-    public String bookingCancelled(){
-        return "booking_cancelled";
-    }
 
     //Called automatically when building the model
     //Formats the date/time

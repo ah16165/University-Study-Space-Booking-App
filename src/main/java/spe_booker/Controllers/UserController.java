@@ -63,17 +63,13 @@ public class UserController {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             userService.deleteUser(user.get());
-            return "redirect:/user/deleted";
+            return "user_deleted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
     }
 
-    @GetMapping("/user/deleted")
-    public String userDeleted(){
-        return "user_deleted";
-    }
 
     @PostMapping(value = {"/user/blacklist/{id}"})
     public String blacklistUser(@PathVariable Long id){
@@ -82,18 +78,12 @@ public class UserController {
         if (user.isPresent()){
             user.get().setBlacklisted(true);
             userService.save(user.get());
-            return "redirect:/user/blacklisted";
+            return "user_blacklisted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
     }
-
-    @GetMapping("/user/blacklisted")
-    public String userBlacklisted(){
-        return "user_blacklisted";
-    }
-
 
     @PostMapping(value = {"/user/unblacklist/{id}"})
     public String unblacklistUser(@PathVariable Long id){
@@ -102,18 +92,26 @@ public class UserController {
         if (user.isPresent()){
             user.get().setBlacklisted(false);
             userService.save(user.get());
-            return "redirect:/user/unblacklisted";
+            return "user_unblacklisted";
         } else {
             System.out.print("####User not present!");
             return "/error/error";
         }
     }
 
-    @GetMapping("/user/unblacklisted")
-    public String userUnblacklisted(){
-        return "user_unblacklisted";
+    @GetMapping("/user/add")
+    public String addUser(Model model){
+        model.addAttribute("user", new User());
+        return "user_add";
     }
 
-
+    @PostMapping("/user/add")
+    public String addUser(@ModelAttribute User user){
+        user.setBlacklisted(false);
+        user.setRole("student");
+        user.setEnabled(1);
+        userService.save(user);
+        return "user_added";
+    }
 
 }

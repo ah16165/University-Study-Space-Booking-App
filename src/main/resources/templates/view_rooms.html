@@ -16,7 +16,7 @@
 
             <div th:if="${rooms.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no rooms</h2>
-                <a href="/home" class="btn btn-danger text-center">Take me home</a>
+                <a href="/room/add" class="btn btn-danger text-center">Add a new room</a>
             </div>
 
             <div th:unless="${rooms.isEmpty()}">

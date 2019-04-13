@@ -4,9 +4,9 @@ The team’s assignment was to create a study space booking website and web appl
 
 <h3>Client</h3>
 
-<p>The client is the University of Bristol. More specifically, we will be working for the Faculty of Engineering, with our primary point of contact being Rahim Ahmed who is the Faculty of Engineering office manager. We will also be liaising with the IT team, both at a faculty level and a university level.</p>
+<p>The client is the University of Bristol. More specifically, we have been working for for the Faculty of Engineering, with our primary point of contact being Rahim Ahmed who is the Faculty of Engineering office manager. We also liaised with the IT team, both at a faculty level and a university level.</p>
 
-<p>The University of Bristol is currently seeking to improve and simplify accessibility and use of services such as a booking system for designated study spaces. This is in addition to other technology upgrades the university is working on in 2019, such as a new cloud library system  and a migration from it's current Google partnership to Microsoft services such as Outlook.</p>
+<p>For some background context, the University of Bristol is currently seeking to improve and simplify accessibility and use of services such as a booking system for designated study spaces. This is in addition to other technology upgrades the university is working on in 2019, such as a new cloud library system  and a migration from it's current Google partnership to Microsoft services such as Outlook.</p>
 
 <h3>Application Domain</h3>
 
@@ -14,7 +14,7 @@ The team’s assignment was to create a study space booking website and web appl
 
 <h3>Key Reasons for the Product</h3>
 
-<p>Currently the Faculty of Engineering admin and library staff use crude methods for booking study spaces - google docs etc. On top of this, students must go in person to the library desk in order to book study spaces. The client was keen for us to create a solution that streamlines and automates the process, with students being able to book remotely, and admin staff only being needed to manage booking in exceptional circumstances. The client wanted this application to be expandable to other study spaces outside of Queen's for future integration, and as a result we created a flexible system where new rooms and buildings can be added easily. In addition, the client wanted there to be admin and statistical functions for use by staff, such as blacklisting and limiting overuse by individuals.</p>
+<p>Currently the Faculty of Engineering admin and library staff use crude methods for booking study spaces - google docs etc. On top of this, students must go in person to the library desk in order to book study spaces. The client was keen for us to create a solution that streamlines and automates the process, with students being able to book remotely, and admin staff only being needed to manage booking in exceptional circumstances. The client wanted this application to be expandable to other study spaces outside of Queen's for future integration, and as a result we created a flexible system where new rooms and buildings can be added easily. In addition, the client wanted there to be admin and statistical functions for use by staff, such as blacklisting and limiting overuse by individuals, which have also been implemented successfully.</p>
 
 <h3>Implementation of Product</h3>
 

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Services.RoomService;
 import spe_booker.Services.UserService;
 
@@ -28,6 +27,6 @@ public class StatisticsController {
 
         model.addAttribute("rooms", roomService.findAll());
         model.addAttribute("top10Users", userService.findTop10ByNumberOfBookings());
-        return "view_statistics";
+        return "statistics";
     }
 }

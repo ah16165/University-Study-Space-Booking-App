@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Services.RoomService;
 import spe_booker.models.Room;
 
-import java.util.Collections;
 import java.util.Optional;
 
 @Controller
@@ -41,7 +39,7 @@ public class RoomController {
     public String viewRooms(Model model) {
         LOG.info("Listing rooms");
         model.addAttribute("rooms", roomService.findAll());
-        return "view_rooms";
+        return "room_view_list";
     }
 
     @GetMapping(value = {"/room/{building}/{roomNo}"})
@@ -50,7 +48,7 @@ public class RoomController {
         Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
         if (room.isPresent()){
             model.addAttribute("room", room.get());
-            return "view_room";
+            return "room_view_single";
         } else {
             return "/error/error";
         }

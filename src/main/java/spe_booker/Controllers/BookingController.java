@@ -48,7 +48,7 @@ public class BookingController {
             bookings.addAll(bookingService.findBookingsByUser(userService.getCurrentUser().get()));
         }
         model.addAttribute("bookings", bookings);
-        return "view_bookings";
+        return "booking_view_list";
     }
 
 
@@ -57,7 +57,7 @@ public class BookingController {
         LOG.info("Listing bookings for a specific user\n");
         List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.findByUsername(username).get());
         model.addAttribute("bookings", currentUserBookings);
-        return "view_bookings";
+        return "booking_view_list";
     }
 
 
@@ -67,7 +67,7 @@ public class BookingController {
         Optional<Booking> booking = bookingService.findById(id);
         if (booking.isPresent()){
             model.addAttribute("booking", booking.get());
-            return "view_booking";
+            return "booking_view_single";
         } else {
             System.out.print("Booking not present!");
             return "/error/error-400";
@@ -90,7 +90,7 @@ public class BookingController {
         bookingRequest.setStartDateTime(nextHour);
         bookingRequest.setDuration((long) 2);
         model.addAttribute("bookingRequest", bookingRequest);
-        return "make_booking";
+        return "booking_add";
     }
 
     private Boolean isDateInPast(Date date){
@@ -123,7 +123,7 @@ public class BookingController {
         System.out.print("########2 - " + bookingRequest.getStartDateTime() + " - ####\n");
         model.addAttribute("bookingRequestDateAndDuration", bookingRequest);
         model.addAttribute("rooms", roomService.findAvailable(bookingRequest.getStartDateTime(), bookingRequest.getEndDateTime()));
-        return "make_booking_room";
+        return "booking_add_room";
     }
 
     @PostMapping("/booking/add/room/{building}/{roomNo}")

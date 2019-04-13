@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import spe_booker.Repositorys.UserRepository;
 import spe_booker.Services.UserService;
 import spe_booker.models.User;
 
@@ -40,7 +39,7 @@ public class UserController {
     public  String viewAllUsers(Model model){
         LOG.info("Listing users");
         model.addAttribute("users", userService.findAll());
-        return "view_users";
+        return "user_view_list";
     }
 
 
@@ -50,7 +49,7 @@ public class UserController {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             model.addAttribute("user", user.get());
-            return "view_user";
+            return "user_view_single";
         } else {
             LOG.info("User not present!");
             return "/error/error";

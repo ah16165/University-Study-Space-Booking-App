@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+
+<head th:include="fragments/header :: head (title='Room')">
+</head>
+<body>
+
+
+<div th:replace="fragments/header :: header">&nbsp;</div>
+
+
+<div class="container-fluid pt-1">
+    <div class="row">
+        <div class="col-md-8 col-12 mx-auto">
+            <h2>Terms:</h2>
+            <div class="container">
+                <p>1. Rooms may only be booked up to two weeks in advance.</p>
+                <p>2. Users may be blacklisted by an admin, in this case they will not be able to make any new bookings. If you feel you have been blacklisted unjustly, please contact an admin.</p>
+                <p>3. Users may cancel a booking, and admins may cancel any user's booking.</p>
+                <p>4. Admins also have the ability to delete a user.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer">...</div>
+</body>
+</html>
+

@@ -13,12 +13,12 @@
         </div>
 
         <div class="container fixed-bottom">
-            <p class="text-muted">&copy;CIRCLECI SUCKS</p>
-            <span sec:authorize="isAuthenticated()">
-                | Logged user: <span sec:authentication="name"></span> |
-                Roles: <span sec:authentication="principal.authorities"></span> |
-                <a th:href="@{/logout}">Sign Out</a>
-            </span>
+            <p class="text-muted"><a href="/terms">T&Cs</a></p>
+<!--            <span sec:authorize="isAuthenticated()">-->
+<!--                | Logged user: <span sec:authentication="name"></span> |-->
+<!--                Roles: <span sec:authentication="principal.authorities"></span> |-->
+<!--                <a th:href="@{/logout}">Sign Out</a>-->
+<!--            </span>-->
         </div>
     </footer>
 

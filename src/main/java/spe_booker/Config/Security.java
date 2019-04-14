@@ -46,6 +46,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                     .antMatchers("/statistics").access("hasAuthority('admin')")
                     .antMatchers("/users").access("hasAuthority('admin')")
                     .antMatchers("/user/*").access("hasAuthority('admin')")
+                    .antMatchers("/room/add").access("hasAuthority('admin')")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).failureUrl("/login-error.html").permitAll()

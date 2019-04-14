@@ -62,6 +62,11 @@ public class UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+
+    public User update(User user){
+        return userRepository.save(user);
+    }
+
     public List<User> findAll(){
         return userRepository.findAll();
     }

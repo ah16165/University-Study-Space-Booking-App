@@ -11,7 +11,7 @@
 <p>The aim of our integration focussed tests were to check that different systems work correctly together. A prime example of this was in our 'DB_test', where we used the DBUnit framework to test that database integration and linking to the Spring repositories was all working fine.  </p>
 
 <h4>Functional tests</h4>
-<p>We incorporated functional tests that aimed to test that an action returned a desired result to the user or admin. A good example of this was in our 'StaticHTMLTests', where we checked that given a valid REST request, it returned the correct HTML page. NEED AN SQL TEST.</p>
+<p>We incorporated functional tests that aimed to test that an action returned a desired result to the user or admin. A good example of this was in our 'StaticHTMLTests', where we checked that given a valid REST request, it returned the correct HTML page.</p>
 
 <h4>End-to-end tests</h4>
 <p>We also had some end to end tests which aimed to tests a replication of user behaviour, such as our 'AuthenticationTests' that checked that our login and security systems were correctly working when given a valid REST request. </p>
@@ -28,6 +28,8 @@
 *Cross-browser compatibilities proved irritating, and we did not have a strong framework to test this sort of problem with. We again reverted to manual testing to find browser related bugs, which worked for this scale, but was not ideal.
 
 *The way the Spring security module dealt with login systems proved difficult to test as it handled a lot of the process for you. We overcame this in our 'AutheticationTests' using a TestRestTemplate module's 'withBasicAuth' method to check if secured HTML pages were being properly handled by the login system.
+
+*The way we queried our database to find available bookings was handled via Spring in our 'RoomRepository' class. We supplied an SQL query, however Spring took this and did some black magic to talk to the database. The end to end result of this worked, but to actually test that the SQL query itself was correct we manually tested the SQL query on a dummy database on our server.
 
 
 <h3>Evaluation</h3>

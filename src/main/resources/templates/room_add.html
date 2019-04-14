@@ -17,19 +17,19 @@
                 <div class="form-group row">
                     <label for="roomNo" class="col-2 col-form-label">Room Number</label>
                     <div class="col-10">
-                        <input type="text" th:field="*{roomNo}" class="form-control" id="roomNo" placeholder="Enter room number"/>
+                        <input type="text" th:field="*{roomNo}" class="form-control" id="roomNo" placeholder="Enter room number"  required="true"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="Building" class="col-2 col-form-label">Building</label>
                     <div class="col-10">
-                        <input type="text" th:field="*{building}" class="form-control" id="building" placeholder="Enter building"/>
+                        <input type="text" th:field="*{building}" class="form-control" id="building" placeholder="Enter building"  required="true"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="Capacity" class="col-2 col-form-label">Capacity</label>
                     <div class="col-10">
-                        <input type="number" th:field="*{capacity}" class="form-control" id="Capacity" placeholder="Enter capacity"/>
+                        <input type="number" th:field="*{capacity}" class="form-control" id="Capacity" placeholder="Enter capacity"  required="true"/>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-danger btn-block">Submit</button>

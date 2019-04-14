@@ -17,13 +17,13 @@
                 <div class="form-group row">
                     <label for="startDateTime" class="col-2 col-form-label">Date and Time:</label>
                     <div class="col-10">
-                        <input class="form-control" type="datetime-local" th:field="*{startDateTime}" id="startDateTime">
+                        <input class="form-control" type="datetime-local" th:field="*{startDateTime}" id="startDateTime"  required="true">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="duration" class="col-2 col-form-label">Duration (Hours)</label>
                     <div class="col-10">
-                        <input type="number" th:field="*{duration}" class="form-control" id="duration" placeholder="Enter duration"/>
+                        <input type="number" th:field="*{duration}" class="form-control" id="duration" placeholder="Enter duration" required="true"/>
                     </div>
                 </div>
 

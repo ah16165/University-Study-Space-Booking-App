@@ -19,7 +19,11 @@
                 <a href="/booking/add" class="btn btn-danger text-center">Make a Booking</a>
             </div>
             <div th:unless="${bookings.isEmpty()}">
-                <h2>Bookings:</h2>
+                <h2>Bookings:
+                    <a href="/booking/add" class="btn btn-danger float-right">
+                        <span class="typcn typcn-plus text-white"></span>
+                    </a>
+                </h2>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>

@@ -20,7 +20,11 @@
             </div>
 
             <div th:unless="${rooms.isEmpty()}">
-                <h2>Rooms:</h2>
+                <h2>Rooms:
+                    <a href="/room/add/" class="btn btn-danger float-right">
+                        <span class="typcn typcn-plus text-white"></span>
+                    </a>
+                </h2>
                 <table class="table">
                     <thead>
                     <tr>

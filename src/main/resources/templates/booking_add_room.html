@@ -54,11 +54,11 @@
                         <td><span th:text="${room.capacity}"/></td>
                         <td>
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#bookingRequestModal">
+                                    data-target="#bookingRequestModal" th:attrappend="data-target=${room.getId()}">
                                 Select
                             </button>
                             <div class="modal fade" id="bookingRequestModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="bookingRequestModalLabel" aria-hidden="true">
+                                 aria-labelledby="bookingRequestModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
                                 <div th:replace="fragments/booking_request_modal :: booking_request_modal">...</div>
                             </div>
                         </td>

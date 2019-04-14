@@ -22,18 +22,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping("/user/add")
-//    public String addRoom(Model model) {
-//        model.addAttribute("user", new User());
-//        return "user_form";
-//    }
-
-    @PostMapping("/user")
-    public String submitRoom(@ModelAttribute User user) {
-        LOG.info("Saving new user with user id " + user.getId());
-        User user1 = userService.save(user);
-        return "redirect:/user/" + user1.getId();
-    }
 
     @GetMapping(value = {"/users"})
     public  String viewAllUsers(Model model){
@@ -76,7 +64,7 @@ public class UserController {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             user.get().setBlacklisted(true);
-            userService.save(user.get());
+            userService.update(user.get());
             return "user_blacklisted";
         } else {
             System.out.print("####User not present!");
@@ -90,7 +78,7 @@ public class UserController {
         Optional<User> user = userService.findById(id);
         if (user.isPresent()){
             user.get().setBlacklisted(false);
-            userService.save(user.get());
+            userService.update(user.get());
             return "user_unblacklisted";
         } else {
             System.out.print("####User not present!");

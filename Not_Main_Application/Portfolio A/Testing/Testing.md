@@ -23,7 +23,7 @@
 
 *Spring hides a lot of what it is doing from the developer, so unless you have a really in depth knowledge of the Spring framework, or trawl through lots of documentation, it is sometimes hard to test aspects of what the Spring framework is doing behind the scenes. We addressed this by firstly trusting that Spring is robust and polished enough that it is reliable, and secondly we tested end to end features and integration features instead of directly unit testing Spring frameworks.
 
-*Frontend testing proved a challenge as we were not sure what the best framework or method to do this with was. We overcame this by leaving it to manual testing as the application is relatively mall and can be tested easily. None-the-less we appreciate this is not ideal and is discussed in our evaluation. 
+*Frontend testing proved a challenge as we were not sure what the best framework or method to do this with was. We overcame this by leaving it to manual testing as the application is relatively small and can be tested easily. None-the-less we appreciate this is not ideal and is discussed in our evaluation. 
 
 *Cross-browser compatibilities proved irritating, and we did not have a strong framework to test this sort of problem with. We again reverted to manual testing to find browser related bugs, which worked for this scale, but was not ideal.
 

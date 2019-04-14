@@ -1,24 +1,21 @@
-//Overview//
+<h1>Overview</h1>
 
-The team’s assignment is to create a study space booking application for use by engineering students at the University of Bristol to book study spaces in the Queen’s building. This document provides our assessment of the project, and highlights some key parts at a high level. We will be constantly iterating and reflecting our work, so the design, flows and testing is be changed and improved upon after the completion of this document.
+The team’s assignment was to create a study space booking website and web application for use by engineering students at the University of Bristol to book study spaces in the Queen’s building.
 
-/Client/
+<h3>Client</h3>
 
-The client is the University of Bristol. More specifically, we will be working for the Faculty of Engineering, with our primary point of contact being Rahim Ahmed who is the Faculty of Engineering office manager. We will also be liaising with the IT team, both at a faculty level and a university level.
+<p>The client is the University of Bristol. More specifically, we have been working for for the Faculty of Engineering, with our primary point of contact being Rahim Ahmed who is the Faculty of Engineering office manager. We also liaised with the IT team, both at a faculty level and a university level.</p>
 
-/Application Domain/
+<p>For some background context, the University of Bristol is currently seeking to improve and simplify accessibility and use of services such as a booking system for designated study spaces. This is in addition to other technology upgrades the university is working on in 2019, such as a new cloud library system  and a migration from it's current Google partnership to Microsoft services such as Outlook.</p>
 
-The sector we are working in is the educational sector. Despite this, the team is treating this very much in the same way that you would treat any industry client.
+<h3>Application Domain</h3>
 
-/Key Reasons for the Product/
+<p>The sector we are working in is the educational sector, which is a sector with many opportunities to enhance day to day administration and student activities via technological additions and improvements. An article from ICEF Monitor (http://monitor.icef.com/2016/02/mapping-technological-change-in-higher-education-through-2020/) reiterates this view, and adds that by 2020 universities will have to have made substantial changes to their technology both inside and outside the classroom in order to keep up with the pace of improvement in the educational sector. The University of Bristol is clearly being proactive in this regard and our project is one example of that.</p>
 
-Currently the Faculty of Engineering admin and library staff use crude methods for booking study spaces - google docs etc. On top of this, students must go in person to the library desk in order to book study spaces. The client is keen for us to create a solution that streamlines and automates the process, with students being able to book remotely, and admin staff only being needed to manage booking in exceptional circumstances. Other features and points to note:
-* The product needs to be expandable to other study spaces outside of the Queen’s building in the future.
-* The product is intended to be exclusively used by engineering undergraduates, with restrictions in place so that other university students cannot book study spaces in the Queen’s building.
-* The product should integrate the single sign on system.
-* Limits to how often and for how long students can book study spaces should be included in the product.
-* There should be a separate admin page with admin functions.
+<h3>Key Reasons for the Product</h3>
 
-/Vision of Product/
+<p>Currently the Faculty of Engineering admin and library staff use crude methods for booking study spaces - google docs etc. On top of this, students must go in person to the library desk in order to book study spaces. The client was keen for us to create a solution that streamlines and automates the process, with students being able to book remotely, and admin staff only being needed to manage booking in exceptional circumstances. The client wanted this application to be expandable to other study spaces outside of Queen's for future integration, and as a result we created a flexible system where new rooms and buildings can be added easily. In addition, the client wanted there to be admin and statistical functions for use by staff, such as blacklisting and limiting overuse by individuals, which have also been implemented successfully.</p>
 
-The team hope to achieve an elegant and attractive solution to the client brief that is user friendly and aesthetically pleasing on the front end, and expandable, efficient and intuitive on the backend. The front end will be a HTML, JavaScript and CSS based web-app with multiple pages and an admin page. This will be accessible from the University of Bristol website, and will allow all the functions that the client briefed us on. The backend system will be housed on the Oracle cloud server systems. Here we will be using Java as our backend language, with SQL being our language for database integration. The database will be integrated with mySQL, and we will be using a two server model (web server / applications server).
+<h3>Implementation of Product</h3>
+
+<p>We have created an elegant and attractive solution to the client brief that is user friendly and aesthetically pleasing on the front end, and expandable, efficient and intuitive on the backend. The front end is written in HTML with a Thymeleaf framework and CSS styling. The web-app has a easy to navigate layout, with student and admin specific pages. This is ready to be ported to the University of Bristol website, and allows for most of the functions that the client briefed us on. The exception to this is the integration of the Single-Sign-On system, as the University of Bristol IT team would not allow us access to SSO. Instead, we implemented our own login system with the intent that the University of Bristol will attach SSO as they see fit. The backend system is housed on the Oracle cloud server systems. Here we are using Java as our backend language as part of a Spring framework, with MySQL being our database management system. Finally, we incorporated CircleCI for continuous integration of the product in the development stage</p>

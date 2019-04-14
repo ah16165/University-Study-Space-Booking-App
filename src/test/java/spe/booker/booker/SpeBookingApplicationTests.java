@@ -1,19 +1,21 @@
 package spe.booker.booker;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import spe_booker.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -24,19 +26,19 @@ import spe_booker.Repositorys.RoomRepository;
 import spe_booker.Repositorys.UserRepository;
 import spe_booker.Services.BookingService;
 import spe_booker.Services.RoomService;
-import spe_booker.Services.StatisticsService;
 import spe_booker.Services.UserService;
 import spe_booker.models.Booking;
 import spe_booker.models.Room;
 import spe_booker.models.User;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpeBookingApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class})
+@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class, DirtiesContextTestExecutionListener.class})
 //@ActiveProfiles("test")
 //@Transactional
 public class SpeBookingApplicationTests {
@@ -95,7 +97,7 @@ public class SpeBookingApplicationTests {
         assertThat(UController).isNotNull();
         assertThat(WController).isNotNull();
 
-        assertThat( bookingRepository).isNotNull();
+        assertThat(bookingRepository).isNotNull();
         assertThat(roomRepository).isNotNull();
         assertThat(userRepository).isNotNull();
 
@@ -109,27 +111,36 @@ public class SpeBookingApplicationTests {
 
     // Test that database integration works and the database information is accessible by repositories.
     @Test
-    @DatabaseSetup("booker_test.xml")
+    @DatabaseSetup("/booker_test.xml")
     public void DB_test() {
 
-        Assert.assertTrue(userRepository.count()> 0);
-        Assert.assertTrue(roomRepository.count() > 0);
+        System.out.println(userRepository.count());
+        System.out.println(roomRepository.count());
+        System.out.println(bookingRepository.count());
+
+        Assert.assertTrue(userRepository.count()== 1);
+
+        Assert.assertTrue(bookingRepository.count()== 1);
+
+        Assert.assertTrue(roomRepository.count() == 1);
 
     }
 
 
-    // Test for booking repository and that bookings are created and stored correctly
+    // Test for booking repository and that bookings are created and stored correctly and same with rooms
     @Test
-    public void CreateBookingTest() {
+    public void CreateEntitiesTest() {
         User user = new User();
-        user.setId(1L);
+        user.setName("aidan");
+        user.setEnabled(1);
         userRepository.save(user);
 
         Date date = new Date();
 
+
         Room room = new Room();
-        room.setRoomNo("100");
-        room.setBuilding("test");
+        room.setRoomNo("108");
+        room.setBuilding("test8");
         room.setCapacity(10);
         roomRepository.save(room);
 
@@ -138,28 +149,44 @@ public class SpeBookingApplicationTests {
         booking.setStartDateTime(date);
         booking.setEndDateTime(date);
         booking.setRoom(room);
-        booking.setId(69L);
         bookingRepository.save(booking);
 
-        Optional<Booking> x = bookingRepository.findById(69L);
-        if (x.isPresent()) {
-            assertEquals(booking.getId(), x.get().getId());
-        }
+
+
+        System.out.println(bookingRepository.count());
+
+    // 2 because our normal code creates 1 other booking somewhere
+        Assert.assertTrue(bookingRepository.count()== 2);
+
+
+        Optional<Room> y = roomRepository.findByRoomNoAndBuilding("108", "test8");
+
+            assertEquals(room.getRoomNo(), y.get().getRoomNo());
+
+
+        User z = userRepository.findByName("aidan");
+
+            assertEquals(user.getName(), z.getName());
+
 
     }
 
 
     // Test that User creation and user repository is working fine.
     @Test
-    public void CreateUserTest() {
+    public void DeleteUserTest() {
         User user = new User();
-        user.setId(1L);
+        user.setName("zack");
         userRepository.save(user);
 
-        Optional<User> x = userRepository.findById(1L);
-        if (x.isPresent()) {
-            assertEquals(user.getId(), x.get().getId());
-        }
+        User z = userRepository.findByName("zack");
+
+        assertEquals(user.getName(), z.getName());
+
+        userService.deleteUser(userRepository.findByName("zack"));
+
+        assert(userRepository.findByName("zack") == null);
+
 
     }
 

@@ -51,11 +51,11 @@ public class DataLoader implements ApplicationRunner {
             userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "student",false);
         }
 
-        if (! roomRepository.findByRoomNoAndBuilding("100", "100").isPresent()){
-            LOG.debug("creating room 100, 100");
-            List<Booking> bookings = new ArrayList<>();
-            roomService.createRoom("100", "100", 100, bookings);
-        }
+//        if (! roomRepository.findByRoomNoAndBuilding("100", "100").isPresent()){
+//            LOG.debug("creating room 100, 100");
+//            List<Booking> bookings = new ArrayList<>();
+//            roomService.createRoom("100", "100", 100, bookings);
+//        }
 
 //        if (! bookingRepository.existsById((long) 100)){
 //            LOG.debug("creating booking 100");

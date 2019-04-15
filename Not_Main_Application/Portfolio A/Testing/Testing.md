@@ -5,7 +5,7 @@
 <p>The Spring application is tested mostly using the testing framework JUnit. We chose this approach as JUnit seemed to be the most well documented testing framework for Spring applications, it was easy to use and had a really strong set of online resources and articles. Additionally, we supplemented this with a JUnit extension called DbUnit, which was used for database integration tests. We chose this way of testing database integration as we were already using JUnit, so to keep all the systems happy and talking to each other we kept the database testing to a related framework. A happy side effect was that it was as easy to use and as well documented as JUnit. We also used multiple test classes from the Spring framework, such as 'TestExecutionListeners' as these were used to directly test Spring components.We endeavoured to test all the critical sections of the backend while spanning all the different types of software development tests as shown in the sections below. </p>
 
 <h4>Unit tests</h4>
-<p>Our unit tests strived to test the low level areas of our source code, such as testing individual low level methods that don't span across systems. An example of this is in our 'CreateUserTest' test, where we check that the methods for creating a new user and storing them in the relative repository are all operating as intended.</p>
+<p>Our unit tests strived to test the low level areas of our source code, such as testing individual low level methods that don't span across systems. An example of this is in our 'CreateUserTest' test, where we check that the methods for creating a new user and storing them in the relative repository are all operating as intended. For CRUD repository classes we omitted unit tests as it is a reliable framework.</p>
 
 <h4>Integration tests</h4>
 <p>The aim of our integration focussed tests were to check that different systems work correctly together. A prime example of this was in our 'DB_test', where we used the DBUnit framework to test that database integration and linking to the Spring repositories was all working fine.  </p>
@@ -23,9 +23,7 @@
 
 *Spring hides a lot of what it is doing from the developer, so unless you have a really in depth knowledge of the Spring framework, or trawl through lots of documentation, it is sometimes hard to test aspects of what the Spring framework is doing behind the scenes. We addressed this by firstly trusting that Spring is robust and polished enough that it is reliable, and secondly we tested end to end features and integration features instead of directly unit testing Spring frameworks.
 
-*Frontend testing proved a challenge as we were not sure what the best framework or method to do this with was. We overcame this by leaving it to manual testing as the application is relatively small and can be tested easily. None-the-less we appreciate this is not ideal and is discussed in our evaluation. 
-
-*Cross-browser compatibilities proved irritating, and we did not have a strong framework to test this sort of problem with. We again reverted to manual testing to find browser related bugs, which worked for this scale, but was not ideal.
+*Frontend testing and cross-browser compatibilities proved a challenge as we were not sure what the best framework or method to do this with was. We overcame this by leaving it to manual testing as the application is relatively small and can be tested easily. After research, several sources claim that this is in fact the best method of front end testing, and we supplemented our keen eyes with the aid of the web service 'Browserling' which allows you to emulate your website on different web browsers.
 
 *The way the Spring security module dealt with login systems proved difficult to test as it handled a lot of the process for you. We overcame this in our 'AutheticationTests' using a TestRestTemplate module's 'withBasicAuth' method to check if secured HTML pages were being properly handled by the login system.
 
@@ -35,7 +33,7 @@
 <h3>Evaluation</h3>
 <p>We believe that on the whole our testing strategy was good. However, we have identified three key areas on what we could have improved on if we had a larger team or more time:</p>
 
-*More depth to tests as quite often we would tests a feature such as user creation, and assume that this would also work for say room creation as the processes are very similar. Stuff like this cannot always be assumed.
+*More depth to tests as quite often we would test a feature and assume that this would also work for very similar features. Stuff like this cannot always be assumed.
 
 *More frontend testing and browser support testing, as leaving it to manual testing is not scalable to larger projects.
 

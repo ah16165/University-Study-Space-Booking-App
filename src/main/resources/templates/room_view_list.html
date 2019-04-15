@@ -16,12 +16,12 @@
 
             <div th:if="${rooms.isEmpty()}" class="container text-center">
                 <h2 class="pt-5 pb-3">There are no rooms</h2>
-                <a href="/room/add" class="btn btn-danger text-center">Add a new room</a>
+                <a href="/room/add" class="btn btn-danger text-center" sec:authorize="hasAuthority('admin')">Add a new room</a>
             </div>
 
             <div th:unless="${rooms.isEmpty()}">
                 <h2>Rooms:
-                    <a href="/room/add/" class="btn btn-danger float-right">
+                    <a href="/room/add/" class="btn btn-danger float-right" sec:authorize="hasAuthority('admin')">
                         <span class="typcn typcn-plus text-white"></span>
                     </a>
                 </h2>
@@ -42,13 +42,13 @@
 
                         <td><span th:text="${room.getCapacity()}"/></td>
 
-                        <td>
+                        <td sec:authorize="hasAuthority('admin')">
                             <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#exampleModal" th:attrappend="data-target=${room.getId()}">
+                                    data-target="#roomModal" th:attrappend="data-target=${room.getId()}">
                                 <span class="typcn typcn-info-large text-white"></span>
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
+                            <div class="modal fade" id="roomModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="roomModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
                                 <div th:replace="fragments/room_modal :: room_modal">...</div>
                             </div>
                         </td>

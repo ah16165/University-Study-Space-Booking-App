@@ -17,7 +17,7 @@
 <p>We also had some end to end tests which aimed to tests a replication of user behaviour, such as our 'AuthenticationTests' that checked that our login and security systems were correctly working when given a valid REST request. </p>
 
 <h4>Other types of testing</h4>
-<p>Areas of testing that we did not explicitly test with code were performance testing, acceptance testing and smoke testing. We did not implement these, as after research it seemed these were difficult to implement and out of our scope. Despite this, there were some aspects of these areas that we did test through manual user-end testing, such as acceptance testing via checking all the functionality of the system was working for a generic user.</p>
+<p>Areas of testing that we did not explicitly test with code were performance testing, acceptance testing and smoke testing. We did not implement these, as after research it seemed these were difficult to implement and out of our scope. Despite this, there were some aspects of these areas that we did test through manual user-end testing, such as acceptance testing via checking all the functionality of the system was working for a generic user. In addition, when evaluating our product with user group qualitative studies, the users aided in bug detection.</p>
 
 <h3>Challenges</h3>
 

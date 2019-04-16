@@ -16,13 +16,13 @@
             <form action="#" th:action="@{/booking/add}" th:object="${bookingRequest}" method="post">
                 <div class="form-group row">
                     <label for="startDateTime" class="col-2 col-form-label">Date and Time:</label>
-                    <div class="col-10">
+                    <div class="col-md-10 ml-md-0 col-9 ml-3">
                         <input class="form-control" type="datetime-local" th:field="*{startDateTime}" id="startDateTime"  required="true">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="duration" class="col-2 col-form-label">Duration (Hours)</label>
-                    <div class="col-10">
+                    <div class="col-md-10 ml-md-0 col-9 ml-3">
                         <input type="number" th:field="*{duration}" class="form-control" id="duration" placeholder="Enter duration" required="true"/>
                     </div>
                 </div>
@@ -33,6 +33,10 @@
 
                 <div th:if="${dateMoreThanTwoWeeksAway}" class="container pb-2">
                     <h6>Please select a date less than two weeks away.</h6>
+                </div>
+
+                <div th:if="${durationNotValid}" class="container pb-2">
+                    <h6>Please select a positive duration less than 3 hours.</h6>
                 </div>
 
                 <button type="submit" class="btn btn-danger btn-block">Submit</button>

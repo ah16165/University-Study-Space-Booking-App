@@ -108,9 +108,12 @@ public class BookingController {
         System.out.print("########1 - " + bookingRequest.getStartDateTime() + "#####\n " + bookingRequest.getDuration() + " \n");
         Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
         Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
-        if (dateInPast || dateMoreThanTwoWeeksAway){
+        Long duration = bookingRequest.getDuration();
+        Boolean durationNotValid = ( duration > 3 || duration <= 0 );
+        if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid){
             redirectAttributes.addFlashAttribute("dateInPast", dateInPast);
             redirectAttributes.addFlashAttribute("dateMoreThanTwoWeeksAway", dateMoreThanTwoWeeksAway);
+            redirectAttributes.addFlashAttribute("durationNotValid", durationNotValid);
             return "redirect:/booking/add";
         } else {
             redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);

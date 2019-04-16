@@ -53,7 +53,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout().deleteCookies("JSESSIONID")
                 .and()
-                    .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
+                    .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(7200)
                 .and()
                     .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
         ;

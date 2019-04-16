@@ -51,6 +51,10 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin().loginPage("/login").defaultSuccessUrl("/home", true).failureUrl("/login-error.html").permitAll()
                 .and()
+                    .logout().deleteCookies("JSESSIONID")
+                .and()
+                    .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
+                .and()
                     .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
         ;
     }

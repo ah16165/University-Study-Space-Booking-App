@@ -31,7 +31,7 @@
                         <th>Building</th>
                         <th>Room</th>
                         <th>Capacity</th>
-                        <th>Info</th>
+                        <th sec:authorize="hasAuthority('admin')">Info</th>
                     </tr>
                     </thead>
                     <tr th:each="room: ${rooms}">

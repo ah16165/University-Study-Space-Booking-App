@@ -50,9 +50,12 @@
                         </tr>
                         <tr>
                             <th>Bookings:</th>
-                            <td>
+                            <td th:unless="${user.getNumberOfBookings() == 0} ">
                                 <a th:href="@{'/user/' + ${user.getUsername()} + '/bookings'}">
                                     <span th:text="${user.getNumberOfBookings()}"></span></a>
+                            </td>
+                            <td th:if="${user.getNumberOfBookings() == 0} ">
+                                <p>No bookings</p>
                             </td>
                         </tr>
                     </table>

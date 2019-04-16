@@ -1,6 +1,6 @@
-Allow this script to be flexible and open ended - pursue interesting avenues of questioning if they arise.
+Allow this script to be flexible and open ended - pursue interesting avenues of questioning if they arise. This script is to be used for both student and staff interviews.
 
-1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak alloud as they use the system.
+1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak out loud as they use the system.
 
 2. Ask the user what their overall opinion of the system was.
 

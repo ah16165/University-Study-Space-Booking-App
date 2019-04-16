@@ -1,0 +1,15 @@
+Allow this script to be flexible and open ended - pursue interesting avenues of questioning if they arise.
+
+1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak alloud as they use the system.
+
+2. Ask the user what their overall opinion of the system was.
+
+3. Ask the user what parts of the system they thought were good.
+
+4. Ask the user what parts of the system they think could be improved, and follow up by questioning how they think those parts should be improved.
+
+5. Ask the user if they noticed any bugs in the system.
+
+
+
+

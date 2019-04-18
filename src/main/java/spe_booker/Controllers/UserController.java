@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import spe_booker.Services.UserService;
 import spe_booker.models.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -43,6 +45,7 @@ public class UserController {
             return "/error/error";
         }
     }
+
 
     @PostMapping(value = {"/user/delete/{id}"})
     public String deleteUser(@PathVariable Long id){

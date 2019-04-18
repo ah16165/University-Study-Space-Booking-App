@@ -57,6 +57,16 @@ public class BookingService {
         return bookingRepository.findBookingsByUser(user);
     }
 
+    public List<Booking> findAllFutureBookings(){
+        Date currentTime = new Date();
+        return bookingRepository.findAllByEndDateTimeAfter(currentTime);
+    }
+
+    public List<Booking> findFutureBookingsForUser(User user){
+        Date currentTime = new Date();
+        return bookingRepository.findAllByEndDateTimeAfterAndUser(currentTime, user);
+    }
+
     public Optional<Booking> findById(Long id){
         return bookingRepository.findById(id);
     }

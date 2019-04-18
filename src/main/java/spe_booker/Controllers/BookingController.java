@@ -43,9 +43,9 @@ public class BookingController {
         LOG.info("Listing bookings for viewbookings");
         List<Booking> bookings = new ArrayList<>();
         if (userService.getCurrentUser().get().isAdmin()){
-            bookings.addAll(bookingService.findAll());
+            bookings.addAll(bookingService.findAllFutureBookings());
         } else {
-            bookings.addAll(bookingService.findBookingsByUser(userService.getCurrentUser().get()));
+            bookings.addAll(bookingService.findFutureBookingsForUser(userService.getCurrentUser().get()));
         }
         model.addAttribute("bookings", bookings);
         return "booking_view_list";

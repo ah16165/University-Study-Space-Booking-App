@@ -3,16 +3,22 @@ Allow this script to be flexible and open ended - pursue interesting avenues of 
 1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak out loud as they use the system.
 
 2. Ask the user what their overall opinion of the system was.
-Overall my opinion on the system is positive, I feel a system like this has been a long time coming, and will make the booking of library study rooms a lot more simpler and efficient.
+
+Overall their opinion on the system is positive, feels a system like this has been a long time coming, and will make the process of booking library study rooms a lot more simpler and efficient.
 
 3. Ask the user what parts of the system they thought were good.
-Very clean and simple UI, very easy to navigate and get the hang of
-The process of making a booking is straight forward and requires little to no explanation of how the system works beforehand
-I like how all details are autofilled when booking a room, I literally don't have to touch the keyboard at all which is very nice 
+
+Very clean and simple UI, very easy to navigate and get the hang of.
+The process of making a booking is straight forward and requires little to no explanation of how the system works beforehand.
+Likes how all details are autofilled when booking a room - "I literally don't have to touch the keyboard at all which is very nice"
 
 4. Ask the user what parts of the system they think could be improved, and follow up by questioning how they think those parts should be improved.
-Maybe including more available rooms into the system? I can see the ability to make a booking becoming significantly harder during exam periods due to the lack of available rooms
+
+Maybe including more available rooms into the system? I can see the ability to make a booking becoming significantly harder during exam periods due to the lack of available rooms.
+Email notification to confirm a booking has been made
+Feels the initial homepage that says "Go to login" is unnecessary: would like it to start straight at the login page like other websites
 
 5. Ask the user if they noticed any bugs in the system.
+
 Not that I can see
 

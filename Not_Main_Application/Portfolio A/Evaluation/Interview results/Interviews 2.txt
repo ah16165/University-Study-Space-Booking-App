@@ -1,0 +1,28 @@
+Allow this script to be flexible and open ended - pursue interesting avenues of questioning if they arise. This script is to be used for both student and staff interviews. This script is also used for focus groups, but provoke more intergroup discussion around these questions than straight answers.
+
+1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak out loud as they use the system.
+
+2. Ask the user what their overall opinion of the system was.
+
+A simple yet functional design, I like how easy it is to use
+
+3. Ask the user what parts of the system they thought were good.
+
+The main menu gets straight to the point, eyes are drawn straight to the menu options - no clutter or distractions, only the essentials are shown.
+Can completely make a booking within 4 clicks, very fast and easy.
+Viewing your bookings is easy on the eye, only the essential information is shown and I can view my bookings easily.
+	*Asked if there is any information missing?
+	*Replied that they didn't think so.
+
+4. Ask the user what parts of the system they think could be improved, and follow up by questioning how they think those parts should be improved.
+
+Can book two rooms at the same time, could this lead to people abusing the system and booking all the rooms?
+Possibly arrange your bookings in chronological order? If I make a booking for next week, then make a booking for tomorrow right after,
+the order of my bookings in "View bookings" are not in chronological order. Maybe sort it in order? 
+
+5. Ask the user if they noticed any bugs in the system.
+n/a
+
+
+
+

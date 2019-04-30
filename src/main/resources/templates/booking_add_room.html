@@ -57,7 +57,7 @@
                                     data-target="#bookingRequestModal" th:attrappend="data-target=${room.getId()}">
                                 Select
                             </button>
-                            <div class="modal fade" id="bookingRequestModal" tabindex="-1" role="dialog"
+                            <div class="modal" id="bookingRequestModal" tabindex="-1" role="dialog"
                                  aria-labelledby="bookingRequestModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
                                 <div th:replace="fragments/booking_request_modal :: booking_request_modal">...</div>
                             </div>
@@ -69,9 +69,6 @@
     </div>
 </div>
 
-<script>
-    $('#bookingRequestModal').appendTo("body");
-</script>
 
 
 <div th:replace="fragments/footer :: footer">...</div>

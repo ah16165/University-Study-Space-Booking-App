@@ -47,7 +47,7 @@
                                     data-target="#roomModal" th:attrappend="data-target=${room.getId()}">
                                 <span class="typcn typcn-info-large text-white"></span>
                             </button>
-                            <div class="modal fade" id="roomModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="roomModal" tabindex="-1" role="dialog" data-backdrop="false"
                                  aria-labelledby="roomModalLabel" aria-hidden="true" th:attrappend="id=${room.getId()}">
                                 <div th:replace="fragments/room_modal :: room_modal">...</div>
                             </div>

@@ -62,7 +62,7 @@
                                         data-target="#bookingModal" th:attrappend="data-target=${booking.getId()}">
                                     <span class="typcn typcn-info-large text-white"></span>
                                 </button>
-                                <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" data-backdrop="false"
                                      aria-labelledby="bookingModalLabel" aria-hidden="true"
                                      th:attrappend="id=${booking.getId()}">
                                     <div th:replace="fragments/booking_modal :: booking_modal">...</div>

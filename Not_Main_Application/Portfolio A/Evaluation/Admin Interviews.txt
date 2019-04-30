@@ -1,0 +1,59 @@
+Allow this script to be flexible and open ended - pursue interesting avenues of questioning if they arise. This script is to be used for both student and staff interviews. This script is also used for focus groups, but provoke more intergroup discussion around these questions than straight answers.
+
+1. Allow the user to use system, guided by the facilitator and allow the observer to note any noteworthy interactions or comments. Encourage the user to speak out loud as they use the system.
+
+Aidan shows overall website and explains basics
+explanation of no sso
+
+Other staff trying it on iPhone
+
+2. Ask the user what their overall opinion of the system was.
+
+Incredibly easy to use - without being shown how to use it they would know how - very self explannatory - e.g making a booking, times already setup
+Few clicks and you're done
+Looks fine on mobile
+"GREAT" - a lot better then he thought it would be
+Met the brief and more
+URL from IP address to static web domain address
+
+3. Ask the user what parts of the system they thought were good.
+
+Validation upon user entry - email address checks when creating user
+Unlimited number of admins
+Making a booking, autofills to the nearest hour
+Keeps you logged in between sessions
+As ADMIN, view all bookings from a SPECIFIC USER - e.g if admin were to cancel bookings for a specific user
+Security is good, as a user you cannot access any admin features, even if you manually type in the URL
+
+4. Ask the user what parts of the system they think could be improved, and follow up by questioning how they think those parts should be improved.
+
+Admin manual, maybe add a manual for the IT team - DEPLOYMENT MANUAL
+	importing a whole excel spreadsheet of engineering users to create users - or they manually add users via a sign up sheet
+
+Doable features to add:
+Basic time restrictions - 4 hour budget per day per user - limitations on user bookings
+Show additional information for the rooms - additional information e.g TV Screen + toilets
+Add some info at the login / home screen - e.g if you have any issues contact - GENERAL INTRO "this is a study space booking app for engineering students, theres 10 spaces you can book when you want"
+	Put on home page that safari doesnt work?
+
+Unnecessary / Unrealistic features to add:
+Viewing all bookings - show bookings from the past maybe? For historical record (with time period) - view by month maybe?
+Multiple admin accounts?
+When registering a user - check if email address is a bristol address - not allow hotmail for example
+forgotten passwords feature?
+Edit existing room?
+Adding an image of a room when viewing a room?
+admin making a booking for other users - show name of user? list not as admin
+change colour maybe to engingeering green
+add feature where u receive an email upon signing up
+
+5. Ask the user if they noticed any bugs in the system.
+
+Confirming a booking on mobile - confirmation screen makes phone go grey but confirmation form is not shown - works on delete rooms page though? {ADMIN}
+Bugs with view all rooms, building and room mixed up
+
+doesnt work on firefox/safari laptop
+	making a booking, drop down list doesnt work
+
+
+

@@ -47,7 +47,7 @@
                                         data-target="#userModal" th:attrappend="data-target=${user.getId()}">
                                     <span class="typcn typcn-info-large text-white"></span>
                                 </button>
-                                <div class="modal fade" id="userModal" tabindex="-1" role="dialog" data-backdrop="false"
+                                <div class="modal fade" id="userModal" tabindex="-1" role="dialog"
                                      aria-labelledby="userModalLabel" aria-hidden="true" th:attrappend="id=${user.getId()}">
                                     <div th:replace="fragments/user_modal :: user_modal">...</div>
                                 </div>
@@ -60,6 +60,9 @@
     </div>
 </div>
 
+<script>
+    $('.modal-dialog').parent().on('show.bs.modal', function(e){ $(e.relatedTarget.attributes['data-target'].value).appendTo('body'); })
+</script>
 
 <div th:replace="fragments/footer :: footer">...</div>
 </body>

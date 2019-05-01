@@ -32,6 +32,13 @@
                         <input type="number" th:field="*{capacity}" class="form-control" id="Capacity" placeholder="Enter capacity"  required="true"/>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="extraInfo" class="col-2 col-form-label">Extra Information</label>
+                    <div class="col-md-10 ml-md-0 col-9 ml-3">
+                        <input type="text" maxlength="150" th:field="*{extraInfo}" class="form-control" id="extraInfo" placeholder="Enter any extra information"/>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-danger btn-block">Submit</button>
             </form>
         </div>

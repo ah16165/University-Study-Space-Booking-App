@@ -36,12 +36,13 @@ public class RoomService {
         return roomRepository.findByRoomNoAndBuilding(roomNo, building);
     }
 
-    public Room createRoom(String roomNo, String building, Integer capacity, List<Booking> bookings) {
+    public Room createRoom(String roomNo, String building, Integer capacity, List<Booking> bookings, String extraInfo) {
         Room s = new Room();
         s.setRoomNo(roomNo);
         s.setBuilding(building);
         s.setCapacity(capacity);
         s.setBookings(bookings);
+        s.setExtraInfo(extraInfo);
         save(s);
         return s;
     }

@@ -24,6 +24,8 @@ public class Room {
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
+    private String extraInfo;
+
     public Room() {
 
     }
@@ -67,4 +69,10 @@ public class Room {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    public String getExtraInfo(){ return extraInfo;}
+
+    public void setExtraInfo(String extraInfo){ this.extraInfo = extraInfo; }
+
+
 }

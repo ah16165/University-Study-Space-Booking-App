@@ -43,6 +43,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/css/**", "/images/**", "/webjars/**","/templates/**").permitAll()
                     .antMatchers("/").permitAll()
+                    .antMatchers("/terms").permitAll()
                     .antMatchers("/statistics").access("hasAuthority('admin')")
                     .antMatchers("/users").access("hasAuthority('admin')")
                     .antMatchers("/user/**").access("hasAuthority('admin')")

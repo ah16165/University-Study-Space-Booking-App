@@ -4,7 +4,7 @@
 
 *We employed pair programming for the majority of the coding process, which allowed a really productive workflow. This allowed a second pair of eyes over the code and for good insights, as well as two or three brains to come up with ideas as opposed to one.
 
-*Initially, we deployed the product to the client whenever a major change had been introduced. In the latter half of the project we changed this approach to a continuous integration and approach using Circle CI, so that the client always had access to the most up to date version. We also iterativley delivered to the user.
+*Initially, we deployed the product to the client whenever a major change had been introduced. In the latter half of the project we changed this approach to a continuous integration approach using Circle CI, so that the client always had access to the most up to date version. We also iterativley delivered to the user.
 
 *We had regular face to face meetings with our client.
 

@@ -22,5 +22,5 @@
 
 *Close cooperation with the client.
 
-*Regularily changed team roles.
+*Regularly changed team roles.
 

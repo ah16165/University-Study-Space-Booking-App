@@ -92,13 +92,13 @@ public class BookingController {
         Date requestStartTime = bookingRequest.getStartDateTime();
         Long numberOfHoursWithin24Hours = (long) 0;
         for (Booking booking : bookings){
-            Date startDateTime= booking.getStartDateTime();
-            if ( (startDateTime.getTime() > requestStartTime.getTime()) && (startDateTime.getTime() < (86400000 + requestStartTime.getTime()))){
+            Date startDateTime = booking.getStartDateTime();
+            if ( (startDateTime.getTime() > requestStartTime.getTime() - 43200000) && (startDateTime.getTime() < (43200000 + requestStartTime.getTime()))){
                 numberOfHoursWithin24Hours += booking.getDuration();
             }
         }
         numberOfHoursWithin24Hours += bookingRequest.getDuration();
-        System.out.print("######" + numberOfHoursWithin24Hours);
+        System.out.print("###### Hours " + numberOfHoursWithin24Hours + "\n");
         if (numberOfHoursWithin24Hours > 4){
             LOG.info("User has requested more than 4 booking hours within a day");
             return true;
@@ -112,12 +112,14 @@ public class BookingController {
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
         Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
         Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
+        Boolean moreThan4HoursBookedToday = isMoreThan4HoursBookedToday(bookingRequest);
         Long duration = bookingRequest.getDuration();
         Boolean durationNotValid = ( duration > 3 || duration <= 0 );
-        if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid){
+        if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid || moreThan4HoursBookedToday){
             redirectAttributes.addFlashAttribute("dateInPast", dateInPast);
             redirectAttributes.addFlashAttribute("dateMoreThanTwoWeeksAway", dateMoreThanTwoWeeksAway);
             redirectAttributes.addFlashAttribute("durationNotValid", durationNotValid);
+            redirectAttributes.addFlashAttribute("moreThan4HoursBookedToday", moreThan4HoursBookedToday);
             return "redirect:/booking/add";
         } else {
             redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);

@@ -1,0 +1,10 @@
+Deployment manual
+
+The target audience for this document is system admins or IT staff that have the responsibility of porting our software over to their server systems.
+
+- The Spring service in our code runs off port 8080 of the server it is built on. To build the system you use maven with the following commands from the source code main directory: mvn clean package -DskipTests=True; cd target; java -jar booker-0.0.1-SNAPSHOT.jar; This works best if operated on a UBUNTU server system within a TMUX session.
+
+- Database integration is handled in the files application.yml and application-prod.yml. These will have to be configured to match your database. One the database has been created, the Spring application handles the creation of tables etc.
+
+- The current login system works via the Spring Security framework. We were denied access to Single Sign On, so porting this is down to you. If the current login system is retained then one could add all users to the system via SQL commands on the database you choose to setup. This wouldn\'92t take too long with a big CSV list and the appropriate SQL knowledge.
+

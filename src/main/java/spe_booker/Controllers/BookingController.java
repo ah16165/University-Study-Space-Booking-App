@@ -113,6 +113,8 @@ public class BookingController {
         Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
         Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
         Boolean moreThan4HoursBookedToday = isMoreThan4HoursBookedToday(bookingRequest);
+        //Admins have no limit on hours
+        if (userService.getCurrentUser().get().isAdmin()) {moreThan4HoursBookedToday = false;}
         Long duration = bookingRequest.getDuration();
         Boolean durationNotValid = ( duration > 3 || duration <= 0 );
         if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid || moreThan4HoursBookedToday){

@@ -13,4 +13,9 @@
 <p>Using the results from all the previous evaluations we employed two heuristic techniques. Firstly, we used the Nielson Heuristics framework to analyze our product and realise improvements. A copy of this can be found in this directory. Secondly, we gave Nielson severity ratings to  the issues in our system to help identify the critical issues that needed addressing. Using these two techniques, combined with the user feedback from the other evaluation methods we employed, we were able to decide on what aspects of the product to adapt in the tail end of the project.</p>
 
 <h4>Iterative refinements</h4>
-<p>TODO</p>
+<p>As a result of the user and admin interviews we have conducted, several bugs that exist within the system have been brought to light. These bugs have been from a range of
+severeties, ranging from simple HTML corrections to bugs that break the whole system. One of the major bugs we found as a result of the admin interview was a problem with 
+not being able to confirm a booking when using the system on mobile. It was lucky we discovered this bug before pushing the system live as this problem made the whole system
+completely unusale on mobile. As well as the several bugs we discovered and fixed, we also gathered information on what additional features the client would've liked within the 
+system. Following being notified of these requested changes, we then implemented them promptly. An example of this is where the client requested for a general introduction / 
+explanation of the system to be put on the login / home screen. As you can see, this has now been introduced.</p>

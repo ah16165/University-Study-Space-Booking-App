@@ -19,7 +19,11 @@ They will be in charge of maintaining and updating the application post release.
 
 ## High Level Use Case Diagrams
 
-See image.
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/Requirements/admin%20high%20level%20case%20diagram.png
+
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/Requirements/student%20high%20level%20case%20diagram.png
+
+
 
 ## Flow Breakdown of Student making a booking then using a room
 
@@ -37,7 +41,7 @@ Basic Flow¹ -
 * The student then goes to the room
 
 Alternative Flow² -
-* The student does not have access to the a personal device
+* The student does not have access to a personal device
 * The student approaches a librarian/admin and asks them to book a room for them
 * The admin logs in to their admin account, and repeats the process as above but books for the student
 
@@ -79,7 +83,7 @@ Key
 * For admins to view all bookings for management
 * For admins to delete ANY booking they would like, regardless of user
 * For fairness and wellbeing, 
-* * students will only be able to book up to 2 hours per day (10 a week)
+* * students will only be able to book up to 4 hours per day (20 a week)
 * * rooms may only be booked up to two weeks in advance
 * All required information should be stored on a database
 * The password of users should not be stored in plain text within the database

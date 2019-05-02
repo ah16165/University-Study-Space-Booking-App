@@ -19,8 +19,9 @@ They will be in charge of maintaining and updating the application post release.
 
 ## High Level Use Case Diagrams
 
-![High Level Admin Use Case Diagram](admin high level case diagram.png)
-![High Level Student Use Case Diagram](student high level case diagram.png)
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/Requirements/admin%20high%20level%20case%20diagram.png
+
+
 
 ## Flow Breakdown of Student making a booking then using a room
 

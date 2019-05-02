@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class BookingService {
 
@@ -26,8 +25,6 @@ public class BookingService {
     public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
     }
-
-
 
     public Booking createBooking(User user, Date startDateTime, Date endDateTime, Long id, Room room) {
         Booking booking = new Booking();
@@ -80,20 +77,6 @@ public class BookingService {
     }
 
     public List<Booking> findAll() { return bookingRepository.findAll(); }
-
-//    public List<Booking> getBookingsInLastWeek(){
-//        Date currentDate = new Date();
-//        Date lastWeek = new Date();
-//        lastWeek.setTime((long) currentDate.getTime()-604800000);
-//        return bookingRepository.findBookingsByDateTimeGreaterThanEqual(lastWeek);
-//    }
-
-//    public List<Pair<Room, Integer>> getRoomsAndNoOfBookingWeek(){
-//        List<Pair<Room, Integer>> roomsAndNoOfBookingWeek = new ArrayList<>();
-//        for (Booking booking : getBookingsInLastWeek()){
-//            if (roomsAndNoOfBookingWeek.contains())
-//        }
-//    }
 
     public void deleteAllByUser(User user){
         bookingRepository.deleteAllByUser(user);

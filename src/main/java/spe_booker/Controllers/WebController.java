@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import spe_booker.Repositorys.UserRepository;
-import spe_booker.models.User;
 import spe_booker.Services.UserService;
-import org.springframework.ui.Model;
+import spe_booker.models.User;
 
 import java.util.Optional;
 
@@ -35,12 +34,11 @@ public class WebController extends WebMvcConfigurerAdapter {
         return "login";
     }
 
-
     @RequestMapping("/home")
     public String home(Model model) {
         Optional<User> user = userService.getCurrentUser();
         if (!user.isPresent()) {
-            System.out.print("USER NOT FOUND AAAAA");
+            LOG.info("User not found");
             return "/";
         } else {
             if (user.get().getBlacklisted()) {

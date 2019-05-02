@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.UserRepository;
-import spe_booker.models.Booking;
 import spe_booker.models.User;
 
 import java.util.ArrayList;
@@ -14,10 +13,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class UserService {
-
 
     private UserRepository userRepository;
 
@@ -45,7 +42,6 @@ public class UserService {
 
     public User createUser(String name, String email, String password, String faculty, String role, Boolean blacklisted) {
         User s = new User();
-
         s.setName(name);
         s.setUsername(email);
         s.setPassword(password);
@@ -54,7 +50,6 @@ public class UserService {
         s.enabled = 1;
         s.setBlacklisted(blacklisted);
         save(s);
-
         return s;
     }
 

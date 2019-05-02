@@ -12,10 +12,6 @@ import spe_booker.Repositorys.UserRepository;
 import spe_booker.Services.BookingService;
 import spe_booker.Services.RoomService;
 import spe_booker.Services.UserService;
-import spe_booker.models.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Component
@@ -50,21 +46,6 @@ public class DataLoader implements ApplicationRunner {
             LOG.debug("creating test user account");
             userService.createUser("user", "user@bristol.ac.uk", "test", "engineering", "student",false);
         }
-
-//        if (! roomRepository.findByRoomNoAndBuilding("100", "100").isPresent()){
-//            LOG.debug("creating room 100, 100");
-//            List<Booking> bookings = new ArrayList<>();
-//            roomService.createRoom("100", "100", 100, bookings);
-//        }
-
-//        if (! bookingRepository.existsById((long) 100)){
-//            LOG.debug("creating booking 100");
-//            Date date = new Date(2019, 3, 31, 2, 0);
-//            User user = userService.findByUsername("admin");
-//            Room room = roomService.findByRoomNoAndBuilding("100", "100");
-//            bookingService.createBooking((long) 2, date, user, room);
-//
-//        }
 
     }
 

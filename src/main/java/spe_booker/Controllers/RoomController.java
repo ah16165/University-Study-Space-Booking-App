@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import spe_booker.Services.RoomService;
 import spe_booker.models.Room;
 
-import java.util.Optional;
-
 @Controller
 public class RoomController {
 
@@ -41,22 +39,10 @@ public class RoomController {
         model.addAttribute("rooms", roomService.findAll());
         return "room_view_list";
     }
-
-    @GetMapping(value = {"/room/{building}/{roomNo}"})
-    public String viewRoom(@PathVariable String building, @PathVariable String roomNo, Model model){
-        LOG.info("Displaying info for a single room");
-        Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
-        if (room.isPresent()){
-            model.addAttribute("room", room.get());
-            return "room_view_single";
-        } else {
-            return "/error/error";
-        }
-
-    }
-
+    
     @PostMapping(value = {"/room/delete/{id}"})
     public String deleteUser(@PathVariable Long id){
+        LOG.info("Deleting room with id " + id);
         roomService.deleteById(id);
         return "room_deleted";
 

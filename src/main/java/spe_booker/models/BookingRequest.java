@@ -8,7 +8,6 @@ import java.util.Date;
 @Entity
 public class BookingRequest {
 
-    //Maybe remove repeat?
     @Id
     @GeneratedValue
     private Long id;

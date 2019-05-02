@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
 @Controller
 @SessionAttributes("bookingRequest")
 public class BookingController {
@@ -36,7 +35,6 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-
 
     @GetMapping(value = {"/bookings"})
     public String viewBookings(Model model) {
@@ -51,27 +49,12 @@ public class BookingController {
         return "booking_view_list";
     }
 
-
     @GetMapping(value = {"/user/{username}/bookings"})
     public String viewBookingsForuser(@PathVariable String username, Model model) {
         LOG.info("Listing bookings for a specific user\n");
         List<Booking> currentUserBookings = bookingService.findBookingsByUser(userService.findByUsername(username).get());
         model.addAttribute("bookings", currentUserBookings);
         return "booking_view_list";
-    }
-
-
-    @GetMapping(value = {"/booking/{id}"})
-    public String viewbooking(@PathVariable Long id, Model model) {
-        LOG.info("Listing details for a single booking");
-        Optional<Booking> booking = bookingService.findById(id);
-        if (booking.isPresent()){
-            model.addAttribute("booking", booking.get());
-            return "booking_view_single";
-        } else {
-            System.out.print("Booking not present!");
-            return "/error/error-400";
-        }
     }
 
      Date roundToNextHour(Date datetime){
@@ -105,7 +88,6 @@ public class BookingController {
 
     @PostMapping("/booking/add")
     public String submitDateTime(@ModelAttribute BookingRequest bookingRequest, RedirectAttributes redirectAttributes) {
-        System.out.print("########1 - " + bookingRequest.getStartDateTime() + "#####\n " + bookingRequest.getDuration() + " \n");
         Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
         Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
         Long duration = bookingRequest.getDuration();
@@ -123,7 +105,6 @@ public class BookingController {
 
     @GetMapping(value = {"/booking/add/room"})
     public String makebookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, Model model) {
-        System.out.print("########2 - " + bookingRequest.getStartDateTime() + " - ####\n");
         model.addAttribute("bookingRequestDateAndDuration", bookingRequest);
         model.addAttribute("rooms", roomService.findAvailable(bookingRequest.getStartDateTime(), bookingRequest.getEndDateTime()));
         return "booking_add_room";
@@ -131,13 +112,11 @@ public class BookingController {
 
     @PostMapping("/booking/add/room/{building}/{roomNo}")
     public String submitBookingRoom(@ModelAttribute("bookingRequest") BookingRequest bookingRequest, @PathVariable String building, @PathVariable String roomNo, Model model){
-        System.out.print("###5 Booking " + bookingRequest.getDuration() + " - " + "\n");
         bookingRequest.setBuilding(building);
         bookingRequest.setRoomNo(roomNo);
-
         User user = userService.getCurrentUser().get();
         if (user.getBlacklisted()){
-            System.out.print("Blacklisted user attempted to make booking, but was blocked.");
+            LOG.info("Blacklisted user attempted to make booking, but was blocked.");
             return "/error/error";
         } else {
             Optional<Room> room = roomService.findByRoomNoAndBuilding(roomNo, building);
@@ -145,14 +124,11 @@ public class BookingController {
                 Booking booking1 = bookingService.createBookingFromBookingRequest(bookingRequest, user, room.get());
                 return "booking_confirmed";
             } else {
-                System.out.print("Room not found for booking creation.\n");
+                LOG.info("Room not found for booking creation.\n");
                 return "/error/error-400";
             }
         }
     }
-
-
-
 
     @PostMapping(value = {"/booking/delete/{id}"})
     public String deleteBooking(@PathVariable Long id){
@@ -162,11 +138,10 @@ public class BookingController {
             bookingService.deleteBooking(booking.get());
             return "booking_cancelled";
         } else {
-            System.out.print("####Booking not present!");
+            LOG.info("#Booking not present!");
             return "/error/error";
         }
     }
-
 
     //Called automatically when building the model
     //Formats the date/time

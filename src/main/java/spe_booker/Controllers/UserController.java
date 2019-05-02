@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import spe_booker.Services.UserService;
 import spe_booker.models.User;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,28 +22,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping(value = {"/users"})
     public  String viewAllUsers(Model model){
         LOG.info("Listing users");
         model.addAttribute("users", userService.findAll());
         return "user_view_list";
     }
-
-
-    @GetMapping(value = {"/user/{id}"})
-    public String viewbooking(@PathVariable Long id, Model model) {
-        LOG.info("Listing details for a single user");
-        Optional<User> user = userService.findById(id);
-        if (user.isPresent()){
-            model.addAttribute("user", user.get());
-            return "user_view_single";
-        } else {
-            LOG.info("User not present!");
-            return "/error/error";
-        }
-    }
-
 
     @PostMapping(value = {"/user/delete/{id}"})
     public String deleteUser(@PathVariable Long id){
@@ -59,7 +41,6 @@ public class UserController {
             return "/error/error";
         }
     }
-
 
     @PostMapping(value = {"/user/blacklist/{id}"})
     public String blacklistUser(@PathVariable Long id){
@@ -97,6 +78,7 @@ public class UserController {
 
     @PostMapping("/user/add")
     public String addUser(@ModelAttribute User user){
+        LOG.info("Adding a new user");
         user.setBlacklisted(false);
         user.setRole("student");
         user.setEnabled(1);

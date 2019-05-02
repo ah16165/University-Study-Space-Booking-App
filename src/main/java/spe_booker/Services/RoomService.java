@@ -1,15 +1,11 @@
 package spe_booker.Services;
 
-import org.javatuples.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import spe_booker.Repositorys.RoomRepository;
-import spe_booker.Repositorys.UserRepository;
 import spe_booker.models.Booking;
 import spe_booker.models.Room;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +14,7 @@ import java.util.Optional;
 @Service
 public class RoomService {
 
-
     private RoomRepository roomRepository;
-
 
     @Autowired
     public RoomService(RoomRepository roomRepository) {
@@ -58,16 +52,6 @@ public class RoomService {
     public void deleteById(Long id){
         roomRepository.deleteById(id);
     }
-
-//    public List<Pair<Room, Integer>> getRoomsAndNoOfBookings(){
-//        List<Pair<Room, Integer>> roomsAndNoOfBookings = new ArrayList<>();
-//        List<Room> rooms = roomRepository.findAll();
-//        for (Room room : rooms){
-//            roomsAndNoOfBookings.add(Pair.with(room, room.))
-//        }
-//        return roomsAndNoOfBookings;
-//    }
-
 
     public List<Room> getRoomsAndNoBookingsForLastWeek(){
         List<Room> rooms = findAll();

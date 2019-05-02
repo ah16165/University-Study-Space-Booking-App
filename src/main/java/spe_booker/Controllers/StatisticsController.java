@@ -20,11 +20,9 @@ public class StatisticsController {
 
     private static final Logger LOG = LoggerFactory.getLogger(RoomController.class);
 
-
     @RequestMapping("/statistics")
-    public String statistics(Model model){
+    public String statistics(Model model) {
         LOG.info("Showing statistics page");
-
         model.addAttribute("rooms", roomService.findAll());
         model.addAttribute("top10Users", userService.findTop10ByNumberOfBookings());
         return "statistics";

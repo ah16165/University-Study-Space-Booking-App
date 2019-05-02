@@ -93,7 +93,7 @@ public class BookingController {
         Long numberOfHoursWithin24Hours = (long) 0;
         for (Booking booking : bookings){
             Date startDateTime= booking.getStartDateTime();
-            if (startDateTime.getTime() < (86400000 + currentDateTime.getTime() ) ){
+            if ( (startDateTime.getTime() > currentDateTime.getTime()) && (startDateTime.getTime() < (86400000 + currentDateTime.getTime()))){
                 numberOfHoursWithin24Hours += booking.getDuration();
             }
         }
@@ -113,11 +113,13 @@ public class BookingController {
         Boolean dateInPast = isDateInPast(bookingRequest.getStartDateTime());
         Boolean dateMoreThanTwoWeeksAway = isDateMoreThanTwoWeeksAway(bookingRequest.getStartDateTime());
         Long duration = bookingRequest.getDuration();
+        Boolean moreThan4HoursBookedToday = isMoreThan4HoursBookedToday(bookingRequest);
         Boolean durationNotValid = ( duration > 3 || duration <= 0 );
-        if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid){
+        if (dateInPast || dateMoreThanTwoWeeksAway || durationNotValid || moreThan4HoursBookedToday){
             redirectAttributes.addFlashAttribute("dateInPast", dateInPast);
             redirectAttributes.addFlashAttribute("dateMoreThanTwoWeeksAway", dateMoreThanTwoWeeksAway);
             redirectAttributes.addFlashAttribute("durationNotValid", durationNotValid);
+            redirectAttributes.addFlashAttribute("moreThan4HoursBookedToday", moreThan4HoursBookedToday);
             return "redirect:/booking/add";
         } else {
             redirectAttributes.addFlashAttribute("bookingRequest", bookingRequest);

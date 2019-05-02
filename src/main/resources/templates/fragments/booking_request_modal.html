@@ -21,19 +21,6 @@
                 <div class="container-fluid">
                     <table class="table table-borderless">
                         <tr>
-                            <th>Room Number</th>
-                            <td><span th:text="${room.roomNo}"/></td>
-                        </tr>
-                        <tr>
-                            <th>Building</th>
-                            <td><span th:text="${room.building}"/></td>
-                        </tr>
-
-                        <tr>
-                            <th>Capacity</th>
-                            <td><span th:text="${room.capacity}"/></td>
-                        </tr>
-                        <tr>
                             <th>Date</th>
                             <td><span
                                     th:text="${#dates.format(bookingRequest.getStartDateTime(), 'dd-MMMMM-yyyy')}"/>
@@ -50,6 +37,23 @@
                             <td><span
                                     th:text="${bookingRequest.getDuration()} + ' hour(s)'"/>
                             </td>
+                        </tr>
+                        <tr>
+                            <th>Room Number</th>
+                            <td><span th:text="${room.roomNo}"/></td>
+                        </tr>
+                        <tr>
+                            <th>Building</th>
+                            <td><span th:text="${room.building}"/></td>
+                        </tr>
+
+                        <tr>
+                            <th>Capacity</th>
+                            <td><span th:text="${room.capacity}"/></td>
+                        </tr>
+                        <tr th:if="${room.getExtraInfo() != null && !room.getExtraInfo().isEmpty()}">
+                            <th>Extra information:</th>
+                            <td><span th:text="${room.getExtraInfo()}"/></td>
                         </tr>
                     </table>
                 </div>

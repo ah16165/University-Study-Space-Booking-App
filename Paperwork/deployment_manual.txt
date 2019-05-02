@@ -8,3 +8,5 @@ The target audience for this document is system admins or IT staff that have the
 
 - The current login system works via the Spring Security framework. We were denied access to Single Sign On, so porting this is down to you. If the current login system is retained then one could add all users to the system via SQL commands on the database you choose to setup. This wouldn\'92t take too long with a big CSV list and the appropriate SQL knowledge.
 
+- When the system is first run, an admin and test user account are created. The login details for both can be chnaged in the class 'Data Loader', but need to be changed before the first running of the system. The default details are 'admin/user@bristol.ac.uk' and both passwords are 'test'.
+

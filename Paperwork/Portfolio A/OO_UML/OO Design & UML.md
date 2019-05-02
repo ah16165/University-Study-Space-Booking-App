@@ -2,7 +2,7 @@
 
 ## High-level Architecture Diagram
 
-See image.
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/OO_UML/High%20level%20architecture%20diagram.png
 
 Above is a high-level architecture diagram of our web application. It provides you with an overview of our entire system, identifying the main components that are used in an easily understandable abstract format. The controllers are used to act as a gateway between our user and the system by communicating with the user’s browser and responding to HTTP requests. At a very high level, its main responsibilities are: 
 * Handling HTTP requests and issuing responses
@@ -13,7 +13,7 @@ The service receives data from the controller and performs any logic / calculati
 
 ## Static UML Model
 
-See image.
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/OO_UML/Static%20UML%20Model.png
 
 The object-class diagram is a type of static UML diagram used to display the structure of our system by outlining the classes, their methods and attributes and the relationships between each of the classes.
 
@@ -28,7 +28,7 @@ We decided to use a object-class diagram as our static UML model as we believed 
 
 ## Dynamic UML Model (Aspect of the system)
 
-See image.
+https://github.com/university-study-space-booking-app/University-Study-Space-Booking-App/blob/master/Paperwork/Portfolio%20A/OO_UML/Dynamic%20UML%20Model.png
 
 For the dynamic UML model, we decided to make a sequence diagram that models the “View Bookings” sequence. We chose to use a sequence diagram over others as it allows the user to visualise the interactions within a system in a clear and sequential way. We selected this feature of our system to model specifically as it contained a good balance between importance and complexity. First time viewers are able to easily get a gauge of the workflow of the application without being overwhelmed by the complexity of the whole system (only a limited number of classes & methods are used in achieving this “View Bookings” function relative to other functions). 
 

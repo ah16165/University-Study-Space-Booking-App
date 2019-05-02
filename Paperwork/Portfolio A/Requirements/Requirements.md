@@ -19,7 +19,8 @@ They will be in charge of maintaining and updating the application post release.
 
 ## High Level Use Case Diagrams
 
-See image.
+![High Level Admin Use Case Diagram](admin high level case diagram.png)
+![High Level Student Use Case Diagram](student high level case diagram.png)
 
 ## Flow Breakdown of Student making a booking then using a room
 

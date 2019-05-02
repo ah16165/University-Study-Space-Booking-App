@@ -81,7 +81,6 @@ public class UserService {
     }
 
     public void deleteUser(User user){
-        System.out.print("# Username = " + user.getUsername() + "\n");
         bookingService.deleteAllByUser(user);
         userRepository.delete(user);
     }

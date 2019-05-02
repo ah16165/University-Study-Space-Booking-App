@@ -38,7 +38,9 @@
                 <div th:if="${durationNotValid}" class="container pb-2">
                     <h6>Please select a positive duration less than 3 hours.</h6>
                 </div>
-
+                <div th:if="${moreThan4HoursBookedToday}" class="container pb-2">
+                    <h6>You cannot book more than 4 hours within a day</h6>
+                </div>
                 <button type="submit" class="btn btn-danger btn-block">Submit</button>
             </form>
         </div>

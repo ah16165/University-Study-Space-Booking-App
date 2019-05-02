@@ -71,7 +71,6 @@ public class Booking {
 
     }
     public Date getCreationDate(){
-        System.out.print("######Creation Date = " + creationDate + "\n");
         return creationDate; }
 
     public void setCreationDate(Date creationDate) { this.creationDate = creationDate;}

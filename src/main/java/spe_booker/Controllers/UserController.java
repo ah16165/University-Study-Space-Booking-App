@@ -37,7 +37,6 @@ public class UserController {
             userService.deleteUser(user.get());
             return "user_deleted";
         } else {
-            System.out.print("####User not present!");
             return "/error/error";
         }
     }
@@ -51,7 +50,6 @@ public class UserController {
             userService.update(user.get());
             return "user_blacklisted";
         } else {
-            System.out.print("####User not present!");
             return "/error/error";
         }
     }
@@ -65,7 +63,6 @@ public class UserController {
             userService.update(user.get());
             return "user_unblacklisted";
         } else {
-            System.out.print("####User not present!");
             return "/error/error";
         }
     }

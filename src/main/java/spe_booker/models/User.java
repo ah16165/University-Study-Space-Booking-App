@@ -90,6 +90,8 @@ public class User {
     public void setEnabled(int enabled) { this.enabled = enabled; }
 
     public int getEnabled() { return this.enabled; }
+
+    public List<Booking> getBookings(){ return bookings; }
 }
 
 

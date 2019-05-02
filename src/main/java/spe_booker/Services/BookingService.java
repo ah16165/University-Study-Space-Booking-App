@@ -35,7 +35,6 @@ public class BookingService {
         booking.setRoom(room);
         Date creationDate = new Date();
         booking.setCreationDate(creationDate);
-        System.out.print("Creation Date and Time: "+creationDate+"\n");
         LOG.info("Saving new booking with booking id " + booking.getId());
         saveBooking(booking);
         return booking;
